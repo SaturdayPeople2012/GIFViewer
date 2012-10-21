@@ -10,6 +10,7 @@
 #import "MainViewController.h"
 
 // 원석 바보
+//하하하
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
