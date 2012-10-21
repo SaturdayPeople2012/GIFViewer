@@ -9,6 +9,16 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
+<<<<<<< HEAD
+=======
+// Test Case #1
+// Step 1
+// Jaesung is leaving a note @ 11:32
+
+
+// 원석 바보
+//하하하
+>>>>>>> fb70321bad43075ab06a0a388b2d72ab4224974a
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -20,7 +30,11 @@
     self.naviController = [[UINavigationController alloc]init];
     MainViewController *mainVC = [[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
     [self.naviController pushViewController:mainVC animated:NO];
-    self.window.rootViewController = _naviController;
+    self.window.rootViewController = self.naviController;
+    
+// git 시험....
+// 조태상 수정 함...
+    
     
     [self.window makeKeyAndVisible];
     return YES;
