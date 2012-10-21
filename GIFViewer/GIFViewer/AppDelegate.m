@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
+//충돌해보자ㅋㅋㅋㅋㅋㅋㅋ 
+
 // 원석 바보
 //하하하
 @implementation AppDelegate
