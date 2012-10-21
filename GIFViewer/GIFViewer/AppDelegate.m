@@ -2,17 +2,13 @@
 //  AppDelegate.m
 //  GIFViewer
 //
-//  Created by 양원석 on 12. 10. 21..
-//  Copyright (c) 2012년 양원석. All rights reserved.
+//  Created by 양원석바보 on 12. 10. 21..
+//  Copyright (c) 2012년 양원석바보. All rights reserved.
 //
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
-//충돌해보자ㅋㅋㅋㅋㅋㅋㅋ 
-
-// 원석 바보
-//하하하
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
