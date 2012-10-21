@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+// 원석 바보
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
