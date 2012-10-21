@@ -6,6 +6,8 @@
 //  Copyright (c) 2012년 양원석. All rights reserved.
 //
 
+
+// 초라니 테스트
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
