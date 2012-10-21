@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F2A1326F1633920E0050F3D9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A1326D1633920E0050F3D9 /* MainViewController.m */; };
+		F2A132701633920E0050F3D9 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A1326E1633920E0050F3D9 /* MainViewController.xib */; };
 		F2C2F934163390E500E93A97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C2F933163390E500E93A97 /* UIKit.framework */; };
 		F2C2F936163390E500E93A97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C2F935163390E500E93A97 /* Foundation.framework */; };
 		F2C2F938163390E500E93A97 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C2F937163390E500E93A97 /* CoreGraphics.framework */; };
@@ -19,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F2A1326C1633920E0050F3D9 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		F2A1326D1633920E0050F3D9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		F2A1326E1633920E0050F3D9 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		F2C2F92F163390E500E93A97 /* GIFViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GIFViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C2F933163390E500E93A97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F2C2F935163390E500E93A97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -80,6 +85,9 @@
 			children = (
 				F2C2F942163390E500E93A97 /* AppDelegate.h */,
 				F2C2F943163390E500E93A97 /* AppDelegate.m */,
+				F2A1326C1633920E0050F3D9 /* MainViewController.h */,
+				F2A1326D1633920E0050F3D9 /* MainViewController.m */,
+				F2A1326E1633920E0050F3D9 /* MainViewController.xib */,
 				F2C2F93A163390E500E93A97 /* Supporting Files */,
 			);
 			path = GIFViewer;
@@ -154,6 +162,7 @@
 				F2C2F946163390E500E93A97 /* Default.png in Resources */,
 				F2C2F948163390E500E93A97 /* Default@2x.png in Resources */,
 				F2C2F94A163390E500E93A97 /* Default-568h@2x.png in Resources */,
+				F2A132701633920E0050F3D9 /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +175,7 @@
 			files = (
 				F2C2F940163390E500E93A97 /* main.m in Sources */,
 				F2C2F944163390E500E93A97 /* AppDelegate.m in Sources */,
+				F2A1326F1633920E0050F3D9 /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +284,7 @@
 				F2C2F94F163390E500E93A97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
