@@ -9,6 +9,11 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
+// Test Case #1
+// Step 1
+// Jaesung is leaving a note @ 11:32
+
+
 // 원석 바보
 //하하하
 @implementation AppDelegate
