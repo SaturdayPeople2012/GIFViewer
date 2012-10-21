@@ -7,9 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "MainViewController.h"
 
 // 원석 바보
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -17,6 +17,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    self.naviController = [[UINavigationController alloc]init];
+    MainViewController *mainVC = [[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
+    [self.naviController pushViewController:mainVC animated:NO];
+    self.window.rootViewController = _naviController;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
