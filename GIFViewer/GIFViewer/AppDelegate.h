@@ -14,7 +14,6 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-<<<<<<< HEAD
 /*
  
  진원테스트
@@ -23,7 +22,8 @@
  
  
  */
-=======
+
+// 이건 조태상이 수정 합니다....
+
 @property (strong, nonatomic) UINavigationController *naviController;
->>>>>>> 92396a71d40d76d168f2795b6b0baeff1fddfd39
 @end
