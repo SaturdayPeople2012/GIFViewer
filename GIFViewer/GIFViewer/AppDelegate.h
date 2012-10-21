@@ -8,6 +8,7 @@
 
 
 // 초라니 테스트
+// 초라니 테스트 02
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
