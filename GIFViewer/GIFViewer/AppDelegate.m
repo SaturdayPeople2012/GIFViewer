@@ -24,6 +24,10 @@
     [self.naviController pushViewController:mainVC animated:NO];
     self.window.rootViewController = _naviController;
     
+// git 시험....
+// 조태상 수정 함...
+    
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
