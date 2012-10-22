@@ -11,5 +11,6 @@
 @interface MainViewController : UIViewController
 - (IBAction)goGridView:(id)sender;
 - (IBAction)goListView:(id)sender;
+- (IBAction)goGIFView:(id)sender;
 
 @end

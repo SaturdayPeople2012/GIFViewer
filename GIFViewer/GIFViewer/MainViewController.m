@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "GridViewController.h"
 #import "ListViewController.h"
+#import "GIFDetailViewController.h"
 @interface MainViewController ()
 
 @end
@@ -46,5 +47,10 @@
 - (IBAction)goListView:(id)sender {
     ListViewController *listVC = [[ListViewController alloc]initWithNibName:@"ListViewController" bundle:nil];
     [self.navigationController pushViewController:listVC animated:YES];
+}
+
+- (IBAction)goGIFView:(id)sender {
+    GIFDetailViewController *gifVC = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
+    [self.navigationController pushViewController:gifVC animated:YES];
 }
 @end
