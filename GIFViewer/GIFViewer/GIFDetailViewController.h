@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AnimatedGif.h"
 
 @interface GIFDetailViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIImageView *gifPlayer;
 
 @end

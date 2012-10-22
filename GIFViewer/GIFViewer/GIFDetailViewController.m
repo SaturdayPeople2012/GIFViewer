@@ -14,6 +14,8 @@
 
 @implementation GIFDetailViewController
 
+@synthesize gifPlayer;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,6 +29,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+
+    NSURL 			* gifUrl = 		 [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"apple_logo_animated" ofType:@"gif"]];
+    UIImageView 	* gifAnimation = [AnimatedGif getAnimationForGifAtUrl: gifUrl];
+    
+    [gifPlayer addSubview:gifAnimation];
 }
 
 - (void)didReceiveMemoryWarning
