@@ -20,6 +20,7 @@
     self.naviController = [[UINavigationController alloc]init];
     MainViewController *mainVC = [[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
     [self.naviController pushViewController:mainVC animated:NO];
+    [self.naviController setToolbarHidden:NO];
     self.window.rootViewController = self.naviController;
         
     [self.window makeKeyAndVisible];
