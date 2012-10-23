@@ -13,10 +13,12 @@
 @end
 
 @implementation ListViewController
+@synthesize listData;
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    printf("닙네임");
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
@@ -26,7 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    NSArray *testArray = [[NSArray alloc] initWithObjects:@"a",@"b",@"c",nil];
+    self.listData = testArray;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -44,29 +47,34 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
+   // Return the number of sections.
     return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.listData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    ListCell *listCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (listCell == nil) {
+     
+        listCell = [[ListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    UIImage *image = [UIImage imageNamed:@"apple_logo_animated.gif"];
+    listCell.gifImage.image = image;
     // Configure the cell...
     
-    return cell;
+    NSUInteger row = [indexPath row];
+    listCell.title.text = [listData objectAtIndex:row];
+    
+    
+    return listCell;
 }
 
 /*

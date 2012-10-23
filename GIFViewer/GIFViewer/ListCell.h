@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ListCell : UIView
+@interface ListCell : UITableViewCell
+
+@property (weak,nonatomic) IBOutlet UIImageView *gifImage;
+@property (weak,nonatomic) IBOutlet UILabel *title;
+@property (weak,nonatomic) IBOutlet UILabel *time;
+@property (weak,nonatomic) IBOutlet UILabel *date;
 
 @end

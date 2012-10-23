@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ListCell.h"
+@interface ListViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
-@interface ListViewController : UITableViewController
+@property (strong,nonatomic) NSArray *listData;
 
 @end
