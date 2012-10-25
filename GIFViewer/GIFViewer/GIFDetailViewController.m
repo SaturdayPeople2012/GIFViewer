@@ -49,6 +49,8 @@
     NSURL 			* gifUrl = 		 [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"apple_logo_animated" ofType:@"gif"]];
     UIImageView 	* gifAnimation = [AnimatedGif getAnimationForGifAtUrl: gifUrl];
     
+    gifAnimation.frame = CGRectMake(100,100,10,10);
+    
     [gifPlayer addSubview:gifAnimation];
 }
 
