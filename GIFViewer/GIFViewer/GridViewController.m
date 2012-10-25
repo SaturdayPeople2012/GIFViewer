@@ -37,6 +37,9 @@ static NSString *CellIdentifier = @"Cell";
                                  UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
     self.navigationItem.rightBarButtonItem = editBtn;
+    
+    
+    
     self.toolbarItems = [NSArray arrayWithObjects:flexible, loadBtn, nil];
     // Do any additional setup after loading the view from its nib.
 }
