@@ -59,12 +59,9 @@ static AnimatedGif * instance;
 {   
     
     AnimatedGifQueueObject *agqo = [[AnimatedGifQueueObject alloc] init];
-    [agqo setUiv: [[UIImageView alloc] init]]; // 2x retain, alloc and the property.
-//    [[agqo uiv] autorelease]; // We expect the user to retain the return object.
-    [agqo uiv]; // We expect the user to retain the return object.
-    [agqo setUrl: animationUrl]; // this object is only retained by the queueobject, which will be released when loading finishes
+    agqo.uiv = [[UIImageView alloc] init]; // 2x retain, alloc and the property.
+    agqo.url = animationUrl; // this object is only retained by the queueobject, which will be released when loading finishes
     [[AnimatedGif sharedInstance] addToQueue: agqo];
-//    [agqo release];
     
     if ([[AnimatedGif sharedInstance] busyDecoding] != YES)
     {
@@ -122,30 +119,11 @@ static AnimatedGif * instance;
 {
 	GIF_pointer = GIFData;
     
-    if (GIF_buffer != nil)
-    {
-//        [GIF_buffer release];
-    }
-    
-    if (GIF_global != nil)
-    {
-//        [GIF_global release];
-    }
-    
-    if (GIF_screen != nil)
-    {
-//        [GIF_screen release];
-    }
-        
-	if (GIF_delays != nil)
-    {
-//        [GIF_delays release];
-    }
-    
-    if (GIF_framesData != nil)
-    {
-//        [GIF_framesData release];
-    }
+    GIF_buffer = nil;
+    GIF_global = nil;
+    GIF_screen = nil;
+    GIF_delays = nil;
+    GIF_framesData = nil;
         
     GIF_buffer = [[NSMutableData alloc] init];
 	GIF_global = [[NSMutableData alloc] init];
@@ -500,33 +478,4 @@ static AnimatedGif * instance;
 
 }
 
-- (void) dealloc
-{
-    if (GIF_buffer != nil)
-    {
-//	    [GIF_buffer release];
-    }
-    
-    if (GIF_screen != nil)
-    {
-//		[GIF_screen release];
-    }
-        
-    if (GIF_global != nil)
-    {
-//      [GIF_global release];
-    }
-    
-    if (GIF_delays != nil)
-    {
-//		[GIF_delays release];
-    }
-    
-    if (GIF_framesData != nil)
-    {
-//		[GIF_framesData release];
-    }
-
-//	[super dealloc];
-}
 @end
