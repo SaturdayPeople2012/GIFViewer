@@ -13,8 +13,6 @@
 		F25DB9571636846F00C488D5 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25DB9551636846F00C488D5 /* ListCell.xib */; };
 		F286BD46163566A4004395AE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F286BD44163566A4004395AE /* MainViewController.m */; };
 		F286BD47163566A4004395AE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F286BD45163566A4004395AE /* MainViewController.xib */; };
-		F286BD5416356E4E004395AE /* GridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F286BD5316356E4E004395AE /* GridCell.m */; };
-		F286BD5616356F53004395AE /* GridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F286BD5516356F53004395AE /* GridCell.xib */; };
 		F286BD5A163570D2004395AE /* GridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F286BD58163570D2004395AE /* GridViewController.m */; };
 		F286BD5B163570D2004395AE /* GridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F286BD59163570D2004395AE /* GridViewController.xib */; };
 		F286BD63163575A7004395AE /* GIFDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F286BD61163575A6004395AE /* GIFDetailViewController.m */; };
@@ -30,6 +28,7 @@
 		F2C2F946163390E500E93A97 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F2C2F945163390E500E93A97 /* Default.png */; };
 		F2C2F948163390E500E93A97 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2C2F947163390E500E93A97 /* Default@2x.png */; };
 		F2C2F94A163390E500E93A97 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2C2F949163390E500E93A97 /* Default-568h@2x.png */; };
+		F2EB33441639739300293A7B /* GridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EB33431639739300293A7B /* GridCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,9 +41,6 @@
 		F286BD43163566A4004395AE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		F286BD44163566A4004395AE /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		F286BD45163566A4004395AE /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		F286BD5216356E4E004395AE /* GridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridCell.h; sourceTree = "<group>"; };
-		F286BD5316356E4E004395AE /* GridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridCell.m; sourceTree = "<group>"; };
-		F286BD5516356F53004395AE /* GridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GridCell.xib; sourceTree = "<group>"; };
 		F286BD57163570D1004395AE /* GridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridViewController.h; sourceTree = "<group>"; };
 		F286BD58163570D2004395AE /* GridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridViewController.m; sourceTree = "<group>"; };
 		F286BD59163570D2004395AE /* GridViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GridViewController.xib; sourceTree = "<group>"; };
@@ -67,6 +63,8 @@
 		F2C2F945163390E500E93A97 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F2C2F947163390E500E93A97 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F2C2F949163390E500E93A97 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F2EB33421639739300293A7B /* GridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridCell.h; sourceTree = "<group>"; };
+		F2EB33431639739300293A7B /* GridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,9 +100,8 @@
 				F286BD57163570D1004395AE /* GridViewController.h */,
 				F286BD58163570D2004395AE /* GridViewController.m */,
 				F286BD59163570D2004395AE /* GridViewController.xib */,
-				F286BD5216356E4E004395AE /* GridCell.h */,
-				F286BD5316356E4E004395AE /* GridCell.m */,
-				F286BD5516356F53004395AE /* GridCell.xib */,
+				F2EB33421639739300293A7B /* GridCell.h */,
+				F2EB33431639739300293A7B /* GridCell.m */,
 			);
 			name = "원석";
 			sourceTree = "<group>";
@@ -235,7 +232,6 @@
 				F2C2F948163390E500E93A97 /* Default@2x.png in Resources */,
 				F2C2F94A163390E500E93A97 /* Default-568h@2x.png in Resources */,
 				F286BD47163566A4004395AE /* MainViewController.xib in Resources */,
-				F286BD5616356F53004395AE /* GridCell.xib in Resources */,
 				F286BD5B163570D2004395AE /* GridViewController.xib in Resources */,
 				F286BD64163575A7004395AE /* GIFDetailViewController.xib in Resources */,
 				F286BD6B1635781F004395AE /* ListViewController.xib in Resources */,
@@ -254,12 +250,12 @@
 				F2C2F940163390E500E93A97 /* main.m in Sources */,
 				F2C2F944163390E500E93A97 /* AppDelegate.m in Sources */,
 				F286BD46163566A4004395AE /* MainViewController.m in Sources */,
-				F286BD5416356E4E004395AE /* GridCell.m in Sources */,
 				F286BD5A163570D2004395AE /* GridViewController.m in Sources */,
 				F286BD63163575A7004395AE /* GIFDetailViewController.m in Sources */,
 				F286BD6A1635781F004395AE /* ListViewController.m in Sources */,
 				D74B108F163590C100C8CD68 /* AnimatedGif.m in Sources */,
 				F25DB9561636846F00C488D5 /* ListCell.m in Sources */,
+				F2EB33441639739300293A7B /* GridCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

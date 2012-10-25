@@ -14,6 +14,7 @@
 
 @implementation GridViewController
 static NSString *CellIdentifier = @"Cell";
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -62,7 +63,7 @@ static NSString *CellIdentifier = @"Cell";
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     GridCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-    cell.kText.text = [NSString stringWithFormat:@"%d번째",indexPath.row];
+    cell.label.text = [NSString stringWithFormat:@"%d번째",indexPath.row];
     return cell;
 }
 
