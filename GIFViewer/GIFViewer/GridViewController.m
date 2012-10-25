@@ -8,6 +8,8 @@
 
 #import "GridViewController.h"
 #import "GridCell.h"
+#define kGridMode 0
+#define kListMode 1
 @interface GridViewController ()
 
 @end
@@ -37,12 +39,35 @@ static NSString *CellIdentifier = @"Cell";
                                  UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
     self.navigationItem.rightBarButtonItem = editBtn;
+    //////////////////////////////////////////////////////
+    //TODO: 추후 AppDelegate로 뺄것!
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:@[@"Grid",@"List"]];
+    segmentedControl.selectedSegmentIndex=0;
+    segmentedControl.frame = CGRectMake(0, 0, 130, 30);
+    [segmentedControl addTarget:self action:@selector(selectedMode:) forControlEvents:UIControlEventValueChanged];
+    
+    UIBarButtonItem *segBtn = [[UIBarButtonItem alloc]initWithCustomView:segmentedControl];
     
     
-    
-    self.toolbarItems = [NSArray arrayWithObjects:flexible, loadBtn, nil];
+    /////////////////////////////////////////////////////
+    self.toolbarItems = [NSArray arrayWithObjects:flexible, segBtn,flexible, loadBtn, nil];
     // Do any additional setup after loading the view from its nib.
 }
+
+- (void) selectedMode:(id)sender{
+    UISegmentedControl *control = sender;
+    //TODO: 추후 AppDelegate로 뺄것!
+    switch (control.selectedSegmentIndex) {
+        case kGridMode:
+            
+            break;
+        case kListMode:
+            break;
+        default:
+            break;
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {

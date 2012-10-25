@@ -20,6 +20,7 @@
         _label.backgroundColor = [UIColor clearColor];
         self.backgroundView = _label;
         self.backgroundColor = [UIColor orangeColor];
+
     }
     return self;
 }

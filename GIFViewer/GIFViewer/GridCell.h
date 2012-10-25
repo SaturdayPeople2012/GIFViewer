@@ -11,4 +11,5 @@
 @interface GridCell : UICollectionViewCell
 //임시 레이블
 @property (strong, nonatomic) UILabel *label;
+@property (strong, nonatomic) UITapGestureRecognizer *tapGesture;
 @end
