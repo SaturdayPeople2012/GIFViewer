@@ -44,6 +44,7 @@ static AnimatedGif * instance;
 
 @synthesize imageView;
 @synthesize busyDecoding;
+@synthesize GIF_width,GIF_height;
 
 + (AnimatedGif *) sharedInstance
 {
@@ -55,16 +56,14 @@ static AnimatedGif * instance;
     return instance;
 }
 
-+ (UIImageView *) getAnimationForGifAtUrl:(NSURL *)animationUrl
-{   
-    
++ (UIImageView *) getAnimationForGifAtUrl:(NSURL *)animationUrl completion:(void (^)(int width,int height))completion
+{
     AnimatedGifQueueObject *agqo = [[AnimatedGifQueueObject alloc] init];
-    [agqo setUiv: [[UIImageView alloc] init]]; // 2x retain, alloc and the property.
-//    [[agqo uiv] autorelease]; // We expect the user to retain the return object.
-    [agqo uiv]; // We expect the user to retain the return object.
-    [agqo setUrl: animationUrl]; // this object is only retained by the queueobject, which will be released when loading finishes
+    agqo.uiv = [[UIImageView alloc] init]; // 2x retain, alloc and the property.
+    agqo.url = animationUrl; // this object is only retained by the queueobject, which will be released when loading finishes
     [[AnimatedGif sharedInstance] addToQueue: agqo];
-//    [agqo release];
+    
+    [[AnimatedGif sharedInstance] setBlockCompletion: completion];
     
     if ([[AnimatedGif sharedInstance] busyDecoding] != YES)
     {
@@ -73,7 +72,7 @@ static AnimatedGif * instance;
         // Asynchronous loading for URL's, else the GUI won't appear until image is loaded.
         [[AnimatedGif sharedInstance] performSelector:@selector(asynchronousLoading) withObject:nil afterDelay:0.0];
     }
-    
+        
     return [agqo uiv];
 }
 
@@ -87,7 +86,7 @@ static AnimatedGif * instance;
     	[self decodeGIF: data];
    	 	UIImageView *tempImageView = [self getAnimation];
    	 	[imageView setImage: [tempImageView image]];
-    	[imageView sizeToFit];
+//    	[imageView sizeToFit];
     	[imageView setAnimationImages: [tempImageView animationImages]];
     	[imageView startAnimating];
         
@@ -122,30 +121,11 @@ static AnimatedGif * instance;
 {
 	GIF_pointer = GIFData;
     
-    if (GIF_buffer != nil)
-    {
-//        [GIF_buffer release];
-    }
-    
-    if (GIF_global != nil)
-    {
-//        [GIF_global release];
-    }
-    
-    if (GIF_screen != nil)
-    {
-//        [GIF_screen release];
-    }
-        
-	if (GIF_delays != nil)
-    {
-//        [GIF_delays release];
-    }
-    
-    if (GIF_framesData != nil)
-    {
-//        [GIF_framesData release];
-    }
+    GIF_buffer = nil;
+    GIF_global = nil;
+    GIF_screen = nil;
+    GIF_delays = nil;
+    GIF_framesData = nil;
         
     GIF_buffer = [[NSMutableData alloc] init];
 	GIF_global = [[NSMutableData alloc] init];
@@ -160,6 +140,14 @@ static AnimatedGif * instance;
 	
 	[self GIFSkipBytes: 6]; // GIF89a, throw away
 	[self GIFGetBytes: 7]; // Logical Screen Descriptor
+        
+    [GIF_buffer getBytes:&GIF_width length:2];
+    [GIF_buffer getBytes:&GIF_height length:2];
+    
+    NSLog(@"%@ ,(%d,%d)",GIF_buffer, GIF_width, GIF_height);
+    self.blockCompletion(GIF_width,GIF_height);
+    
+    
 	
     // Deep copy
 	[GIF_screen setData: GIF_buffer];
@@ -268,7 +256,7 @@ static AnimatedGif * instance;
         {
             // This sets up the frame etc for the UIImageView by using the first frame.
             [imageView setImage:[self getFrameAsImageAtIndex:0]];
-            [imageView sizeToFit];
+//            [imageView sizeToFit];
         }
         else
         {
@@ -469,7 +457,6 @@ static AnimatedGif * instance;
 {
     if (GIF_buffer != nil)
     {
-//        [GIF_buffer release]; // Release old buffer
         GIF_buffer = nil;
     }
     
@@ -500,33 +487,4 @@ static AnimatedGif * instance;
 
 }
 
-- (void) dealloc
-{
-    if (GIF_buffer != nil)
-    {
-//	    [GIF_buffer release];
-    }
-    
-    if (GIF_screen != nil)
-    {
-//		[GIF_screen release];
-    }
-        
-    if (GIF_global != nil)
-    {
-//      [GIF_global release];
-    }
-    
-    if (GIF_delays != nil)
-    {
-//		[GIF_delays release];
-    }
-    
-    if (GIF_framesData != nil)
-    {
-//		[GIF_framesData release];
-    }
-
-//	[super dealloc];
-}
 @end
