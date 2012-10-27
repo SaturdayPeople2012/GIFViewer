@@ -12,5 +12,6 @@
 - (IBAction)goGridView:(id)sender;
 - (IBAction)goListView:(id)sender;
 - (IBAction)goGIFView:(id)sender;
+- (IBAction)goGIFLoaderViewController:(id)sender;
 
 @end

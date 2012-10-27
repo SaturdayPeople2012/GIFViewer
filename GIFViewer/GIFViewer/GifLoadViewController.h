@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MobileCoreServices/UTCoreTypes.h>
 
 @interface GifLoadViewController : UIViewController
-
+    <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+{
+    BOOL newMedia;    
+}
+- (void) useCameraRoll;
 @end

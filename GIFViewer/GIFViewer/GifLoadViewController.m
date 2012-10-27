@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self useCameraRoll];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +36,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) useCameraRoll
+{
+    if ([UIImagePickerController isSourceTypeAvailable:
+         UIImagePickerControllerSourceTypeSavedPhotosAlbum])
+    {
+        UIImagePickerController *imagePicker =
+        [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType =
+        UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.mediaTypes = [NSArray arrayWithObjects:
+                                  (NSString *) kUTTypeImage,
+                                  nil];
+        imagePicker.allowsEditing = NO;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+        //[self presentModalViewController:imagePicker animated:YES];
+
+//        [imagePicker release];
+        newMedia = NO;
+    }
+}
 @end
