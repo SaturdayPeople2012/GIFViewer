@@ -59,6 +59,9 @@
     
     NSMutableArray *imageQueue;
 	bool busyDecoding;
+    
+    int GIF_width;
+    int GIF_height;
 	
 	int GIF_sorted;
 	int GIF_colorS;
@@ -73,9 +76,11 @@
 
 @property (nonatomic, retain) UIImageView* imageView;
 @property bool busyDecoding;
+@property int GIF_width,GIF_height;
+@property (nonatomic, strong) void (^blockCompletion)(int width,int height);
 
 - (void) addToQueue: (AnimatedGifQueueObject *) agqo;
-+ (UIImageView*) getAnimationForGifAtUrl: (NSURL *) animationUrl;
++ (UIImageView*) getAnimationForGifAtUrl: (NSURL *) animationUrl completion: (void(^)(int width,int height))completion;
 - (void) decodeGIF:(NSData *)GIF_Data;
 - (void) GIFReadExtensions;
 - (void) GIFReadDescriptor;
