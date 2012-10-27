@@ -10,6 +10,8 @@
 #import "GridViewController.h"
 #import "ListViewController.h"
 #import "GIFDetailViewController.h"
+#import "GifLoadViewController.h"
+
 @interface MainViewController ()
 
 @end
@@ -52,5 +54,10 @@
 - (IBAction)goGIFView:(id)sender {
     GIFDetailViewController *gifVC = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
     [self.navigationController pushViewController:gifVC animated:YES];
+}
+
+- (IBAction)goGIFLoaderViewController:(id)sender {
+    GifLoadViewController *gifLoadVC = [[GifLoadViewController alloc] initWithNibName:@"GifLoadViewController" bundle:nil];
+    [self.navigationController pushViewController:gifLoadVC animated:YES];
 }
 @end
