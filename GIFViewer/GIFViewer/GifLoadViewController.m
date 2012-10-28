@@ -38,23 +38,23 @@
 
 - (void) useCameraRoll
 {
-//    if ([UIImagePickerController isSourceTypeAvailable:
-//         UIImagePickerControllerSourceTypeSavedPhotosAlbum])
-//    {
-//        UIImagePickerController *imagePicker =
-//        [[UIImagePickerController alloc] init];
-//        imagePicker.delegate = self;
-//        imagePicker.sourceType =
-//        UIImagePickerControllerSourceTypePhotoLibrary;
-//        imagePicker.mediaTypes = [NSArray arrayWithObjects:
-//                                  (NSString *) kUTTypeImage,
-//                                  nil];
-//        imagePicker.allowsEditing = NO;
-//        [self presentViewController:imagePicker animated:YES completion:nil];
-//        //[self presentModalViewController:imagePicker animated:YES];
-//
-////        [imagePicker release];
-//        newMedia = NO;
-//    }
+    if ([UIImagePickerController isSourceTypeAvailable:
+         UIImagePickerControllerSourceTypeSavedPhotosAlbum])
+    {
+        UIImagePickerController *imagePicker =
+        [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType =
+        UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.mediaTypes = [NSArray arrayWithObjects:
+                                  (NSString *) kUTTypeImage,
+                                  nil];
+        imagePicker.allowsEditing = NO;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+        //[self presentModalViewController:imagePicker animated:YES];
+
+//        [imagePicker release];
+        newMedia = NO;
+    }
 }
 @end
