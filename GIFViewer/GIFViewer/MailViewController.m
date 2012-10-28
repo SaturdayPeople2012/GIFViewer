@@ -47,12 +47,23 @@
     
     [picker setSubject:@"Email subject here"];
     [picker setMessageBody:@"Email body here" isHTML:NO];
-    [self presentModalViewController:picker animated:YES];
+
+    //iOS 5.0 이상이면
+    if ([self respondsToSelector:@selector(presentViewController:animated:completion:)])
+        [self presentViewController:picker animated:YES completion:nil];
+    else
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+        [self presentModalViewController:picker animated:YES];
     
 }
 
 - (void) mailComposeController:(MFMailComposeViewController *) controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-    [controller dismissModalViewControllerAnimated:YES];
+    
+    if ([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)])
+        [controller dismissViewControllerAnimated:YES completion:nil];
+    else
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+        [controller dismissModalViewControllerAnimated:YES];
 }
 
 @end
