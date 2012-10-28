@@ -45,11 +45,33 @@
     self.toolbarItems = [NSArray arrayWithObjects:funcBtn, flexible, deleteBtn, nil];
     
     ///////////////////////////////////////////////////////////////////////////////////////    
+
+    __block CGRect      Outframe;
+    __block UIImageView *gifAnimation;
     
-    NSURL 			* gifUrl = 		 [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"apple_logo_animated" ofType:@"gif"]];
-    UIImageView 	* gifAnimation = [AnimatedGif getAnimationForGifAtUrl: gifUrl];
+    Outframe = self.view.frame;
+
+//    NSURL* gifUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"apple_logo_animated" ofType:@"gif"]];
+    NSURL* gifUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"bear" ofType:@"gif"]];
     
-    gifAnimation.frame = CGRectMake(100,100,10,10);
+    gifAnimation = [AnimatedGif getAnimationForGifAtUrl:gifUrl completion:^(int width,int height)
+    {
+        NSLog(@"Block Coding(width=%d,height=%d)",width,height);
+        
+        CGRect frame;
+        frame.origin.x = (Outframe.size.width - width) / 2;
+        frame.origin.y = (Outframe.size.height - height) / 2;
+        frame.size.width = width;
+        frame.size.height = height;
+
+        gifAnimation.frame = frame;
+    }];
+    
+//    gifAnimation.frame = CGRectMake(gifPlayer.frame.origin.x,gifPlayer.frame.origin.y,gifPlayer.frame.size.width,gifPlayer.frame.size.height);    
+//    gifAnimation.frame = CGRectMake(100,100,50,50);
+    
+//    NSLog(@"--<1>--(%.0f,%.0f)-(%.0f,%.0f)",gifAnimation.frame.origin.x,gifAnimation.frame.origin.y,gifAnimation.frame.size.width,gifAnimation.frame.size.height);
+//    NSLog(@"--<2>--(%.0f,%.0f)-(%.0f,%.0f)",Outframe.origin.x,Outframe.origin.y,Outframe.size.width,Outframe.size.height);
     
     [gifPlayer addSubview:gifAnimation];
 }
@@ -61,7 +83,11 @@
 
 - (void)goFunc:(id)sender
 {
+    UIImageView* gifAnimation = [[gifPlayer subviews] objectAtIndex:0];
     
+    NSLog(@"--<3>--(%.0f,%.0f)-(%.0f,%.0f)",gifAnimation.frame.origin.x,gifAnimation.frame.origin.y,gifAnimation.frame.size.width,gifAnimation.frame.size.height);
+
+    gifAnimation.frame = CGRectMake(100,100,gifAnimation.frame.size.width+50,gifAnimation.frame.size.height+50);
 }
 
 - (void)goDelete:(id)sender
