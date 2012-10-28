@@ -7,17 +7,18 @@
 //
 
 #import "ListViewController.h"
+#import "ListCell.h"
 
 @interface ListViewController ()
 
 @end
 
 @implementation ListViewController
-@synthesize listData;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    printf("닙네임1");
+    printf("initWithNibName\n");
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -27,9 +28,15 @@
 
 - (void)viewDidLoad
 {
+    
+    CGRect scrRect = [[UIScreen mainScreen] bounds];
+    CGFloat scrWidth = scrRect.size.width;
+    CGFloat scrHeight = scrRect.size.height;
+    NSLog(@"Width=%.2f,Height=%.2f",scrWidth,scrHeight);
+    
+    
+    printf("view did load\n");
     [super viewDidLoad];
-    NSArray *testArray = [[NSArray alloc] initWithObjects:@"a",@"b",@"c",nil];
-    self.listData = testArray;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -48,33 +55,35 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.listData count];
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    ListCell *listCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (listCell == nil) {
-     
-        listCell = [[ListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+    printf("셀 리턴\n");
+    UITableViewCellStyle style =  UITableViewCellStyleDefault;
+	ListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BaseCell"];
     
-    UIImage *image = [UIImage imageNamed:@"apple_logo_animated.gif"];
-    listCell.gifImage.image = image;
-    // Configure the cell...
+	if (cell==nil)
+		cell = [[ListCell alloc] initWithStyle:style reuseIdentifier:@"BaseCell"];
     
-    NSUInteger row = [indexPath row];
-    listCell.title.text = [listData objectAtIndex:row];
+	cell.title.text = [items objectAtIndex:indexPath.row];
+	return cell;
+}
+
+
+- (void) loadView
+{
+    [super loadView];
+    printf("로드뷰\n");
     
-    
-    return listCell;
+    items = [@"A*B*C*D*E*F*G*H*I*J*K*L" componentsSeparatedByString:@"*"];
 }
 
 /*

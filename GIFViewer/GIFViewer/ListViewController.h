@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ListCell.h"
-@interface ListViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
-@property (strong,nonatomic) NSArray *listData;
+@interface ListViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>{
+    
+    NSArray *items;
+}
+//@property (weak, nonatomic) IBOutlet UITableViewCell *tableView;
 
 @end
