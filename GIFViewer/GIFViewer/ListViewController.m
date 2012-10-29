@@ -65,37 +65,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-<<<<<<< HEAD
     printf("셀 리턴\n");
+    
     UITableViewCellStyle style =  UITableViewCellStyleDefault;
-#if 0
-	ListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BaseCell"];
-    
-//	cell = [[ListCell alloc] initWithStyle:style reuseIdentifier:@"BaseCell"];
-    
-    cell.title.text = [items objectAtIndex:indexPath.row];
-#else
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BaseCell"];
-    
-	if (cell==nil)
-		cell = [[UITableViewCell alloc] initWithStyle:style reuseIdentifier:@"BaseCell"];
-    
-    cell.textLabel.text = [items objectAtIndex:indexPath.row];
-#endif
-    
-	
-	return cell;
-}
 
-
-- (void) loadView
-{
-    [super loadView];
-    printf("로드뷰\n");
-=======
+    
     static NSString *CellIdentifier = @"Cell";
     ListCell *listCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-
+    
     if (listCell == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:self options:nil];
@@ -111,9 +88,17 @@
     
     NSUInteger row = [indexPath row];
     listCell.title.text = [listData objectAtIndex:row];
->>>>>>> 98f1ce769f1af006e11888b1b135df2779c09504
     
     return listCell;
+}
+
+
+- (void) loadView
+{
+    [super loadView];
+    printf("로드뷰\n");
+
+    
 }
 
 /*
