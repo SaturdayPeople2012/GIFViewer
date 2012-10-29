@@ -27,6 +27,7 @@
 		F286BD64163575A7004395AE /* GIFDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F286BD62163575A6004395AE /* GIFDetailViewController.xib */; };
 		F286BD6A1635781F004395AE /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F286BD681635781F004395AE /* ListViewController.m */; };
 		F286BD6B1635781F004395AE /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F286BD691635781F004395AE /* ListViewController.xib */; };
+		F297EAFB163EB50C0055E0CD /* bear.gif in Resources */ = {isa = PBXBuildFile; fileRef = F297EAFA163EB50C0055E0CD /* bear.gif */; };
 		F2C2F934163390E500E93A97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C2F933163390E500E93A97 /* UIKit.framework */; };
 		F2C2F936163390E500E93A97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C2F935163390E500E93A97 /* Foundation.framework */; };
 		F2C2F938163390E500E93A97 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C2F937163390E500E93A97 /* CoreGraphics.framework */; };
@@ -75,6 +76,7 @@
 		F286BD671635781F004395AE /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		F286BD681635781F004395AE /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		F286BD691635781F004395AE /* ListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
+		F297EAFA163EB50C0055E0CD /* bear.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bear.gif; sourceTree = "<group>"; };
 		F2C2F92F163390E500E93A97 /* GIFViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GIFViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C2F933163390E500E93A97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F2C2F935163390E500E93A97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -188,6 +190,7 @@
 		F286BD6516357690004395AE /* 태상 */ = {
 			isa = PBXGroup;
 			children = (
+				F297EAFA163EB50C0055E0CD /* bear.gif */,
 				F286BD60163575A6004395AE /* GIFDetailViewController.h */,
 				F286BD61163575A6004395AE /* GIFDetailViewController.m */,
 				F286BD62163575A6004395AE /* GIFDetailViewController.xib */,
@@ -348,6 +351,7 @@
 				D74B10921635910500C8CD68 /* apple_logo_animated.gif in Resources */,
 				F25DB9571636846F00C488D5 /* ListCell.xib in Resources */,
 				7A36AC9D163BF2DE00DDE531 /* GifLoadViewController.xib in Resources */,
+				F297EAFB163EB50C0055E0CD /* bear.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
