@@ -7,18 +7,19 @@
 //
 
 #import "ListViewController.h"
-#import "ListCell.h"
+
+#define kListCellHeight 112.0f
 
 @interface ListViewController ()
 
 @end
 
 @implementation ListViewController
-
+@synthesize listData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    printf("initWithNibName\n");
+    printf("닙네임1");
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -28,15 +29,9 @@
 
 - (void)viewDidLoad
 {
-    
-    CGRect scrRect = [[UIScreen mainScreen] bounds];
-    CGFloat scrWidth = scrRect.size.width;
-    CGFloat scrHeight = scrRect.size.height;
-    NSLog(@"Width=%.2f,Height=%.2f",scrWidth,scrHeight);
-    
-    
-    printf("view did load\n");
     [super viewDidLoad];
+    NSArray *testArray = [[NSArray alloc] initWithObjects:@"a",@"b",@"c",nil];
+    self.listData = testArray;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -51,6 +46,10 @@
 }
 
 #pragma mark - Table view data source
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return kListCellHeight;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -61,11 +60,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 4;
+    return [self.listData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+<<<<<<< HEAD
     printf("셀 리턴\n");
     UITableViewCellStyle style =  UITableViewCellStyleDefault;
 #if 0
@@ -92,8 +92,28 @@
 {
     [super loadView];
     printf("로드뷰\n");
+=======
+    static NSString *CellIdentifier = @"Cell";
+    ListCell *listCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
+    if (listCell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:self options:nil];
+        
+        for (id oneObject in nib)
+            if ([oneObject isKindOfClass:[ListCell class]])
+                listCell = (ListCell *)oneObject;
+    }
+    listCell.time.text = @"시간라벨";
     
-    items = [@"A*B*C*D*E*F*G*H*I*J*K*L" componentsSeparatedByString:@"*"];
+    UIImage *image = [UIImage imageNamed:@"apple_logo_animated.gif"];
+    listCell.gifImage.image = image;
+    
+    NSUInteger row = [indexPath row];
+    listCell.title.text = [listData objectAtIndex:row];
+>>>>>>> 98f1ce769f1af006e11888b1b135df2779c09504
+    
+    return listCell;
 }
 
 /*
