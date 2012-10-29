@@ -68,12 +68,22 @@
 {
     printf("셀 리턴\n");
     UITableViewCellStyle style =  UITableViewCellStyleDefault;
+#if 0
 	ListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BaseCell"];
     
-	if (cell==nil)
-		cell = [[ListCell alloc] initWithStyle:style reuseIdentifier:@"BaseCell"];
+//	cell = [[ListCell alloc] initWithStyle:style reuseIdentifier:@"BaseCell"];
     
-	cell.title.text = [items objectAtIndex:indexPath.row];
+    cell.title.text = [items objectAtIndex:indexPath.row];
+#else
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BaseCell"];
+    
+	if (cell==nil)
+		cell = [[UITableViewCell alloc] initWithStyle:style reuseIdentifier:@"BaseCell"];
+    
+    cell.textLabel.text = [items objectAtIndex:indexPath.row];
+#endif
+    
+	
 	return cell;
 }
 
