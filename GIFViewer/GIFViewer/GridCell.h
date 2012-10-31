@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface GridCell : UICollectionViewCell
-//임시 레이블
-@property (strong, nonatomic) UILabel *label;
+//gif 올릴 이미지뷰
+@property (strong, nonatomic) UIImageView *gifImgView;
+@property (strong, nonatomic) UIButton *button;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGesture;
 @end

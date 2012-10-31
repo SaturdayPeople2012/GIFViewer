@@ -13,14 +13,14 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
-        self.label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
-        _label.center = self.center;
-        _label.textAlignment = NSTextAlignmentCenter;
-        _label.backgroundColor = [UIColor clearColor];
-        self.backgroundView = _label;
-        self.backgroundColor = [UIColor orangeColor];
+    if (self) {   
+        //나중에 썸네일이 어레이로 넘어올경우에는 GridViewController에서 작업하면됨.. 여기는 DefaultImage로 바꾸고..
+        self.gifImgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bear.gif"]];
+        _gifImgView.center = self.center;
+        self.backgroundView = _gifImgView;
 
+//        self.tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapped:)];
+//        [self addGestureRecognizer:_tapGesture];
     }
     return self;
 }

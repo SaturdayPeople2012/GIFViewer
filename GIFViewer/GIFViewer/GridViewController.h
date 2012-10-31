@@ -11,4 +11,6 @@
 @interface GridViewController : UIViewController<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *gridView;
 
+@property (strong, nonatomic) NSMutableArray *gifDataArray;
+
 @end
