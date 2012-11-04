@@ -19,7 +19,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    printf("닙네임1");
+    printf("Call NibName\n");
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -32,13 +32,66 @@
     [super viewDidLoad];
     NSArray *testArray = [[NSArray alloc] initWithObjects:@"a",@"b",@"c",nil];
     self.listData = testArray;
+    
+    editButton = [[UIBarButtonItem alloc]initWithTitle:@"편집" style:UIBarButtonItemStyleBordered
+                                                              target:self action:@selector(edit:)];
+    self.navigationItem.rightBarButtonItem = editButton;
+    
+    
+    
+    
+    
+    
+    
+    flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    loadButton = [[UIBarButtonItem alloc]initWithTitle:@"Load" style:UIBarButtonItemStyleBordered
+                                                              target:self action:@selector(load:)];
+    loadButton.tintColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0f];
+    self.toolbarItems = [NSArray arrayWithObjects:flexible,loadButton,nil];
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+-(void)load:(id)sender{
+    NSLog(@"Call Load\n");
+}
+-(void)delete:(id)sender{
+    NSLog(@"Call Delete\n");
+}
+-(void)edit:(id)sender{
+    edit = YES;
+    NSLog(@"Call Edit\n");
+    closeButton = [[UIBarButtonItem alloc] initWithTitle:@"close" style:UIBarButtonItemStyleBordered target:self action:@selector(close:)];
+    self.navigationItem.rightBarButtonItem = closeButton;
+    
+    
+    
+    
+    flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    deleteButton =[[UIBarButtonItem alloc] initWithTitle:@"Delete" style:UIBarButtonItemStyleBordered target:self action:@selector(delete:)];
+    deleteButton.tintColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0f];
+    
+    self.toolbarItems = [NSArray arrayWithObjects:flexible,deleteButton,nil];
+    
+}
 
+
+-(void)close:(id)sender{
+    NSLog(@"Call close\n");
+    editButton = [[UIBarButtonItem alloc]initWithTitle:@"편집" style:UIBarButtonItemStyleBordered
+                                                target:self action:@selector(edit:)];
+    self.navigationItem.rightBarButtonItem = editButton;
+    
+    flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    loadButton = [[UIBarButtonItem alloc] initWithTitle:@"load" style:UIBarButtonItemStyleBordered target:self action:@selector(load:)];
+    loadButton.tintColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0f];
+    self.toolbarItems = [NSArray arrayWithObjects:flexible,loadButton,nil];
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -62,13 +115,14 @@
     // Return the number of rows in the section.
     return [self.listData count];
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     printf("셀 리턴\n");
     
-    //UITableViewCellStyle style =  UITableViewCellStyleDefault;
-
     
     static NSString *CellIdentifier = @"Cell";
     ListCell *listCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -92,13 +146,25 @@
     return listCell;
 }
 
-
 - (void) loadView
 {
     [super loadView];
     printf("로드뷰\n");
 
     
+}
+
+//todo 삭제 기능
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
 }
 
 /*
@@ -141,16 +207,16 @@
 */
 
 #pragma mark - Table view delegate
-
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    /*
+    
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
      // ...
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+ 
 }
-
+*/
 @end
