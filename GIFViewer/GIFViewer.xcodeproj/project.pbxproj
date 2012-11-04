@@ -26,6 +26,7 @@
 		7A36AC9D163BF2DE00DDE531 /* GifLoadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A36AC9B163BF2DE00DDE531 /* GifLoadViewController.xib */; };
 		7A36AC9F163BF72900DDE531 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A36AC9E163BF72900DDE531 /* MobileCoreServices.framework */; };
 		7AAC8C971645FCD600555BD6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAC8C961645FCD600555BD6 /* AssetsLibrary.framework */; };
+		B91DE65A16460ED80088A7E8 /* MessageComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91DE65916460ED80088A7E8 /* MessageComposerViewController.xib */; };
 		B9958207163C2167008E696C /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9958206163C2167008E696C /* Twitter.framework */; };
 		B995820A163C2189008E696C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9958209163C2189008E696C /* Accounts.framework */; };
 		B995821D163C2E7D008E696C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B995821C163C2E7C008E696C /* MessageUI.framework */; };
@@ -87,6 +88,7 @@
 		7AAC8C961645FCD600555BD6 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		B91DE65616460D9C0088A7E8 /* MessageComposerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageComposerViewController.h; sourceTree = "<group>"; };
 		B91DE65716460D9C0088A7E8 /* MessageComposerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageComposerViewController.m; sourceTree = "<group>"; };
+		B91DE65916460ED80088A7E8 /* MessageComposerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageComposerViewController.xib; sourceTree = "<group>"; };
 		B9958206163C2167008E696C /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		B9958209163C2189008E696C /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		B995820F163C23F9008E696C /* TweetingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetingViewController.h; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 		B995820B163C21D6008E696C /* 초란 */ = {
 			isa = PBXGroup;
 			children = (
+				B91DE65916460ED80088A7E8 /* MessageComposerViewController.xib */,
 				B91DE65616460D9C0088A7E8 /* MessageComposerViewController.h */,
 				B91DE65716460D9C0088A7E8 /* MessageComposerViewController.m */,
 				B91DE64D16460A990088A7E8 /* SMS */,
@@ -446,6 +449,7 @@
 				7A19D9DC164606E200B414FB /* Overlay.png in Resources */,
 				7A19D9DD164606E200B414FB /* Overlay@2x.png in Resources */,
 				7A19D9DE164606E200B414FB /* ELCImagePickerDemoViewController.xib in Resources */,
+				B91DE65A16460ED80088A7E8 /* MessageComposerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
