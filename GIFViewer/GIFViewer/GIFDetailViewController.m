@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
+    
 //    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
 //                                                                            target:self action:@selector(goEdit:)];
     UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithTitle:@"편집" style:UIBarButtonItemStyleBordered
@@ -44,8 +44,8 @@
     self.navigationItem.rightBarButtonItem = editBtn;
     self.toolbarItems = [NSArray arrayWithObjects:funcBtn, flexible, deleteBtn, nil];
     
-    ///////////////////////////////////////////////////////////////////////////////////////    
-
+    ///////////////////////////////////////////////////////////////////////////////////////
+    
     __block CGRect      Outframe;
     __block UIImageView *gifView;
     
@@ -56,7 +56,7 @@
     
     gifView = [GIF_Library giflib_get_gif_view_from_url:gifUrl completion:^(int width,int height)
     {
-        NSLog(@"in Block Coding(width=%d,height=%d)",width,height);
+//        NSLog(@"in Block Coding(width=%d,height=%d)",width,height);
         
         CGRect frame;
         frame.origin.x = (Outframe.size.width - width) / 2;
@@ -93,7 +93,7 @@
 
     NSLog(@"animationDuration=%f",gifAnimation.animationDuration);
     
-    gifAnimation.animationDuration = gifAnimation.animationDuration + 10/100;
+    [gifAnimation setAnimationDuration:gifAnimation.animationDuration + 1];
     
     [gifAnimation startAnimating];
 }
@@ -102,7 +102,7 @@
 {
     UIImageView* gifAnimation = [[gifPlayer subviews] objectAtIndex:0];
     
-    gifAnimation.animationDuration = gifAnimation.animationDuration - 10/100;
+    [gifAnimation setAnimationDuration:gifAnimation.animationDuration - 1];
 
     [gifAnimation startAnimating];
 }
