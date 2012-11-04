@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "ListCell.h"
-@interface ListViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface ListViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>{
+    UIBarButtonItem *editButton;
+    UIBarButtonItem *deleteButton;
+    UIBarButtonItem *closeButton;
+    
+    UIBarButtonItem *loadButton;
+    UIBarButtonItem *flexible;
+
+}
 
 @property (strong,nonatomic) NSArray *listData;
+
 
 @end
