@@ -11,6 +11,7 @@
 #import "ListViewController.h"
 #import "GIFDetailViewController.h"
 #import "ELCImagePickerDemoViewController.h"
+#import "MessageComposerViewController.h"
 
 @interface MainViewController ()
 
@@ -45,6 +46,13 @@
 - (IBAction)goGridView:(id)sender {
     GridViewController *gridVC = [[GridViewController alloc]initWithNibName:@"GridViewController" bundle:nil];
     [self.navigationController pushViewController:gridVC animated:YES];
+}
+
+
+
+- (IBAction)goSMSView:(id)sender {
+   // MessageComposerViewController *gridVC = [[MessageComposerViewController alloc]initWithNibName:@"MessageComposerViewController" bundle:nil];
+   // [self.navigationController pushViewController:gridVC animated:YES];
 }
 
 - (IBAction)goListView:(id)sender {
