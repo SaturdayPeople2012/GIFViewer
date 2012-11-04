@@ -15,7 +15,8 @@
 		B995821D163C2E7D008E696C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B995821C163C2E7C008E696C /* MessageUI.framework */; };
 		B9958223163C2F2C008E696C /* MailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9958222163C2F2C008E696C /* MailViewController.m */; };
 		B995822B163C31BB008E696C /* TiwPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B995822A163C31BB008E696C /* TiwPicViewController.m */; };
-		D74B108F163590C100C8CD68 /* AnimatedGif.m in Sources */ = {isa = PBXBuildFile; fileRef = D74B108E163590C000C8CD68 /* AnimatedGif.m */; };
+		D704B7451645E5A400DBE35F /* bear.gif in Resources */ = {isa = PBXBuildFile; fileRef = D704B7411645E5A400DBE35F /* bear.gif */; };
+		D704B7461645E5A400DBE35F /* GIF_Library.m in Sources */ = {isa = PBXBuildFile; fileRef = D704B7441645E5A400DBE35F /* GIF_Library.m */; };
 		D74B10921635910500C8CD68 /* apple_logo_animated.gif in Resources */ = {isa = PBXBuildFile; fileRef = D74B10911635910500C8CD68 /* apple_logo_animated.gif */; };
 		F25DB9561636846F00C488D5 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DB9541636846E00C488D5 /* ListCell.m */; };
 		F25DB9571636846F00C488D5 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25DB9551636846F00C488D5 /* ListCell.xib */; };
@@ -27,7 +28,6 @@
 		F286BD64163575A7004395AE /* GIFDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F286BD62163575A6004395AE /* GIFDetailViewController.xib */; };
 		F286BD6A1635781F004395AE /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F286BD681635781F004395AE /* ListViewController.m */; };
 		F286BD6B1635781F004395AE /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F286BD691635781F004395AE /* ListViewController.xib */; };
-		F297EAFB163EB50C0055E0CD /* bear.gif in Resources */ = {isa = PBXBuildFile; fileRef = F297EAFA163EB50C0055E0CD /* bear.gif */; };
 		F2C2F934163390E500E93A97 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C2F933163390E500E93A97 /* UIKit.framework */; };
 		F2C2F936163390E500E93A97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C2F935163390E500E93A97 /* Foundation.framework */; };
 		F2C2F938163390E500E93A97 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C2F937163390E500E93A97 /* CoreGraphics.framework */; };
@@ -58,8 +58,10 @@
 		B995822A163C31BB008E696C /* TiwPicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiwPicViewController.m; sourceTree = "<group>"; };
 		B995822E163C3309008E696C /* GSTwitPicEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSTwitPicEngine.h; sourceTree = "<group>"; };
 		B995822F163C3309008E696C /* GSTwitPicEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSTwitPicEngine.m; sourceTree = "<group>"; };
-		D74B108D163590C000C8CD68 /* AnimatedGif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedGif.h; sourceTree = "<group>"; };
-		D74B108E163590C000C8CD68 /* AnimatedGif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedGif.m; sourceTree = "<group>"; };
+		D704B7411645E5A400DBE35F /* bear.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bear.gif; sourceTree = "<group>"; };
+		D704B7421645E5A400DBE35F /* GIF_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIF_Header.h; sourceTree = "<group>"; };
+		D704B7431645E5A400DBE35F /* GIF_Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIF_Library.h; sourceTree = "<group>"; };
+		D704B7441645E5A400DBE35F /* GIF_Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIF_Library.m; sourceTree = "<group>"; };
 		D74B10911635910500C8CD68 /* apple_logo_animated.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = apple_logo_animated.gif; sourceTree = "<group>"; };
 		F25DB9531636846E00C488D5 /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
 		F25DB9541636846E00C488D5 /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
@@ -76,7 +78,6 @@
 		F286BD671635781F004395AE /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		F286BD681635781F004395AE /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		F286BD691635781F004395AE /* ListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
-		F297EAFA163EB50C0055E0CD /* bear.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bear.gif; sourceTree = "<group>"; };
 		F2C2F92F163390E500E93A97 /* GIFViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GIFViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C2F933163390E500E93A97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F2C2F935163390E500E93A97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -190,12 +191,13 @@
 		F286BD6516357690004395AE /* 태상 */ = {
 			isa = PBXGroup;
 			children = (
-				F297EAFA163EB50C0055E0CD /* bear.gif */,
+				D704B7411645E5A400DBE35F /* bear.gif */,
+				D704B7421645E5A400DBE35F /* GIF_Header.h */,
+				D704B7431645E5A400DBE35F /* GIF_Library.h */,
+				D704B7441645E5A400DBE35F /* GIF_Library.m */,
 				F286BD60163575A6004395AE /* GIFDetailViewController.h */,
 				F286BD61163575A6004395AE /* GIFDetailViewController.m */,
 				F286BD62163575A6004395AE /* GIFDetailViewController.xib */,
-				D74B108D163590C000C8CD68 /* AnimatedGif.h */,
-				D74B108E163590C000C8CD68 /* AnimatedGif.m */,
 				D74B10911635910500C8CD68 /* apple_logo_animated.gif */,
 			);
 			name = "태상";
@@ -351,7 +353,7 @@
 				D74B10921635910500C8CD68 /* apple_logo_animated.gif in Resources */,
 				F25DB9571636846F00C488D5 /* ListCell.xib in Resources */,
 				7A36AC9D163BF2DE00DDE531 /* GifLoadViewController.xib in Resources */,
-				F297EAFB163EB50C0055E0CD /* bear.gif in Resources */,
+				D704B7451645E5A400DBE35F /* bear.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,12 +370,12 @@
 				F286BD5A163570D2004395AE /* GridViewController.m in Sources */,
 				F286BD63163575A7004395AE /* GIFDetailViewController.m in Sources */,
 				F286BD6A1635781F004395AE /* ListViewController.m in Sources */,
-				D74B108F163590C100C8CD68 /* AnimatedGif.m in Sources */,
 				F25DB9561636846F00C488D5 /* ListCell.m in Sources */,
 				F2EB33441639739300293A7B /* GridCell.m in Sources */,
 				7A36AC9C163BF2DE00DDE531 /* GifLoadViewController.m in Sources */,
 				B9958223163C2F2C008E696C /* MailViewController.m in Sources */,
 				B995822B163C31BB008E696C /* TiwPicViewController.m in Sources */,
+				D704B7461645E5A400DBE35F /* GIF_Library.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
