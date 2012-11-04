@@ -123,9 +123,17 @@
 			name = "기명";
 			sourceTree = "<group>";
 		};
+		B91DE64D16460A990088A7E8 /* SMS */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SMS;
+			sourceTree = "<group>";
+		};
 		B995820B163C21D6008E696C /* 초란 */ = {
 			isa = PBXGroup;
 			children = (
+				B91DE64D16460A990088A7E8 /* SMS */,
 				B995821E163C2EAE008E696C /* Mail */,
 				B995820C163C2225008E696C /* SNS */,
 			);
