@@ -63,7 +63,7 @@
     NSLog(@"Call Delete\n");
 }
 -(void)edit:(id)sender{
-    edit = YES;
+    //edit = YES;
     NSLog(@"Call Edit\n");
     closeButton = [[UIBarButtonItem alloc] initWithTitle:@"close" style:UIBarButtonItemStyleBordered target:self action:@selector(close:)];
     self.navigationItem.rightBarButtonItem = closeButton;
