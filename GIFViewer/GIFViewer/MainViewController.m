@@ -10,7 +10,7 @@
 #import "GridViewController.h"
 #import "ListViewController.h"
 #import "GIFDetailViewController.h"
-#import "GifLoadViewController.h"
+#import "ELCImagePickerDemoViewController.h"
 
 @interface MainViewController ()
 
@@ -57,7 +57,8 @@
 }
 
 - (IBAction)goGIFLoaderViewController:(id)sender {
-    GifLoadViewController *gifLoadVC = [[GifLoadViewController alloc] initWithNibName:@"GifLoadViewController" bundle:nil];
-    [self.navigationController pushViewController:gifLoadVC animated:YES];
+    ELCImagePickerDemoViewController *elDemoViewController = [[ELCImagePickerDemoViewController alloc]initWithNibName:@"ELCImagePickerDemoViewController" bundle:nil];
+    [self presentViewController:elDemoViewController animated:YES completion:nil];
 }
+
 @end
