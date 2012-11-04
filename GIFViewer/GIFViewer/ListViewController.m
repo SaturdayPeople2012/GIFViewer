@@ -67,7 +67,7 @@
 {
     printf("셀 리턴\n");
     
-    UITableViewCellStyle style =  UITableViewCellStyleDefault;
+    //UITableViewCellStyle style =  UITableViewCellStyleDefault;
 
     
     static NSString *CellIdentifier = @"Cell";
