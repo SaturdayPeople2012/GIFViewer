@@ -17,6 +17,29 @@
 @implementation GridViewController
 static NSString *CellIdentifier = @"Cell";
 
+-(void) getDataFromDocumentFolder{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSArray *fileLists = [manager contentsOfDirectoryAtPath:documentsDirectory error:nil];
+    for (NSString *string in fileLists) {
+        [self.gifDataArray addObject:[string stringByDeletingPathExtension]];
+    }//self.gifDataArray는 파일명만 갖고 있도록 했는데... 왜했는지는 까묵음..
+}
+//각 Cell에 image 뿌리기위한 용도
+- (UIImage *) getImageFromDocFolderAtIndex:(NSInteger)index{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSArray *fileLists = [manager contentsOfDirectoryAtPath:documentsDirectory error:nil];
+
+    NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:[fileLists objectAtIndex:index]];
+    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+    
+    return image;
+}
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -25,6 +48,7 @@ static NSString *CellIdentifier = @"Cell";
     }
     return self;
 }
+
 
 - (void)viewDidLoad
 {
@@ -51,7 +75,10 @@ static NSString *CellIdentifier = @"Cell";
     
     /////////////////////////////////////////////////////
     self.toolbarItems = [NSArray arrayWithObjects:flexible, segBtn,flexible, loadBtn, nil];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.gifDataArray = [NSMutableArray array];
+    
+    [self getDataFromDocumentFolder];
 }
 
 - (void) selectedMode:(id)sender{
@@ -87,11 +114,13 @@ static NSString *CellIdentifier = @"Cell";
 
 #pragma mark - UICollectionView DataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 10;
+    return [_gifDataArray count];
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     GridCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-    cell.label.text = [NSString stringWithFormat:@"%d번째",indexPath.row];
+    
+    UIImage *thumnails = [self getImageFromDocFolderAtIndex:indexPath.row];
+    cell.gifImgView.image = thumnails;
     return cell;
 }
 

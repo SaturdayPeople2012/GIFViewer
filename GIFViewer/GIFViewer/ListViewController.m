@@ -8,6 +8,8 @@
 
 #import "ListViewController.h"
 
+#define kListCellHeight 112.0f
+
 @interface ListViewController ()
 
 @end
@@ -44,11 +46,15 @@
 }
 
 #pragma mark - Table view data source
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return kListCellHeight;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -59,22 +65,40 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    printf("셀 리턴\n");
+    
+    UITableViewCellStyle style =  UITableViewCellStyleDefault;
+
+    
     static NSString *CellIdentifier = @"Cell";
     ListCell *listCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (listCell == nil) {
-     
-        listCell = [[ListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    
+    if (listCell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:self options:nil];
+        
+        for (id oneObject in nib)
+            if ([oneObject isKindOfClass:[ListCell class]])
+                listCell = (ListCell *)oneObject;
     }
+    listCell.time.text = @"시간라벨";
     
     UIImage *image = [UIImage imageNamed:@"apple_logo_animated.gif"];
     listCell.gifImage.image = image;
-    // Configure the cell...
     
     NSUInteger row = [indexPath row];
     listCell.title.text = [listData objectAtIndex:row];
     
-    
     return listCell;
+}
+
+
+- (void) loadView
+{
+    [super loadView];
+    printf("로드뷰\n");
+
+    
 }
 
 /*
