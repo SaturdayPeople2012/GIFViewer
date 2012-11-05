@@ -9,7 +9,6 @@
 #import "MailViewController.h"
 
 @interface MailViewController ()
-
 @end
 
 @implementation MailViewController
@@ -26,7 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	
+    // Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload

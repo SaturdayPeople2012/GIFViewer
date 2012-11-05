@@ -10,7 +10,8 @@
 #import "GridViewController.h"
 #import "ListViewController.h"
 #import "GIFDetailViewController.h"
-#import "GifLoadViewController.h"
+#import "ELCImagePickerDemoViewController.h"
+#import "MessageComposerViewController.h"
 
 @interface MainViewController ()
 
@@ -47,6 +48,13 @@
     [self.navigationController pushViewController:gridVC animated:YES];
 }
 
+
+
+- (IBAction)goSMSView:(id)sender {
+   // MessageComposerViewController *gridVC = [[MessageComposerViewController alloc]initWithNibName:@"MessageComposerViewController" bundle:nil];
+   // [self.navigationController pushViewController:gridVC animated:YES];
+}
+
 - (IBAction)goListView:(id)sender {
     ListViewController *listVC = [[ListViewController alloc]initWithNibName:@"ListViewController" bundle:nil];
     [self.navigationController pushViewController:listVC animated:YES];
@@ -58,7 +66,8 @@
 }
 
 - (IBAction)goGIFLoaderViewController:(id)sender {
-    GifLoadViewController *gifLoadVC = [[GifLoadViewController alloc] initWithNibName:@"GifLoadViewController" bundle:nil];
-    [self.navigationController pushViewController:gifLoadVC animated:YES];
+    ELCImagePickerDemoViewController *elDemoViewController = [[ELCImagePickerDemoViewController alloc]initWithNibName:@"ELCImagePickerDemoViewController" bundle:nil];
+    [self presentViewController:elDemoViewController animated:YES completion:nil];
 }
+
 @end
