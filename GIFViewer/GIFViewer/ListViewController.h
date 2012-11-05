@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ListCell.h"
-@interface ListViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>{
+@interface ListViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>{
     UIBarButtonItem *editButton;
     UIBarButtonItem *deleteButton;
     UIBarButtonItem *closeButton;

@@ -60,10 +60,10 @@
     NSLog(@"Call Load\n");
 }
 -(void)delete:(id)sender{
+    [self buttonPressed];
     NSLog(@"Call Delete\n");
 }
 -(void)edit:(id)sender{
-    edit = YES;
     NSLog(@"Call Edit\n");
     closeButton = [[UIBarButtonItem alloc] initWithTitle:@"close" style:UIBarButtonItemStyleBordered target:self action:@selector(close:)];
     self.navigationItem.rightBarButtonItem = closeButton;
@@ -91,6 +91,23 @@
     loadButton.tintColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0f];
     self.toolbarItems = [NSArray arrayWithObjects:flexible,loadButton,nil];
     
+}
+
+//액션시트
+
+-(void)buttonPressed{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"지우시겠습니까?" delegate:self cancelButtonTitle:@"취 소" destructiveButtonTitle:@"삭 제" otherButtonTitles:nil];
+    [actionSheet showInView:self.view];
+    
+}
+-(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    if (buttonIndex != [actionSheet cancelButtonIndex]){
+        NSString *msg = nil;
+        msg = [[NSString alloc] initWithFormat:@"삭제 \n"];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:msg delegate:self cancelButtonTitle:@"cancel" otherButtonTitles: nil];
+        [alert show];
+    }
 }
 - (void)didReceiveMemoryWarning
 {
@@ -157,6 +174,7 @@
 //todo 삭제 기능
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"Delete";
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
