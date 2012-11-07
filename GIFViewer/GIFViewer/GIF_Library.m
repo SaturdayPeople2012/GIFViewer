@@ -41,10 +41,10 @@ static GIF_Library* instance;
     if (inst.m_busyInstance != TRUE)
     {
         inst.m_busyInstance = TRUE;
-        
-        [inst performSelector:@selector(giflib_async_loader) withObject:nil];
+
+        [inst performSelector:@selector(giflib_async_loader) withObject:nil afterDelay:0.0];
     }
- 
+    
     return qitem.m_view;
 }
 
@@ -66,15 +66,17 @@ static GIF_Library* instance;
 {
     while ([m_gif_queue count] > 0)
     {
+#ifdef __PRINT_NSLOG__
         NSLog(@"%@",((GifQueueObject*)[m_gif_queue objectAtIndex:0]).m_url);
+#endif
         NSData* data = [NSData dataWithContentsOfURL:((GifQueueObject*)[m_gif_queue objectAtIndex:0]).m_url];
         self.m_gifView = ((GifQueueObject*)[m_gif_queue objectAtIndex:0]).m_view;
         
         [self giflib_decode:data];
         
-        UIImageView* imageView = [self gif_get_animation];
+        UIImageView* imageView = [self giflib_get_animation];
         [self.m_gifView setImage:[imageView image]];
-        [self.m_gifView sizeToFit];
+//      [self.m_gifView sizeToFit];
         [self.m_gifView setAnimationImages:[imageView animationImages]];
         [self.m_gifView startAnimating];
         
@@ -174,17 +176,21 @@ static GIF_Library* instance;
     
 	if ([self giflib_get_n_bytes:&m_gif_hdr length:sizeof(m_gif_hdr)] < 0) return;
     
+#ifdef __PRINT_NSLOG__
     NSLog(@"logical_screen_width = %d",m_gif_hdr.logical_screen_width);
     NSLog(@"logical_screen_height = %d",m_gif_hdr.logical_screen_height);
+#endif
     
-//    self.m_blockCompletion(m_gif_hdr.logical_screen_width,m_gif_hdr.logical_screen_height);
+    self.m_blockCompletion(m_gif_hdr.logical_screen_width,m_gif_hdr.logical_screen_height);
     
     m_gif_gctf   = (m_gif_hdr.flags & 0x80) ? 1 : 0;
     m_gif_sorted = (m_gif_hdr.flags * 0x08) ? 1 : 0;
     m_gif_colorb = (m_gif_hdr.flags & 0x07);
     m_gif_colors = 2 << m_gif_colorb;
     
+#ifdef __PRINT_NSLOG__
     NSLog(@"gif_gctf = %d, gif_colors = %d",m_gif_gctf,m_gif_colors);
+#endif
     
     if (m_gif_gctf)
     {
@@ -192,7 +198,9 @@ static GIF_Library* instance;
         if (m_gif_global_color_table == nil) return;
     }
     
-//    NSLog(@"global color table = %@",m_gif_global_color_table);
+#ifdef __PRINT_NSLOG__
+    NSLog(@"global color table = %@",m_gif_global_color_table);
+#endif
     
     u_char  u8;
     
@@ -230,7 +238,9 @@ static GIF_Library* instance;
 				[self giflib_image_block];
 				break;
 			case 0x3b:// Trailer
+#ifdef __PRINT_NSLOG__
 				NSLog(@"[END]");
+#endif
 				return;
 			default:
 				NSLog(@"[OOPS!:Unknown introducer(0x%X)]",u8);
@@ -258,8 +268,10 @@ static GIF_Library* instance;
     if ([self giflib_get_n_bytes:&m_gif_gceb length:sizeof(m_gif_gceb)] < 0) return;
     
     [m_gif_delays addObject:[NSNumber numberWithInt: m_gif_gceb.delay]];
-    
+
+#ifdef __PRINT_NSLOG__
     NSLog(@"delay = %d",m_gif_gceb.delay);
+#endif
 }
 
 -(void) giflib_comment_extension_block
@@ -287,7 +299,9 @@ static GIF_Library* instance;
     app_id = [self giflib_get_n_bytes:b.size];
     if (app_id == nil) return;
     
+#ifdef __PRINT_NSLOG__
     NSLog(@"application id = %@",app_id);
+#endif
         
     u_char  u8;
     
@@ -303,7 +317,9 @@ static GIF_Library* instance;
     
     if ([self giflib_get_n_bytes:&b length:sizeof(b)] < 0) return;
     
+#ifdef __PRINT_NSLOG__
     NSLog(@"image block : position = (%d,%d)-(%d,%d)",b.left_position,b.top_position,b.width,b.height);
+#endif
     
     int gif_lctf = (b.flags & 0x80) ? 1 : 0;
     
@@ -380,7 +396,7 @@ static GIF_Library* instance;
     return image;
 }
 
-- (UIImageView*) gif_get_animation
+- (UIImageView*) giflib_get_animation
 {
     if ([m_gif_frames count] > 0)
     {

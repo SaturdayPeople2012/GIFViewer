@@ -26,14 +26,14 @@
 		7A36AC9D163BF2DE00DDE531 /* GifLoadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A36AC9B163BF2DE00DDE531 /* GifLoadViewController.xib */; };
 		7A36AC9F163BF72900DDE531 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A36AC9E163BF72900DDE531 /* MobileCoreServices.framework */; };
 		7AAC8C971645FCD600555BD6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAC8C961645FCD600555BD6 /* AssetsLibrary.framework */; };
+		B91DE65A16460ED80088A7E8 /* MessageComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91DE65916460ED80088A7E8 /* MessageComposerViewController.xib */; };
+		B91DE65C164610640088A7E8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B91DE65B164610640088A7E8 /* Social.framework */; };
 		B9958207163C2167008E696C /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9958206163C2167008E696C /* Twitter.framework */; };
 		B995820A163C2189008E696C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9958209163C2189008E696C /* Accounts.framework */; };
 		B995821D163C2E7D008E696C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B995821C163C2E7C008E696C /* MessageUI.framework */; };
 		B9958223163C2F2C008E696C /* MailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9958222163C2F2C008E696C /* MailViewController.m */; };
 		B995822B163C31BB008E696C /* TiwPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B995822A163C31BB008E696C /* TiwPicViewController.m */; };
-		D704B7451645E5A400DBE35F /* bear.gif in Resources */ = {isa = PBXBuildFile; fileRef = D704B7411645E5A400DBE35F /* bear.gif */; };
 		D704B7461645E5A400DBE35F /* GIF_Library.m in Sources */ = {isa = PBXBuildFile; fileRef = D704B7441645E5A400DBE35F /* GIF_Library.m */; };
-		D74B10921635910500C8CD68 /* apple_logo_animated.gif in Resources */ = {isa = PBXBuildFile; fileRef = D74B10911635910500C8CD68 /* apple_logo_animated.gif */; };
 		F25DB9561636846F00C488D5 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DB9541636846E00C488D5 /* ListCell.m */; };
 		F25DB9571636846F00C488D5 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25DB9551636846F00C488D5 /* ListCell.xib */; };
 		F286BD46163566A4004395AE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F286BD44163566A4004395AE /* MainViewController.m */; };
@@ -85,6 +85,10 @@
 		7A36AC9B163BF2DE00DDE531 /* GifLoadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GifLoadViewController.xib; sourceTree = "<group>"; };
 		7A36AC9E163BF72900DDE531 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		7AAC8C961645FCD600555BD6 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		B91DE65616460D9C0088A7E8 /* MessageComposerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageComposerViewController.h; sourceTree = "<group>"; };
+		B91DE65716460D9C0088A7E8 /* MessageComposerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageComposerViewController.m; sourceTree = "<group>"; };
+		B91DE65916460ED80088A7E8 /* MessageComposerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageComposerViewController.xib; sourceTree = "<group>"; };
+		B91DE65B164610640088A7E8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		B9958206163C2167008E696C /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		B9958209163C2189008E696C /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		B995820F163C23F9008E696C /* TweetingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetingViewController.h; sourceTree = "<group>"; };
@@ -98,11 +102,9 @@
 		B995822A163C31BB008E696C /* TiwPicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiwPicViewController.m; sourceTree = "<group>"; };
 		B995822E163C3309008E696C /* GSTwitPicEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSTwitPicEngine.h; sourceTree = "<group>"; };
 		B995822F163C3309008E696C /* GSTwitPicEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSTwitPicEngine.m; sourceTree = "<group>"; };
-		D704B7411645E5A400DBE35F /* bear.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bear.gif; sourceTree = "<group>"; };
 		D704B7421645E5A400DBE35F /* GIF_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIF_Header.h; sourceTree = "<group>"; };
 		D704B7431645E5A400DBE35F /* GIF_Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIF_Library.h; sourceTree = "<group>"; };
 		D704B7441645E5A400DBE35F /* GIF_Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIF_Library.m; sourceTree = "<group>"; };
-		D74B10911635910500C8CD68 /* apple_logo_animated.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = apple_logo_animated.gif; sourceTree = "<group>"; };
 		F25DB9531636846E00C488D5 /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
 		F25DB9541636846E00C488D5 /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
 		F25DB9551636846F00C488D5 /* ListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B91DE65C164610640088A7E8 /* Social.framework in Frameworks */,
 				7AAC8C971645FCD600555BD6 /* AssetsLibrary.framework in Frameworks */,
 				B995821D163C2E7D008E696C /* MessageUI.framework in Frameworks */,
 				B995820A163C2189008E696C /* Accounts.framework in Frameworks */,
@@ -195,9 +198,20 @@
 			name = "기명";
 			sourceTree = "<group>";
 		};
+		B91DE64D16460A990088A7E8 /* SMS */ = {
+			isa = PBXGroup;
+			children = (
+				B91DE65916460ED80088A7E8 /* MessageComposerViewController.xib */,
+				B91DE65616460D9C0088A7E8 /* MessageComposerViewController.h */,
+				B91DE65716460D9C0088A7E8 /* MessageComposerViewController.m */,
+			);
+			name = SMS;
+			sourceTree = "<group>";
+		};
 		B995820B163C21D6008E696C /* 초란 */ = {
 			isa = PBXGroup;
 			children = (
+				B91DE64D16460A990088A7E8 /* SMS */,
 				B995821E163C2EAE008E696C /* Mail */,
 				B995820C163C2225008E696C /* SNS */,
 			);
@@ -263,14 +277,12 @@
 		F286BD6516357690004395AE /* 태상 */ = {
 			isa = PBXGroup;
 			children = (
-				D704B7411645E5A400DBE35F /* bear.gif */,
 				D704B7421645E5A400DBE35F /* GIF_Header.h */,
 				D704B7431645E5A400DBE35F /* GIF_Library.h */,
 				D704B7441645E5A400DBE35F /* GIF_Library.m */,
 				F286BD60163575A6004395AE /* GIFDetailViewController.h */,
 				F286BD61163575A6004395AE /* GIFDetailViewController.m */,
 				F286BD62163575A6004395AE /* GIFDetailViewController.xib */,
-				D74B10911635910500C8CD68 /* apple_logo_animated.gif */,
 			);
 			name = "태상";
 			sourceTree = "<group>";
@@ -303,6 +315,7 @@
 		F2C2F924163390E500E93A97 = {
 			isa = PBXGroup;
 			children = (
+				B91DE65B164610640088A7E8 /* Social.framework */,
 				F2C2F939163390E500E93A97 /* GIFViewer */,
 				F2C2F932163390E500E93A97 /* Frameworks */,
 				F2C2F930163390E500E93A97 /* Products */,
@@ -423,10 +436,8 @@
 				F286BD5B163570D2004395AE /* GridViewController.xib in Resources */,
 				F286BD64163575A7004395AE /* GIFDetailViewController.xib in Resources */,
 				F286BD6B1635781F004395AE /* ListViewController.xib in Resources */,
-				D74B10921635910500C8CD68 /* apple_logo_animated.gif in Resources */,
 				F25DB9571636846F00C488D5 /* ListCell.xib in Resources */,
 				7A36AC9D163BF2DE00DDE531 /* GifLoadViewController.xib in Resources */,
-				D704B7451645E5A400DBE35F /* bear.gif in Resources */,
 				7A19D9D1164606E100B414FB /* ELCAlbumPickerController.xib in Resources */,
 				7A19D9D4164606E100B414FB /* ELCAssetPicker.xib in Resources */,
 				7A19D9D6164606E100B414FB /* ELCAssetTablePicker.xib in Resources */,
@@ -434,6 +445,7 @@
 				7A19D9DC164606E200B414FB /* Overlay.png in Resources */,
 				7A19D9DD164606E200B414FB /* Overlay@2x.png in Resources */,
 				7A19D9DE164606E200B414FB /* ELCImagePickerDemoViewController.xib in Resources */,
+				B91DE65A16460ED80088A7E8 /* MessageComposerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
