@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     NSArray *testArray = [[NSArray alloc] initWithObjects:@"a",@"b",@"c",nil];
     self.listData = testArray;
     
@@ -96,14 +97,16 @@
 //액션시트
 
 -(void)buttonPressed{
+    NSLog(@"삭제합니까?\n");
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"지우시겠습니까?" delegate:self cancelButtonTitle:@"취 소" destructiveButtonTitle:@"삭 제" otherButtonTitles:nil];
     [actionSheet showInView:self.view];
     
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    NSLog(@"삭제합니다.\n");
     if (buttonIndex != [actionSheet cancelButtonIndex]){
         NSString *msg = nil;
-        msg = [[NSString alloc] initWithFormat:@"삭제 \n"];
+        msg = [[NSString alloc] initWithFormat:@"삭제완료\n"];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:msg delegate:self cancelButtonTitle:@"cancel" otherButtonTitles: nil];
         [alert show];
@@ -174,10 +177,12 @@
 //todo 삭제 기능
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"titleForDelete\n");
     return @"Delete";
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     return UITableViewCellEditingStyleDelete;
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
