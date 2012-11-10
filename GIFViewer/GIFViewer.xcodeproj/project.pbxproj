@@ -33,9 +33,7 @@
 		B995821D163C2E7D008E696C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B995821C163C2E7C008E696C /* MessageUI.framework */; };
 		B9958223163C2F2C008E696C /* MailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9958222163C2F2C008E696C /* MailViewController.m */; };
 		B995822B163C31BB008E696C /* TiwPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B995822A163C31BB008E696C /* TiwPicViewController.m */; };
-		D704B7451645E5A400DBE35F /* bear.gif in Resources */ = {isa = PBXBuildFile; fileRef = D704B7411645E5A400DBE35F /* bear.gif */; };
 		D704B7461645E5A400DBE35F /* GIF_Library.m in Sources */ = {isa = PBXBuildFile; fileRef = D704B7441645E5A400DBE35F /* GIF_Library.m */; };
-		D74B10921635910500C8CD68 /* apple_logo_animated.gif in Resources */ = {isa = PBXBuildFile; fileRef = D74B10911635910500C8CD68 /* apple_logo_animated.gif */; };
 		F25DB9561636846F00C488D5 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DB9541636846E00C488D5 /* ListCell.m */; };
 		F25DB9571636846F00C488D5 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25DB9551636846F00C488D5 /* ListCell.xib */; };
 		F286BD46163566A4004395AE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F286BD44163566A4004395AE /* MainViewController.m */; };
@@ -104,11 +102,9 @@
 		B995822A163C31BB008E696C /* TiwPicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiwPicViewController.m; sourceTree = "<group>"; };
 		B995822E163C3309008E696C /* GSTwitPicEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSTwitPicEngine.h; sourceTree = "<group>"; };
 		B995822F163C3309008E696C /* GSTwitPicEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSTwitPicEngine.m; sourceTree = "<group>"; };
-		D704B7411645E5A400DBE35F /* bear.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bear.gif; sourceTree = "<group>"; };
 		D704B7421645E5A400DBE35F /* GIF_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIF_Header.h; sourceTree = "<group>"; };
 		D704B7431645E5A400DBE35F /* GIF_Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIF_Library.h; sourceTree = "<group>"; };
 		D704B7441645E5A400DBE35F /* GIF_Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIF_Library.m; sourceTree = "<group>"; };
-		D74B10911635910500C8CD68 /* apple_logo_animated.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = apple_logo_animated.gif; sourceTree = "<group>"; };
 		F25DB9531636846E00C488D5 /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
 		F25DB9541636846E00C488D5 /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
 		F25DB9551636846F00C488D5 /* ListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
@@ -281,14 +277,12 @@
 		F286BD6516357690004395AE /* 태상 */ = {
 			isa = PBXGroup;
 			children = (
-				D704B7411645E5A400DBE35F /* bear.gif */,
 				D704B7421645E5A400DBE35F /* GIF_Header.h */,
 				D704B7431645E5A400DBE35F /* GIF_Library.h */,
 				D704B7441645E5A400DBE35F /* GIF_Library.m */,
 				F286BD60163575A6004395AE /* GIFDetailViewController.h */,
 				F286BD61163575A6004395AE /* GIFDetailViewController.m */,
 				F286BD62163575A6004395AE /* GIFDetailViewController.xib */,
-				D74B10911635910500C8CD68 /* apple_logo_animated.gif */,
 			);
 			name = "태상";
 			sourceTree = "<group>";
@@ -442,10 +436,8 @@
 				F286BD5B163570D2004395AE /* GridViewController.xib in Resources */,
 				F286BD64163575A7004395AE /* GIFDetailViewController.xib in Resources */,
 				F286BD6B1635781F004395AE /* ListViewController.xib in Resources */,
-				D74B10921635910500C8CD68 /* apple_logo_animated.gif in Resources */,
 				F25DB9571636846F00C488D5 /* ListCell.xib in Resources */,
 				7A36AC9D163BF2DE00DDE531 /* GifLoadViewController.xib in Resources */,
-				D704B7451645E5A400DBE35F /* bear.gif in Resources */,
 				7A19D9D1164606E100B414FB /* ELCAlbumPickerController.xib in Resources */,
 				7A19D9D4164606E100B414FB /* ELCAssetPicker.xib in Resources */,
 				7A19D9D6164606E100B414FB /* ELCAssetTablePicker.xib in Resources */,

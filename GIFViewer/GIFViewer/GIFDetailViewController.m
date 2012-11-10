@@ -30,8 +30,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-//    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
-//                                                                            target:self action:@selector(goEdit:)];
     UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithTitle:@"편집" style:UIBarButtonItemStyleBordered
                                                               target:self action:@selector(goEdit:)];
     UIBarButtonItem *funcBtn = [[UIBarButtonItem alloc]initWithTitle:@"기능" style:UIBarButtonItemStyleBordered
@@ -43,6 +41,16 @@
     
     self.navigationItem.rightBarButtonItem = editBtn;
     self.toolbarItems = [NSArray arrayWithObjects:funcBtn, flexible, deleteBtn, nil];
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+        
+    NSArray* dirPaths;
+    NSString* gifPath;
+    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    gifPath = [dirPaths objectAtIndex:0];
+//  gifPath = [gifPath stringByAppendingString:@"/bear.gif"];
+    gifPath = [gifPath stringByAppendingString:@"/apple_logo_animated.gif"];
+    NSLog(@"document path = \"%@\"",gifPath);
     
     ///////////////////////////////////////////////////////////////////////////////////////
     
@@ -52,12 +60,11 @@
     Outframe = self.view.frame;
 
 //    NSURL* gifUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"apple_logo_animated" ofType:@"gif"]];
-    NSURL* gifUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"bear" ofType:@"gif"]];
+//    NSURL* gifUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"bear" ofType:@"gif"]];
+    NSURL* gifUrl = [NSURL fileURLWithPath:gifPath];
     
     gifView = [GIF_Library giflib_get_gif_view_from_url:gifUrl completion:^(int width,int height)
     {
-//        NSLog(@"in Block Coding(width=%d,height=%d)",width,height);
-        
         CGRect frame;
         frame.origin.x = (Outframe.size.width - width) / 2;
         frame.origin.y = (Outframe.size.height - height) / 2;
@@ -66,13 +73,7 @@
 
         gifView.frame = frame;
     }];
-    
-//    gifAnimation.frame = CGRectMake(gifPlayer.frame.origin.x,gifPlayer.frame.origin.y,gifPlayer.frame.size.width,gifPlayer.frame.size.height);    
-//    gifAnimation.frame = CGRectMake(100,100,50,50);
-    
-//    NSLog(@"--<1>--(%.0f,%.0f)-(%.0f,%.0f)",gifAnimation.frame.origin.x,gifAnimation.frame.origin.y,gifAnimation.frame.size.width,gifAnimation.frame.size.height);
-//    NSLog(@"--<2>--(%.0f,%.0f)-(%.0f,%.0f)",Outframe.origin.x,Outframe.origin.y,Outframe.size.width,Outframe.size.height);
-    
+        
     [gifPlayer addSubview:gifView];
 }
 

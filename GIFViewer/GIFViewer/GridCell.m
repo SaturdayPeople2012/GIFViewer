@@ -19,6 +19,11 @@
         _gifImgView.center = self.center;
         self.backgroundView = _gifImgView;
 
+        //document 경로
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        
+        
 //        self.tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapped:)];
 //        [self addGestureRecognizer:_tapGesture];
     }
