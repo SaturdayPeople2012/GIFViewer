@@ -543,6 +543,18 @@
 			path = "OARequestHeader-master";
 			sourceTree = "<group>";
 		};
+		B931B3251658CC4400482E22 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				B931B31D1658CB8800482E22 /* OARequestHeader-master */,
+				B931B2E01658CB3B00482E22 /* oauthconsumer-master */,
+				B931B2DD1658CA6E00482E22 /* GHUnit */,
+				B931B2721658C80C00482E22 /* Reachability */,
+				B931B2551658C70600482E22 /* ASI_Classes */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
 		B98EEB2D1658843200C643D0 /* TestFile */ = {
 			isa = PBXGroup;
 			children = (
@@ -556,11 +568,7 @@
 		B995820B163C21D6008E696C /* 초란 */ = {
 			isa = PBXGroup;
 			children = (
-				B931B31D1658CB8800482E22 /* OARequestHeader-master */,
-				B931B2E01658CB3B00482E22 /* oauthconsumer-master */,
-				B931B2DD1658CA6E00482E22 /* GHUnit */,
-				B931B2721658C80C00482E22 /* Reachability */,
-				B931B2551658C70600482E22 /* ASI_Classes */,
+				B931B3251658CC4400482E22 /* lib */,
 				B98EEB2D1658843200C643D0 /* TestFile */,
 				B91DE64D16460A990088A7E8 /* SMS */,
 				B995821E163C2EAE008E696C /* Mail */,
