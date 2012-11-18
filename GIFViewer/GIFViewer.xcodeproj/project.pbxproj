@@ -476,6 +476,7 @@
 				B9ECB9C61658A9F9005F5FA5 /* apple-touch-icon.png in Resources */,
 				D768EC141658B36B00D2F362 /* Test1.gif in Resources */,
 				D768EC151658B36B00D2F362 /* Test2.gif in Resources */,
+				B9ECB9C61658A9F9005F5FA5 /* apple-touch-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

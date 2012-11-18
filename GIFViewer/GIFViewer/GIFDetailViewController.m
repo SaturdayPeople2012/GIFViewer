@@ -16,6 +16,9 @@
 
 @synthesize gifPlayer;
 
+NSArray*    g_dirPath;
+NSString*   g_gifPath;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -44,13 +47,11 @@
 
     ///////////////////////////////////////////////////////////////////////////////////////
         
-    NSArray* dirPaths;
-    NSString* gifPath;
-    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    gifPath = [dirPaths objectAtIndex:0];
-    gifPath = [gifPath stringByAppendingPathComponent:@"/bear.gif"];
-//  gifPath = [gifPath stringByAppendingString:@"/apple_logo_animated.gif"];
-    NSLog(@"document path = \"%@\"",gifPath);
+    g_dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    g_gifPath = [g_dirPath objectAtIndex:0];
+    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/bear.gif"];
+//  g_gifPath = [g_gifPath stringByAppendingString:@"/apple_logo_animated.gif"];
+    NSLog(@"document path = \"%@\"",g_gifPath);
     
     ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -58,7 +59,7 @@
     
     NSFileManager *manager = [NSFileManager defaultManager];
     NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"bear" ofType:@"gif"];    
-    [manager copyItemAtPath:resourcePath toPath:gifPath error:nil];
+    [manager copyItemAtPath:resourcePath toPath:g_gifPath error:nil];
 
 #endif
     
@@ -69,7 +70,7 @@
     
     Outframe = self.view.frame;
     
-    gifView = [GIF_Library giflib_get_gif_view_from_path:gifPath completion:^(int width,int height)
+    gifView = [GIF_Library giflib_get_gif_view_from_path:g_gifPath completion:^(int width,int height)
     {
         CGRect frame;
         frame.origin.x = (Outframe.size.width - width) / 2;
