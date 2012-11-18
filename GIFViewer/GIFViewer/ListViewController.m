@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     NSArray *testArray = [[NSArray alloc] initWithObjects:@"a",@"b",@"c",nil];
     self.listData = testArray;
     
@@ -96,14 +97,16 @@
 //액션시트
 
 -(void)buttonPressed{
+    NSLog(@"삭제합니까?\n");
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"지우시겠습니까?" delegate:self cancelButtonTitle:@"취 소" destructiveButtonTitle:@"삭 제" otherButtonTitles:nil];
     [actionSheet showInView:self.view];
     
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    NSLog(@"삭제합니다.\n");
     if (buttonIndex != [actionSheet cancelButtonIndex]){
         NSString *msg = nil;
-        msg = [[NSString alloc] initWithFormat:@"삭제 \n"];
+        msg = [[NSString alloc] initWithFormat:@"삭제완료\n"];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:msg delegate:self cancelButtonTitle:@"cancel" otherButtonTitles: nil];
         [alert show];
@@ -132,10 +135,39 @@
     // Return the number of rows in the section.
     return [self.listData count];
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    /*
+	if (!self.tableView.isEditing)
+    {
+        
+        self.viewController.title = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+        [[self navigationController] pushViewController:self.viewController animated:YES];
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    else
+    {
+        NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
+        NSString *deleteButtonTitle = [NSString stringWithFormat:kDeletePartialTitle, selectedRows.count];
+        
+        if (selectedRows.count == self.dataArray.count)
+        {
+            deleteButtonTitle = kDeleteAllTitle;
+        }
+        self.deleteButton.title = deleteButtonTitle;
+    }
+     */
 }
 
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.tableView.isEditing)
+    {
+        NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
+        //self.deleteButton.title = (selectedRows.count == 0) ?
+        //kDeleteAllTitle : [NSString stringWithFormat:kDeletePartialTitle, selectedRows.count];
+    }
+
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     printf("셀 리턴\n");
@@ -159,31 +191,41 @@
     
     NSUInteger row = [indexPath row];
     listCell.title.text = [listData objectAtIndex:row];
+    //[self.view reloadInputViews];
     
     return listCell;
 }
 
 - (void) loadView
 {
+    //수신 노티피케이션
+    NSNotificationCenter *nc = [ NSNotificationCenter defaultCenter ];
+    [nc addObserver:self selector:@selector(viewchange:) name:@"cellInfo" object:nil];
+    
     [super loadView];
     printf("로드뷰\n");
+}
 
-    
+-(void)viewChange:(id)sender{
+    NSLog(@"뷰전환 메소드 구현해야됨\n");
 }
 
 //todo 삭제 기능
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"titleForDelete\n");
     return @"Delete";
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     return UITableViewCellEditingStyleDelete;
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
 }
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -224,17 +266,4 @@
 }
 */
 
-#pragma mark - Table view delegate
-/*
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
- 
-}
-*/
 @end

@@ -19,6 +19,18 @@
     return self;
 }
 
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    //<my stuff>
+    NSLog(@"swipe\n");
+    
+    NSDictionary *notiDic = [NSDictionary dictionaryWithObject:self.title.text forKey:@"inputText"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"cellInfo"
+                                                        object:nil userInfo:notiDic];
+    [super touchesMoved:touches withEvent:event];
+    
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

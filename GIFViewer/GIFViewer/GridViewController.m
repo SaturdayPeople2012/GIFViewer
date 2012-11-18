@@ -53,6 +53,7 @@ static NSString *CellIdentifier = @"Cell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = kAppName;
     [self.gridView registerClass:[GridCell class] forCellWithReuseIdentifier:CellIdentifier];
     
     UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
