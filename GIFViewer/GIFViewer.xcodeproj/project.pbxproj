@@ -35,8 +35,10 @@
 		B995821D163C2E7D008E696C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B995821C163C2E7C008E696C /* MessageUI.framework */; };
 		B9958223163C2F2C008E696C /* MailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9958222163C2F2C008E696C /* MailViewController.m */; };
 		B995822B163C31BB008E696C /* TiwPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B995822A163C31BB008E696C /* TiwPicViewController.m */; };
+		B9ECB9C016589366005F5FA5 /* ActivityViewCustomProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ECB9BF16589366005F5FA5 /* ActivityViewCustomProvider.m */; };
+		B9ECB9C4165893BE005F5FA5 /* ActivityViewCustomActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ECB9C3165893BE005F5FA5 /* ActivityViewCustomActivity.m */; };
+		B9ECB9C61658A9F9005F5FA5 /* apple-touch-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B9ECB9C51658A9F9005F5FA5 /* apple-touch-icon.png */; };
 		D704B7461645E5A400DBE35F /* GIF_Library.m in Sources */ = {isa = PBXBuildFile; fileRef = D704B7441645E5A400DBE35F /* GIF_Library.m */; };
-		D70E79A616587D0900A40306 /* bear.gif in Resources */ = {isa = PBXBuildFile; fileRef = D70E79A516587D0900A40306 /* bear.gif */; };
 		F25DB9561636846F00C488D5 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DB9541636846E00C488D5 /* ListCell.m */; };
 		F25DB9571636846F00C488D5 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25DB9551636846F00C488D5 /* ListCell.xib */; };
 		F286BD46163566A4004395AE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F286BD44163566A4004395AE /* MainViewController.m */; };
@@ -107,10 +109,14 @@
 		B995822A163C31BB008E696C /* TiwPicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiwPicViewController.m; sourceTree = "<group>"; };
 		B995822E163C3309008E696C /* GSTwitPicEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSTwitPicEngine.h; sourceTree = "<group>"; };
 		B995822F163C3309008E696C /* GSTwitPicEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSTwitPicEngine.m; sourceTree = "<group>"; };
+		B9ECB9BE16589366005F5FA5 /* ActivityViewCustomProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewCustomProvider.h; sourceTree = "<group>"; };
+		B9ECB9BF16589366005F5FA5 /* ActivityViewCustomProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewCustomProvider.m; sourceTree = "<group>"; };
+		B9ECB9C2165893BE005F5FA5 /* ActivityViewCustomActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewCustomActivity.h; sourceTree = "<group>"; };
+		B9ECB9C3165893BE005F5FA5 /* ActivityViewCustomActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewCustomActivity.m; sourceTree = "<group>"; };
+		B9ECB9C51658A9F9005F5FA5 /* apple-touch-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-touch-icon.png"; sourceTree = "<group>"; };
 		D704B7421645E5A400DBE35F /* GIF_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIF_Header.h; sourceTree = "<group>"; };
 		D704B7431645E5A400DBE35F /* GIF_Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIF_Library.h; sourceTree = "<group>"; };
 		D704B7441645E5A400DBE35F /* GIF_Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIF_Library.m; sourceTree = "<group>"; };
-		D70E79A516587D0900A40306 /* bear.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bear.gif; sourceTree = "<group>"; };
 		F25DB9531636846E00C488D5 /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
 		F25DB9541636846E00C488D5 /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
 		F25DB9551636846F00C488D5 /* ListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
@@ -217,6 +223,7 @@
 		B98EEB2D1658843200C643D0 /* TestFile */ = {
 			isa = PBXGroup;
 			children = (
+				B9ECB9C51658A9F9005F5FA5 /* apple-touch-icon.png */,
 				B98EEB301658895A00C643D0 /* Test2.gif */,
 				B98EEB2E1658848500C643D0 /* Test1.jpeg */,
 			);
@@ -229,6 +236,10 @@
 				B91DE64D16460A990088A7E8 /* SMS */,
 				B995821E163C2EAE008E696C /* Mail */,
 				B995820C163C2225008E696C /* SNS */,
+				B9ECB9BE16589366005F5FA5 /* ActivityViewCustomProvider.h */,
+				B9ECB9BF16589366005F5FA5 /* ActivityViewCustomProvider.m */,
+				B9ECB9C2165893BE005F5FA5 /* ActivityViewCustomActivity.h */,
+				B9ECB9C3165893BE005F5FA5 /* ActivityViewCustomActivity.m */,
 			);
 			name = "초란";
 			sourceTree = "<group>";
@@ -297,7 +308,6 @@
 				D704B7441645E5A400DBE35F /* GIF_Library.m */,
 				F286BD60163575A6004395AE /* GIFDetailViewController.h */,
 				F286BD61163575A6004395AE /* GIFDetailViewController.m */,
-				D70E79A516587D0900A40306 /* bear.gif */,
 				F286BD62163575A6004395AE /* GIFDetailViewController.xib */,
 			);
 			name = "태상";
@@ -463,9 +473,9 @@
 				7A19D9DD164606E200B414FB /* Overlay@2x.png in Resources */,
 				7A19D9DE164606E200B414FB /* ELCImagePickerDemoViewController.xib in Resources */,
 				B91DE65A16460ED80088A7E8 /* MessageComposerViewController.xib in Resources */,
-				D70E79A616587D0900A40306 /* bear.gif in Resources */,
 				B98EEB2F1658848500C643D0 /* Test1.jpeg in Resources */,
 				B98EEB311658895A00C643D0 /* Test2.gif in Resources */,
+				B9ECB9C61658A9F9005F5FA5 /* apple-touch-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +506,8 @@
 				7A19D9D9164606E200B414FB /* ELCImagePickerDemoAppDelegate.m in Sources */,
 				7A19D9DA164606E200B414FB /* ELCImagePickerDemoViewController.m in Sources */,
 				7A19D9DB164606E200B414FB /* ELCUtil.m in Sources */,
+				B9ECB9C016589366005F5FA5 /* ActivityViewCustomProvider.m in Sources */,
+				B9ECB9C4165893BE005F5FA5 /* ActivityViewCustomActivity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,7 +535,7 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -552,9 +564,10 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
