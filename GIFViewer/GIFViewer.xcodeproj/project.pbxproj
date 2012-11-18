@@ -502,8 +502,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: JinWon Kim (H244PMC3WV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: JinWon Kim (H244PMC3WV)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -518,6 +518,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "4AF2466C-5F4D-4A5B-8BAE-1F0FAE48B8AB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4AF2466C-5F4D-4A5B-8BAE-1F0FAE48B8AB";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -548,10 +550,14 @@
 		F2C2F94E163390E500E93A97 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: JinWon Kim (H244PMC3WV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: JinWon Kim (H244PMC3WV)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GIFViewer/GIFViewer-Prefix.pch";
 				INFOPLIST_FILE = "GIFViewer/GIFViewer-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4AF2466C-5F4D-4A5B-8BAE-1F0FAE48B8AB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4AF2466C-5F4D-4A5B-8BAE-1F0FAE48B8AB";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
