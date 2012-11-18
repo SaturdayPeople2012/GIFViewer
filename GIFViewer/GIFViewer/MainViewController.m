@@ -16,6 +16,7 @@
 
 #import "ActivityViewCustomProvider.h"
 #import "ActivityViewCustomActivity.h"
+#import "GSTwitPicEngine.h"
 
 @interface MainViewController ()
 
