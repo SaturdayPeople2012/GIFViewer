@@ -16,11 +16,11 @@
 // Define these API credentials as per your applicationss.
 
 // Get here: http://twitter.com/apps
-#define TWITTER_OAUTH_CONSUMER_KEY R1BhPnDtKjCFFRsMxzVIcw
-#define TWITTER_OAUTH_CONSUMER_SECRET xFoPSV3rjANck3FHN9hSRyLBUH93Cq6DPu35AjsWy4A
+#define TWITTER_OAUTH_CONSUMER_KEY "R1BhPnDtKjCFFRsMxzVIcw"
+#define TWITTER_OAUTH_CONSUMER_SECRET "xFoPSV3rjANck3FHN9hSRyLBUH93Cq6DPu35AjsWy4A"
 
 // Get here: http://dev.twitpic.com/apps/
-#define TWITPIC_API_KEY deb75708b11e24cf597db778b508ce1d
+#define TWITPIC_API_KEY "deb75708b11e24cf597db778b508ce1d"
 
 // TwitPic API Version: http://dev.twitpic.com/docs/
 #define TWITPIC_API_VERSION @"2"
@@ -28,8 +28,8 @@
 // Enable one of the JSON Parsing libraries that the project has.
 // Disable all to get raw string as response in delegate call to parse yourself.
 #define TWITPIC_USE_YAJL 0
-#define TWITPIC_USE_SBJSON 1
-#define TWITPIC_USE_TOUCHJSON 0
+#define TWITPIC_USE_SBJSON 0
+#define TWITPIC_USE_TOUCHJSON 1
 #define TWITPIC_API_FORMAT @"json"
 
 //  Implement XML here if you wish to.
