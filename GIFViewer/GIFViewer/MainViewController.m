@@ -16,7 +16,8 @@
 
 #import "ActivityViewCustomProvider.h"
 #import "ActivityViewCustomActivity.h"
-#import "GSTwitPicEngine.h"
+
+
 
 @interface MainViewController ()
 
@@ -76,7 +77,35 @@
 }
 
 
+
+- (void)twitpicDidFinishUpload:(NSDictionary *)response {
+    NSLog(@"TwitPic finished uploading: %@", response);
+    
+    // [response objectForKey:@"parsedResponse"] gives an NSDictionary of the response one of the parsing libraries was available.
+    // Otherwise, use [[response objectForKey:@"request"] objectForKey:@"responseString"] to parse yourself.
+    
+    if ([[[response objectForKey:@"request"] userInfo] objectForKey:@"message"] > 0 && [[response objectForKey:@"parsedResponse"] count] > 0) {
+        // Uncomment to update status upon successful upload, using MGTwitterEngine's instance.
+        // [twitterEngine sendUpdate:[NSString stringWithFormat:@"%@ %@", [[[response objectForKey:@"request"] userInfo] objectForKey:@"message"], [[response objectForKey:@"parsedResponse"] objectForKey:@"url"]]];
+    }
+}
+
+- (void)twitpicDidFailUpload:(NSDictionary *)error {
+    NSLog(@"TwitPic failed to upload: %@", error);
+    
+    if ([[error objectForKey:@"request"] responseStatusCode] == 401) {
+        // UIAlertViewQuick(@"Authentication failed", [error objectForKey:@"errorDescription"], @"OK");
+    }
+}
+
 -(IBAction)goActivityButtonPressed:(id)sender{
+    
+    
+    self.twitpicEngine = (GSTwitPicEngine *)[GSTwitPicEngine twitpicEngineWithDelegate:self];
+    
+    //[twitpicEngine setAccessToken:token];
+
+       
     
     
     
