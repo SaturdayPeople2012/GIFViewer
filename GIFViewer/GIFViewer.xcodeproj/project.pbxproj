@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18B755DA16588709008349F8 /* Test1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 18B755D916588709008349F8 /* Test1.jpeg */; };
 		7A19D9D0164606E100B414FB /* ELCAlbumPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A19D9BA164606E100B414FB /* ELCAlbumPickerController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7A19D9D1164606E100B414FB /* ELCAlbumPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A19D9BB164606E100B414FB /* ELCAlbumPickerController.xib */; };
 		7A19D9D2164606E100B414FB /* ELCAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A19D9BD164606E100B414FB /* ELCAsset.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -28,7 +29,6 @@
 		7AAC8C971645FCD600555BD6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAC8C961645FCD600555BD6 /* AssetsLibrary.framework */; };
 		B91DE65A16460ED80088A7E8 /* MessageComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91DE65916460ED80088A7E8 /* MessageComposerViewController.xib */; };
 		B91DE65C164610640088A7E8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B91DE65B164610640088A7E8 /* Social.framework */; };
-		B98EEB2F1658848500C643D0 /* Test1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B98EEB2E1658848500C643D0 /* Test1.jpeg */; };
 		B9958207163C2167008E696C /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9958206163C2167008E696C /* Twitter.framework */; };
 		B995820A163C2189008E696C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9958209163C2189008E696C /* Accounts.framework */; };
 		B995821D163C2E7D008E696C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B995821C163C2E7C008E696C /* MessageUI.framework */; };
@@ -58,6 +58,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18B755D916588709008349F8 /* Test1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test1.jpeg; sourceTree = "<group>"; };
 		7A19D9B9164606E100B414FB /* ELCAlbumPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAlbumPickerController.h; sourceTree = "<group>"; };
 		7A19D9BA164606E100B414FB /* ELCAlbumPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAlbumPickerController.m; sourceTree = "<group>"; };
 		7A19D9BB164606E100B414FB /* ELCAlbumPickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAlbumPickerController.xib; sourceTree = "<group>"; };
@@ -90,7 +91,6 @@
 		B91DE65716460D9C0088A7E8 /* MessageComposerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageComposerViewController.m; sourceTree = "<group>"; };
 		B91DE65916460ED80088A7E8 /* MessageComposerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageComposerViewController.xib; sourceTree = "<group>"; };
 		B91DE65B164610640088A7E8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		B98EEB2E1658848500C643D0 /* Test1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Test1.jpeg; path = ../../../../../../Desktop/Test1.jpeg; sourceTree = "<group>"; };
 		B9958206163C2167008E696C /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		B9958209163C2189008E696C /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		B995820F163C23F9008E696C /* TweetingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetingViewController.h; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 		B98EEB2D1658843200C643D0 /* TestFile */ = {
 			isa = PBXGroup;
 			children = (
-				B98EEB2E1658848500C643D0 /* Test1.jpeg */,
+				18B755D916588709008349F8 /* Test1.jpeg */,
 			);
 			name = TestFile;
 			sourceTree = "<group>";
@@ -457,7 +457,7 @@
 				7A19D9DD164606E200B414FB /* Overlay@2x.png in Resources */,
 				7A19D9DE164606E200B414FB /* ELCImagePickerDemoViewController.xib in Resources */,
 				B91DE65A16460ED80088A7E8 /* MessageComposerViewController.xib in Resources */,
-				B98EEB2F1658848500C643D0 /* Test1.jpeg in Resources */,
+				18B755DA16588709008349F8 /* Test1.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
