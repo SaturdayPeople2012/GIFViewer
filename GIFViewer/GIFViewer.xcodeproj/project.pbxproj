@@ -315,7 +315,6 @@
 		F2C2F924163390E500E93A97 = {
 			isa = PBXGroup;
 			children = (
-				B91DE65B164610640088A7E8 /* Social.framework */,
 				F2C2F939163390E500E93A97 /* GIFViewer */,
 				F2C2F932163390E500E93A97 /* Frameworks */,
 				F2C2F930163390E500E93A97 /* Products */,
@@ -333,6 +332,7 @@
 		F2C2F932163390E500E93A97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B91DE65B164610640088A7E8 /* Social.framework */,
 				7AAC8C961645FCD600555BD6 /* AssetsLibrary.framework */,
 				B995821C163C2E7C008E696C /* MessageUI.framework */,
 				B9958209163C2189008E696C /* Accounts.framework */,
@@ -502,7 +502,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -530,7 +531,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;

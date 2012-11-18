@@ -70,4 +70,39 @@
     [self presentViewController:elDemoViewController animated:YES completion:nil];
 }
 
+
+-(IBAction)FaceBookTest:(id)sender{
+    
+    
+    
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+        
+        SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        
+        SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result){
+            if (result == SLComposeViewControllerResultCancelled) {
+                
+                NSLog(@"Cancelled");
+                
+            } else
+                
+            {
+                NSLog(@"Done");
+            }
+            
+            [controller dismissViewControllerAnimated:YES completion:Nil];
+        };
+        controller.completionHandler =myBlock;
+        
+        [controller setInitialText:@"Uploaded by GifViewer App"];
+        [controller addURL:[NSURL URLWithString:@"http://www.naver.com"]];
+        [controller addImage:[UIImage imageNamed:@"fb.png"]];
+        
+        [self presentViewController:controller animated:YES completion:Nil];
+        
+    }
+    else{
+        NSLog(@"UnAvailable");
+    }
+}
 @end
