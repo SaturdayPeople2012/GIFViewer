@@ -11,7 +11,7 @@
 
 @interface GifQueueObject : NSObject
 
-@property (nonatomic, strong) NSURL* m_url;
+@property (nonatomic, strong) NSString* m_filePath;
 @property (nonatomic, strong) UIImageView* m_view;
 
 @end
@@ -44,6 +44,6 @@
  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
  */
 
-+ (UIImageView*) giflib_get_gif_view_from_url:(NSURL*) gifUrl completion:(void(^)(int width,int height)) completion;
++ (UIImageView*) giflib_get_gif_view_from_path:(NSString*) filePath completion:(void(^)(int width,int height)) completion;
 
 @end

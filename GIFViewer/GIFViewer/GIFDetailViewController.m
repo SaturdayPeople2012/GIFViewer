@@ -48,9 +48,19 @@
     NSString* gifPath;
     dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     gifPath = [dirPaths objectAtIndex:0];
-//  gifPath = [gifPath stringByAppendingString:@"/bear.gif"];
-    gifPath = [gifPath stringByAppendingString:@"/apple_logo_animated.gif"];
+    gifPath = [gifPath stringByAppendingPathComponent:@"/bear.gif"];
+//  gifPath = [gifPath stringByAppendingString:@"/apple_logo_animated.gif"];
     NSLog(@"document path = \"%@\"",gifPath);
+    
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+#if 1
+    
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"bear" ofType:@"gif"];    
+    [manager copyItemAtPath:resourcePath toPath:gifPath error:nil];
+
+#endif
     
     ///////////////////////////////////////////////////////////////////////////////////////
     
@@ -58,12 +68,8 @@
     __block UIImageView *gifView;
     
     Outframe = self.view.frame;
-
-//    NSURL* gifUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"apple_logo_animated" ofType:@"gif"]];
-//    NSURL* gifUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"bear" ofType:@"gif"]];
-    NSURL* gifUrl = [NSURL fileURLWithPath:gifPath];
     
-    gifView = [GIF_Library giflib_get_gif_view_from_url:gifUrl completion:^(int width,int height)
+    gifView = [GIF_Library giflib_get_gif_view_from_path:gifPath completion:^(int width,int height)
     {
         CGRect frame;
         frame.origin.x = (Outframe.size.width - width) / 2;
@@ -79,7 +85,25 @@
 
 - (void)goEdit:(id)sender
 {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"GIF의 제목을 입력하십시요"
+                                                message:@""
+                                                delegate:self
+                                                cancelButtonTitle:@"확인"
+                                                otherButtonTitles:@"취소", nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+
     
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        NSString *name = [alertView textFieldAtIndex:0].text;
+        // name contains the entered value
+        NSLog(@"%@",name);
+    }
 }
 
 - (void)goFunc:(id)sender
