@@ -13,12 +13,14 @@
 #import "MessageComposerViewController.h"
 
 @interface MainViewController : UIViewController
+- (IBAction)goSNS_FaceBook:(id)sender;
 - (IBAction)SMSTest:(id)sender;
 - (IBAction)goGridView:(id)sender;
 - (IBAction)goListView:(id)sender;
 - (IBAction)goGIFView:(id)sender;
 - (IBAction)goGIFLoaderViewController:(id)sender;
 - (IBAction)goSMSView:(id)sender;
- -(IBAction)SMSTest:(id)sender;
+
+- (IBAction)activityButtonPressed:(id)sender;
 
 @end

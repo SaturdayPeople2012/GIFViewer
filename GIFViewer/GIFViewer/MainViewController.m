@@ -71,9 +71,33 @@
 }
 
 
--(IBAction)FaceBookTest:(id)sender{
+- (IBAction)activityButtonPressed:(id)sender {
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+    {
+        NSString *text = @"Lime Cat";
+        UIImage *image = [UIImage imageNamed:@"lime-cat"];
+        NSArray *activityItems = [NSArray arrayWithObjects:text,image , nil];
+        UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems: activityItems applicationActivities:nil];
+        [self presentViewController:avc animated:YES completion:nil];
+    }
+}
+
+-(IBAction)goSNS_FaceBook:(id)sender{
     
     
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+    {
+        NSString *text = @"'짤방 테스트 입니다'";
+        
+        UIImage *image = [UIImage imageNamed:@"Test1.jpeg"];
+        NSArray *activityItems = [NSArray arrayWithObjects:text,image , nil];
+        UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems: activityItems applicationActivities:nil];
+        [self presentViewController:avc animated:YES completion:nil];
+    }
+
+    
+    
+    return;
     
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
         
@@ -105,4 +129,5 @@
         NSLog(@"UnAvailable");
     }
 }
+
 @end
