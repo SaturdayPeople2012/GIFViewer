@@ -82,7 +82,7 @@
     }
 }
 
--(IBAction)goSNS_FaceBook:(id)sender{
+-(IBAction)goActivityButtonPressed:(id)sender{
     
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
