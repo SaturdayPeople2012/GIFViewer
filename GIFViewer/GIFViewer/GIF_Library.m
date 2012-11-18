@@ -26,11 +26,11 @@ static GIF_Library* instance;
     return instance;
 }
 
-+ (UIImageView*) giflib_get_gif_view_from_url:(NSURL*) gifUrl completion:(void(^)(int width,int height)) completion
++ (UIImageView*) giflib_get_gif_view_from_path:(NSString*) filePath completion:(void(^)(int width,int height)) completion
 {
     GifQueueObject* qitem = [[GifQueueObject alloc] init];
     
-    qitem.m_url = gifUrl;
+    qitem.m_filePath = filePath;
     qitem.m_view = [[UIImageView alloc] init];
     
     GIF_Library* inst = [GIF_Library giflib_sharedInstance];
@@ -69,7 +69,7 @@ static GIF_Library* instance;
 #ifdef __PRINT_NSLOG__
         NSLog(@"%@",((GifQueueObject*)[m_gif_queue objectAtIndex:0]).m_url);
 #endif
-        NSData* data = [NSData dataWithContentsOfURL:((GifQueueObject*)[m_gif_queue objectAtIndex:0]).m_url];
+        NSData* data = [NSData dataWithContentsOfFile:((GifQueueObject*)[m_gif_queue objectAtIndex:0]).m_filePath];
         self.m_gifView = ((GifQueueObject*)[m_gif_queue objectAtIndex:0]).m_view;
         
         [self giflib_decode:data];

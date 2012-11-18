@@ -34,6 +34,7 @@
 		B9958223163C2F2C008E696C /* MailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9958222163C2F2C008E696C /* MailViewController.m */; };
 		B995822B163C31BB008E696C /* TiwPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B995822A163C31BB008E696C /* TiwPicViewController.m */; };
 		D704B7461645E5A400DBE35F /* GIF_Library.m in Sources */ = {isa = PBXBuildFile; fileRef = D704B7441645E5A400DBE35F /* GIF_Library.m */; };
+		D70E79A616587D0900A40306 /* bear.gif in Resources */ = {isa = PBXBuildFile; fileRef = D70E79A516587D0900A40306 /* bear.gif */; };
 		F25DB9561636846F00C488D5 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DB9541636846E00C488D5 /* ListCell.m */; };
 		F25DB9571636846F00C488D5 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25DB9551636846F00C488D5 /* ListCell.xib */; };
 		F286BD46163566A4004395AE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F286BD44163566A4004395AE /* MainViewController.m */; };
@@ -105,6 +106,7 @@
 		D704B7421645E5A400DBE35F /* GIF_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIF_Header.h; sourceTree = "<group>"; };
 		D704B7431645E5A400DBE35F /* GIF_Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIF_Library.h; sourceTree = "<group>"; };
 		D704B7441645E5A400DBE35F /* GIF_Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIF_Library.m; sourceTree = "<group>"; };
+		D70E79A516587D0900A40306 /* bear.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bear.gif; sourceTree = "<group>"; };
 		F25DB9531636846E00C488D5 /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
 		F25DB9541636846E00C488D5 /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
 		F25DB9551636846F00C488D5 /* ListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				D704B7441645E5A400DBE35F /* GIF_Library.m */,
 				F286BD60163575A6004395AE /* GIFDetailViewController.h */,
 				F286BD61163575A6004395AE /* GIFDetailViewController.m */,
+				D70E79A516587D0900A40306 /* bear.gif */,
 				F286BD62163575A6004395AE /* GIFDetailViewController.xib */,
 			);
 			name = "태상";
@@ -446,6 +449,7 @@
 				7A19D9DD164606E200B414FB /* Overlay@2x.png in Resources */,
 				7A19D9DE164606E200B414FB /* ELCImagePickerDemoViewController.xib in Resources */,
 				B91DE65A16460ED80088A7E8 /* MessageComposerViewController.xib in Resources */,
+				D70E79A616587D0900A40306 /* bear.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,7 +506,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -530,7 +534,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
