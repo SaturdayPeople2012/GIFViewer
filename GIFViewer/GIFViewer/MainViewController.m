@@ -89,7 +89,7 @@
     {
         NSString *text = @"'짤방 테스트 입니다'";
         
-        UIImage *image = [UIImage imageNamed:@"Test1.jpeg"];
+        UIImage *image = [UIImage imageNamed:@"Test2.gif"];
         NSArray *activityItems = [NSArray arrayWithObjects:text,image , nil];
         UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems: activityItems applicationActivities:nil];
         [self presentViewController:avc animated:YES completion:nil];
