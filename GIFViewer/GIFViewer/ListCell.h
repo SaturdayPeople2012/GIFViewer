@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ListCell : UITableViewCell
+@interface ListCell : UITableViewCell 
 
 @property (weak,nonatomic) IBOutlet UIImageView *gifImage;
 @property (weak,nonatomic) IBOutlet UILabel *title;
