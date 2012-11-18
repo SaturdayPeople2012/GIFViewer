@@ -13,6 +13,10 @@
 #import "ELCImagePickerDemoViewController.h"
 #import "MessageComposerViewController.h"
 
+
+#import "ActivityViewCustomProvider.h"
+#import "ActivityViewCustomActivity.h"
+
 @interface MainViewController ()
 
 @end
@@ -71,35 +75,46 @@
 }
 
 
-- (IBAction)activityButtonPressed:(id)sender {
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
-    {
-        NSString *text = @"Lime Cat";
-        UIImage *image = [UIImage imageNamed:@"lime-cat"];
-        NSArray *activityItems = [NSArray arrayWithObjects:text,image , nil];
-        UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems: activityItems applicationActivities:nil];
-        [self presentViewController:avc animated:YES completion:nil];
-    }
-}
-
 -(IBAction)goActivityButtonPressed:(id)sender{
     
     
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+    
+    ActivityViewCustomProvider *customProvider =
+    [[ActivityViewCustomProvider alloc]init];
+    
+    NSString *text2 = @"'짤방 테스트 입니다'";
+    UIImage *image2 = [UIImage imageNamed:@"Test2.gif"];
+    
+    NSArray *items = [NSArray arrayWithObjects:customProvider,text2,image2,nil];
+    
+    ActivityViewCustomActivity *ca = [[ActivityViewCustomActivity alloc]init];
+    
+    UIActivityViewController *activityVC =
+    [[UIActivityViewController alloc] initWithActivityItems:items
+                                      applicationActivities:[NSArray arrayWithObject:ca]];
+    
+    activityVC.excludedActivityTypes = @[UIActivityTypePostToWeibo, UIActivityTypeAssignToContact, UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeSaveToCameraRoll];
+    
+    activityVC.completionHandler = ^(NSString *activityType, BOOL completed)
     {
-        NSString *text = @"'짤방 테스트 입니다'";
+        NSLog(@" activityType: %@", activityType);
+        NSLog(@" completed: %i", completed);
+    };
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+      /*  self.presentViewController = [[UIPopoverController alloc] initWithContentViewController:activityVC];
         
-        UIImage *image = [UIImage imageNamed:@"Test2.gif"];
-        NSArray *activityItems = [NSArray arrayWithObjects:text,image , nil];
-        UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems: activityItems applicationActivities:nil];
-        [self presentViewController:avc animated:YES completion:nil];
+        CGRect rect = [[UIScreen mainScreen] bounds];
+        
+        [self.presentViewController
+         presentPopoverFromRect:rect inView:self.view
+         permittedArrowDirections:0
+         animated:YES];
+       */
     }
-
     
-    
-    return;
-    
-    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]){
         
         SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         
@@ -121,11 +136,14 @@
         [controller setInitialText:@"Uploaded by GifViewer App"];
         [controller addURL:[NSURL URLWithString:@"http://www.naver.com"]];
         [controller addImage:[UIImage imageNamed:@"fb.png"]];
+        [self presentViewController:activityVC animated:YES completion:nil];
+
         
-        [self presentViewController:controller animated:YES completion:Nil];
         
-    }
-    else{
+    } else if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]){
+        [self presentViewController:activityVC animated:YES completion:nil];
+
+    } else{
         NSLog(@"UnAvailable");
     }
 }
