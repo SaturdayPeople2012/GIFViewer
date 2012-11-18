@@ -14,10 +14,9 @@
 
 @implementation GIFDetailViewController
 
-@synthesize gifPlayer;
-
-NSArray*    g_dirPath;
-NSString*   g_gifPath;
+@synthesize m_gifPlayer;
+@synthesize m_dirPath;
+@synthesize m_gifPath;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,11 +46,11 @@ NSString*   g_gifPath;
 
     ///////////////////////////////////////////////////////////////////////////////////////
         
-    g_dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    g_gifPath = [g_dirPath objectAtIndex:0];
-    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/bear.gif"];
-//  g_gifPath = [g_gifPath stringByAppendingString:@"/apple_logo_animated.gif"];
-    NSLog(@"document path = \"%@\"",g_gifPath);
+    m_dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    m_gifPath = [m_dirPath objectAtIndex:0];
+    m_gifPath = [m_gifPath stringByAppendingPathComponent:@"/bear.gif"];
+//  m_gifPath = [m_gifPath stringByAppendingString:@"/apple_logo_animated.gif"];
+    NSLog(@"document path = \"%@\"",m_gifPath);
     
     ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -59,7 +58,7 @@ NSString*   g_gifPath;
     
     NSFileManager *manager = [NSFileManager defaultManager];
     NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"bear" ofType:@"gif"];    
-    [manager copyItemAtPath:resourcePath toPath:g_gifPath error:nil];
+    [manager copyItemAtPath:resourcePath toPath:m_gifPath error:nil];
 
 #endif
     
@@ -70,9 +69,10 @@ NSString*   g_gifPath;
     
     Outframe = self.view.frame;
     
-    gifView = [GIF_Library giflib_get_gif_view_from_path:g_gifPath completion:^(int width,int height)
+    gifView = [GIF_Library giflib_get_gif_view_from_path:m_gifPath completion:^(int width,int height)
     {
         CGRect frame;
+        
         frame.origin.x = (Outframe.size.width - width) / 2;
         frame.origin.y = (Outframe.size.height - height) / 2;
         frame.size.width = width;
@@ -81,7 +81,12 @@ NSString*   g_gifPath;
         gifView.frame = frame;
     }];
         
-    [gifPlayer addSubview:gifView];
+    [m_gifPlayer addSubview:gifView];
+}
+
+- (NSString*)getGifFilePath
+{
+    return m_gifPath;
 }
 
 - (void)goEdit:(id)sender
@@ -104,12 +109,13 @@ NSString*   g_gifPath;
         NSString *name = [alertView textFieldAtIndex:0].text;
         // name contains the entered value
         NSLog(@"%@",name);
+        self.title = name;
     }
 }
 
 - (void)goFunc:(id)sender
 {
-    UIImageView* gifAnimation = [[gifPlayer subviews] objectAtIndex:0];
+    UIImageView* gifAnimation = [[m_gifPlayer subviews] objectAtIndex:0];
     
 //    NSLog(@"--<3>--(%.0f,%.0f)-(%.0f,%.0f)",gifAnimation.frame.origin.x,gifAnimation.frame.origin.y,gifAnimation.frame.size.width,gifAnimation.frame.size.height);
 //
@@ -126,7 +132,7 @@ NSString*   g_gifPath;
 
 - (void)goDelete:(id)sender
 {
-    UIImageView* gifAnimation = [[gifPlayer subviews] objectAtIndex:0];
+    UIImageView* gifAnimation = [[m_gifPlayer subviews] objectAtIndex:0];
     
     [gifAnimation setAnimationDuration:gifAnimation.animationDuration - 1];
 
