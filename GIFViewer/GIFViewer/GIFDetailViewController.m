@@ -68,8 +68,8 @@
     __block UIImageView *gifView;
     
     Outframe = self.view.frame;
-    
-    gifView = [GIF_Library giflib_get_gif_view_from_path:m_gifPath completion:^(int width,int height)
+
+    gifView = [GIF_Library giflib_get_gif_view_from_path:m_gifPath parent:self completion:^(int width,int height)
     {
         CGRect frame;
         

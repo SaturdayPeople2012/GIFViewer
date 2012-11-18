@@ -26,7 +26,7 @@ static GIF_Library* instance;
     return instance;
 }
 
-+ (UIImageView*) giflib_get_gif_view_from_path:(NSString*) filePath completion:(void(^)(int width,int height)) completion
++ (UIImageView*) giflib_get_gif_view_from_path:(NSString*) filePath parent:(UIViewController*) parent completion:(void(^)(int width,int height)) completion
 {
     GifQueueObject* qitem = [[GifQueueObject alloc] init];
     
@@ -36,6 +36,7 @@ static GIF_Library* instance;
     GIF_Library* inst = [GIF_Library giflib_sharedInstance];
     
     [inst giflib_add_to_queue: qitem];
+    inst.m_parentVC = parent;
     inst.m_blockCompletion = completion;
     
     if (inst.m_busyInstance != TRUE)
@@ -241,6 +242,7 @@ static GIF_Library* instance;
 #ifdef __PRINT_NSLOG__
 				NSLog(@"[END]");
 #endif
+                self.m_parentVC.title = @"웃기는 곰! ㅋㅋㅋ";
 				return;
 			default:
 				NSLog(@"[OOPS!:Unknown introducer(0x%X)]",u8);

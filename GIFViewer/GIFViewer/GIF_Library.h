@@ -39,11 +39,12 @@
 @property bool m_busyInstance;
 @property (nonatomic, strong) UIImageView* m_gifView;
 @property (nonatomic, strong) void (^m_blockCompletion)(int width,int height);
+@property (nonatomic, strong) UIViewController* m_parentVC;
 
 /*
  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
  */
 
-+ (UIImageView*) giflib_get_gif_view_from_path:(NSString*) filePath completion:(void(^)(int width,int height)) completion;
++ (UIImageView*) giflib_get_gif_view_from_path:(NSString*) filePath parent:(UIViewController*) parent completion:(void(^)(int width,int height)) completion;
 
 @end
