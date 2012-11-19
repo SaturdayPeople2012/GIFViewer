@@ -8,6 +8,8 @@
 
 #import "GIF_Library.h"
 
+//#define __PRINT_NSLOG__
+
 @implementation GifQueueObject
 
 @end
@@ -68,10 +70,12 @@ static GIF_Library* instance;
     while ([m_gif_queue count] > 0)
     {
 #ifdef __PRINT_NSLOG__
-        NSLog(@"%@",((GifQueueObject*)[m_gif_queue objectAtIndex:0]).m_url);
+        NSLog(@"%@",((GifQueueObject*)[m_gif_queue objectAtIndex:0]).m_filePath);
 #endif
         NSData* data = [NSData dataWithContentsOfFile:((GifQueueObject*)[m_gif_queue objectAtIndex:0]).m_filePath];
         self.m_gifView = ((GifQueueObject*)[m_gif_queue objectAtIndex:0]).m_view;
+
+        NSLog(@"data length = %d",[data length]);
         
         [self giflib_decode:data];
         
@@ -215,18 +219,30 @@ static GIF_Library* instance;
                 {
 					case 0x01:// Plain Text Extension Block
 						m_gif_offset -= 2;
+#ifdef __PRINT_NSLOG__
+                        NSLog(@"[PLAIN_TEXT_EXTENSION_BLOCK]");
+#endif
 						[self giflib_plain_text_extension_block];
 						break;
 					case 0xf9:// Graphic Control Extension Block
 						m_gif_offset -= 2;
+#ifdef __PRINT_NSLOG__
+                        NSLog(@"[GRAPHIC_CONTROL_EXTENSION_BLOCK]");
+#endif
 						[self giflib_graphic_control_extension_block];
 						break;
 					case 0xfe:	// Comment Extension Block
 						m_gif_offset -= 2;
+#ifdef __PRINT_NSLOG__
+                        NSLog(@"[COMMENT_EXTENSION_BLOCK]");
+#endif
 						[self giflib_comment_extension_block];
 						break;
 					case 0xff:// Application Extension Block
 						m_gif_offset -= 2;
+#ifdef __PRINT_NSLOG__
+                        NSLog(@"[APPLICATION_EXTENSION_BLOCK]");
+#endif
 						[self giflib_application_extension_block];
 						break;
 					default:
@@ -236,13 +252,15 @@ static GIF_Library* instance;
                 break;
 			case 0x2c:// Image Block
 				m_gif_offset -= 1;
+#ifdef __PRINT_NSLOG__
+				NSLog(@"[IMAGE_BLOCK]");
+#endif
 				[self giflib_image_block];
 				break;
 			case 0x3b:// Trailer
 #ifdef __PRINT_NSLOG__
 				NSLog(@"[END]");
 #endif
-                self.m_parentVC.title = @"웃기는 곰! ㅋㅋㅋ";
 				return;
 			default:
 				NSLog(@"[OOPS!:Unknown introducer(0x%X)]",u8);
@@ -286,7 +304,14 @@ static GIF_Library* instance;
     
     while ([self giflib_get_8bits:&u8] > 0 && u8 > 0)
     {
-        m_gif_offset += u8;
+        NSMutableData* comment_t = [self giflib_get_n_bytes:u8];
+        NSString* comment = [[NSString alloc] initWithData:comment_t encoding:NSUTF8StringEncoding];
+        
+        self.m_parentVC.title = comment;
+
+#ifdef __PRINT_NSLOG__
+        NSLog(@"u8 = %d, comment = \"%@\", length = %d",u8, comment_t,[comment_t length]);
+#endif
     }
 }
 
@@ -362,25 +387,26 @@ static GIF_Library* instance;
     
     [gif_data appendBytes:&b length:sizeof(b)];
     
-    u_char temp;
+    u_char u8;
     
-    [self giflib_get_8bits:&temp];
-    [gif_data appendBytes:&temp length:sizeof(temp)];
+    if ([self giflib_get_8bits:&u8] < 0) return;
+    [gif_data appendBytes:&u8 length:sizeof(u8)];
     
     while (true)
     {
-        [self giflib_get_8bits:&temp];
-        [gif_data appendBytes:&temp length:sizeof(temp)];
+        if ([self giflib_get_8bits:&u8] < 0) return;
+        [gif_data appendBytes:&u8 length:sizeof(u8)];
         
-        if (temp != 0)
+        if (u8 != 0)
         {
-            NSMutableData* line = [self giflib_get_n_bytes:temp];
+            NSMutableData* line = [self giflib_get_n_bytes:u8];
+            if (line == nil) return;
             [gif_data appendData:line];
         } else break;
     }
     
-    temp = 0x3b; // Trailer
-    [gif_data appendBytes:&temp length:sizeof(temp)];
+    u8 = 0x3b; // Trailer
+    [gif_data appendBytes:&u8 length:sizeof(u8)];
     
     [m_gif_frames addObject:[gif_data copy]];
 }
@@ -440,6 +466,256 @@ static GIF_Library* instance;
     {
         return nil;
     }
+}
+
+/*
+ /////////////////////////////////////////////////////////////////////////////////////////////////
+ */
+
+-(void) giflib_copy_gif_hdeader:(NSMutableData*) target
+{
+    GIF_HEADER hdr;
+    
+    if ([self giflib_get_n_bytes:&hdr length:sizeof(hdr)] < 0) return;
+
+    [target appendBytes:&hdr length:sizeof(hdr)];
+    
+    if (hdr.flags & 0x80)
+    {
+        int colors = 2 << (hdr.flags & 0x07);
+        NSMutableData* t = [self giflib_get_n_bytes:(3 * colors)];
+        if (t == nil) return;
+        [target appendData:t];
+    }
+}
+
+-(void) giflib_write_gif_comment_block:(NSMutableData*) target comment:(NSString*) comment
+{
+    GIF_COMMENT_EXTENSION_BLOCK b;
+    
+    b.introducer = 0x21;
+    b.label = 0xfe;
+    
+    [target appendBytes:&b length:sizeof(b)];
+    
+#ifdef __PRINT_NSLOG__
+    NSLog(@"(1)comment = %@",comment);
+#endif
+    
+    char buffer[256] = { 0 };
+    NSInteger length = [comment length];
+    
+    if (length > 255) length = 255;
+    [comment getBytes:buffer maxLength:255 usedLength:NULL encoding:NSUTF8StringEncoding options:0 range:NSMakeRange(0, length) remainingRange:NULL];
+    
+    length = strlen(buffer);
+    if (length > 255) length = 255;
+
+#ifdef __PRINT_NSLOG__
+    NSLog(@"(2)comment = %@, length = %d",[NSString stringWithCString:buffer encoding:NSUTF8StringEncoding],length);
+#endif
+
+    u_char  u8;
+    
+    u8 = length;
+    [target appendBytes:&u8 length:sizeof(u8)];
+    
+    [target appendBytes:buffer length:length];
+
+    u8 = 0;
+    [target appendBytes:&u8 length:sizeof(u8)];
+}
+
+-(void) giflib_copy_plain_text_extension_block:(NSMutableData*) target
+{
+    GIF_PLAIN_TEXT_EXTENSION_BLOCK b;
+    
+    if ([self giflib_get_n_bytes:&b length:sizeof(b)] < 0) return;
+
+    [target appendBytes:&b length:sizeof(b)];
+
+    u_char  u8;
+    
+    while ([self giflib_get_8bits:&u8] > 0 && u8 > 0)
+    {
+        [target appendBytes:&u8 length:sizeof(u8)];
+        NSMutableData* t = [self giflib_get_n_bytes:u8];
+        if (t == nil) return;
+        [target appendData:t];
+    }
+
+    u8 = 0;
+    [target appendBytes:&u8 length:sizeof(u8)];
+}
+
+-(void) giflib_copy_graphic_control_extension_block:(NSMutableData*) target
+{
+    GIF_GRAPHIC_CONTROL_EXTENSION_BLOCK b;
+    
+    if ([self giflib_get_n_bytes:&b length:sizeof(b)] < 0) return;
+    
+    [target appendBytes:&b length:sizeof(b)];
+}
+
+-(void) giflib_skip_comment_extension_block:(NSMutableData*) target
+{
+    GIF_COMMENT_EXTENSION_BLOCK b;
+    
+    if ([self giflib_get_n_bytes:&b length:sizeof(b)] < 0) return;
+    
+    u_char  u8;
+    
+    while ([self giflib_get_8bits:&u8] > 0 && u8 > 0)
+    {
+        m_gif_offset += u8;
+    }
+}
+
+-(void) giflib_copy_application_extension_block:(NSMutableData*) target
+{
+    GIF_APPLICATION_EXTENSION_BLOCK b;
+    
+    if ([self giflib_get_n_bytes:&b length:sizeof(b)] < 0) return;
+    
+    [target appendBytes:&b length:sizeof(b)];
+    NSMutableData* t = [self giflib_get_n_bytes:b.size];
+    if (t == nil) return;
+    [target appendData:t];
+    
+    u_char  u8;
+    
+    while ([self giflib_get_8bits:&u8] > 0 && u8 > 0)
+    {
+        [target appendBytes:&u8 length:sizeof(u8)];
+        t = [self giflib_get_n_bytes:u8];
+        if (t == nil) return;
+        [target appendData:t];
+    }
+
+    u8 = 0;
+    [target appendBytes:&u8 length:sizeof(u8)];
+}
+
+-(void) giflib_copy_image_block:(NSMutableData*) target
+{
+    GIF_IMAGE_BLOCK b;
+    
+    if ([self giflib_get_n_bytes:&b length:sizeof(b)] < 0) return;
+    
+    [target appendBytes:&b length:sizeof(b)];
+
+    if (b.flags & 0x80)
+    {
+        int colors = 2 << (b.flags & 0x07);
+        NSMutableData* t = [self giflib_get_n_bytes:(3 * colors)];
+        if (t == nil) return;
+        [target appendData:t];
+    }
+        
+    u_char u8;
+    
+    if ([self giflib_get_8bits:&u8] < 0) return;
+    [target appendBytes:&u8 length:sizeof(u8)];
+    
+    while (true)
+    {
+        if ([self giflib_get_8bits:&u8] < 0) return;
+        [target appendBytes:&u8 length:sizeof(u8)];
+        
+        if (u8 != 0)
+        {
+            NSMutableData* line = [self giflib_get_n_bytes:u8];
+            if (line == nil) return;
+            [target appendData:line];
+        } else break;
+    }
+}
+
+- (NSMutableData*) giflib_gif_copy_with_comment:(NSString*) comment
+{
+    NSMutableData* target;
+
+    if (m_gif_disk == nil) return nil;
+
+    m_gif_offset = 0;
+
+    target = [[NSMutableData alloc] init];    
+    
+#ifdef __PRINT_NSLOG__
+    NSLog(@"[HEADER]");
+#endif
+    [self giflib_copy_gif_hdeader: target];
+    
+#ifdef __PRINT_NSLOG__
+    NSLog(@"[COMMENT_EXTENSION_BLOCK]");
+#endif
+    [self giflib_write_gif_comment_block: target comment: comment];
+    
+    u_char  u8;
+    
+    while ([self giflib_get_8bits:&u8] > 0)
+    {
+        switch (u8)
+        {
+            case 0x21: // Extension Block
+                if ([self giflib_get_8bits:&u8] < 0) return nil;
+                switch (u8)
+                {
+                    case 0x01:// Plain Text Extension Block
+                        m_gif_offset -= 2;
+#ifdef __PRINT_NSLOG__
+                        NSLog(@"[PLAIN_TEXT_EXTENSION_BLOCK]");
+#endif
+                        [self giflib_copy_plain_text_extension_block: target];
+                        break;
+                    case 0xf9:// Graphic Control Extension Block
+                        m_gif_offset -= 2;
+#ifdef __PRINT_NSLOG__
+                        NSLog(@"[GRAPHIC_CONTROL_EXTENSION_BLOCK]");
+#endif
+                        [self giflib_copy_graphic_control_extension_block: target];
+                        break;
+                    case 0xfe:	// Comment Extension Block
+                        m_gif_offset -= 2;
+#ifdef __PRINT_NSLOG__
+                        NSLog(@"[COMMENT_EXTENSION_BLOCK]");
+#endif
+                        [self giflib_skip_comment_extension_block: target];
+                        break;
+                    case 0xff:// Application Extension Block
+                        m_gif_offset -= 2;
+#ifdef __PRINT_NSLOG__
+                        NSLog(@"[APPLICATION_EXTENSION_BLOCK]");
+#endif
+                        [self giflib_copy_application_extension_block: target];
+                        break;
+                    default:
+                        NSLog(@"[OOPS!:Unknown Extension(0x%X)]",u8);
+                        return nil;
+                }
+                break;
+			case 0x2c:// Image Block
+				m_gif_offset -= 1;
+#ifdef __PRINT_NSLOG__
+				NSLog(@"[IMAGE_BLOCK]");
+#endif
+				[self giflib_copy_image_block: target];
+				break;
+			case 0x3b:// Trailer
+#ifdef __PRINT_NSLOG__
+				NSLog(@"[END]");
+#endif
+                u8 = 0x3b;
+                [target appendBytes:&u8 length:sizeof(u8)];
+                
+				return target;
+			default:
+				NSLog(@"[OOPS!:Unknown introducer(0x%X)]",u8);
+				return nil;
+        }
+    }    
+
+    return nil;
 }
 
 @end

@@ -18,11 +18,12 @@
 
 @interface GIF_Library : NSObject
 {
-    NSMutableArray* m_gif_queue;
-        
+@public
     NSData*     m_gif_disk;                // GIF 파일의 디스크 이미지
     int         m_gif_offset;              // GIF 파일의 포인터
-
+@private
+    NSMutableArray* m_gif_queue;
+    
     GIF_HEADER	m_gif_hdr;
     GIF_GRAPHIC_CONTROL_EXTENSION_BLOCK m_gif_gceb;
     
@@ -45,6 +46,10 @@
  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
  */
 
++ (GIF_Library*) giflib_sharedInstance;
+
 + (UIImageView*) giflib_get_gif_view_from_path:(NSString*) filePath parent:(UIViewController*) parent completion:(void(^)(int width,int height)) completion;
+
+- (NSMutableData*) giflib_gif_copy_with_comment:(NSString*) comment;
 
 @end

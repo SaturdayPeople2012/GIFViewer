@@ -13,10 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *m_gifPlayer;
 
-@property (strong, nonatomic) NSArray*    m_dirPath;
-@property (strong, nonatomic) NSString*   m_gifPath;
-
--(NSString*)getGifFilePath;
-
 @end
 
+extern NSString*   g_gifPath;

@@ -15,8 +15,8 @@
 @implementation GIFDetailViewController
 
 @synthesize m_gifPlayer;
-@synthesize m_dirPath;
-@synthesize m_gifPath;
+
+NSString*   g_gifPath = nil;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,20 +45,20 @@
     self.toolbarItems = [NSArray arrayWithObjects:funcBtn, flexible, deleteBtn, nil];
 
     ///////////////////////////////////////////////////////////////////////////////////////
-        
-    m_dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    m_gifPath = [m_dirPath objectAtIndex:0];
-    m_gifPath = [m_gifPath stringByAppendingPathComponent:@"/bear.gif"];
-//  m_gifPath = [m_gifPath stringByAppendingString:@"/apple_logo_animated.gif"];
-    NSLog(@"document path = \"%@\"",m_gifPath);
+    
+    NSArray* dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    g_gifPath = [dirPath objectAtIndex:0];
+    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/bear.gif"];
+//  g_gifPath = [g_gifPath stringByAppendingString:@"/apple_logo_animated.gif"];
+    NSLog(@"document path = \"%@\"",g_gifPath);
     
     ///////////////////////////////////////////////////////////////////////////////////////
 
-#if 1
+#if 0
     
     NSFileManager *manager = [NSFileManager defaultManager];
     NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"bear" ofType:@"gif"];    
-    [manager copyItemAtPath:resourcePath toPath:m_gifPath error:nil];
+    [manager copyItemAtPath:resourcePath toPath:g_gifPath error:nil];
 
 #endif
     
@@ -69,7 +69,7 @@
     
     Outframe = self.view.frame;
 
-    gifView = [GIF_Library giflib_get_gif_view_from_path:m_gifPath parent:self completion:^(int width,int height)
+    gifView = [GIF_Library giflib_get_gif_view_from_path:g_gifPath parent:self completion:^(int width,int height)
     {
         CGRect frame;
         
@@ -82,11 +82,6 @@
     }];
         
     [m_gifPlayer addSubview:gifView];
-}
-
-- (NSString*)getGifFilePath
-{
-    return m_gifPath;
 }
 
 - (void)goEdit:(id)sender
@@ -108,8 +103,16 @@
     {
         NSString *name = [alertView textFieldAtIndex:0].text;
         // name contains the entered value
-        NSLog(@"%@",name);
+
         self.title = name;
+                
+        GIF_Library* inst = [GIF_Library giflib_sharedInstance];
+        
+        NSMutableData* gif_new = [inst giflib_gif_copy_with_comment:name];
+        
+        NSLog(@"gif_new length = %d",[gif_new length]);
+        
+        [gif_new writeToFile:g_gifPath atomically:YES];
     }
 }
 
