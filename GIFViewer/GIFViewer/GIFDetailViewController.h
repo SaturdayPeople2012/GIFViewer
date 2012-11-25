@@ -10,7 +10,10 @@
 #import "GIF_Library.h"
 
 @interface GIFDetailViewController : UIViewController
-
+{
+    int m_width;
+    int m_height;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *m_gifPlayer;
 
 @end

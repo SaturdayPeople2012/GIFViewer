@@ -34,7 +34,7 @@
 
 #import "GIF_Library.h"
 
-#define __PRINT_NSLOG__
+//#define __PRINT_NSLOG__
 
 @implementation AnimatedGifFrame
 
