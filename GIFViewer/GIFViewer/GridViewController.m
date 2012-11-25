@@ -133,7 +133,7 @@ static NSString *CellIdentifier = @"Cell";
     UIButton *btn = sender;
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsDir = [dirPaths objectAtIndex:0];
-    NSString *filePath = [docsDir stringByAppendingPathComponent:[self.fileLists objectAtIndex:btn.tag]];
+    g_gifPath = [docsDir stringByAppendingPathComponent:[self.fileLists objectAtIndex:btn.tag]];
     GIFDetailViewController *detailViewController = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
 
 }

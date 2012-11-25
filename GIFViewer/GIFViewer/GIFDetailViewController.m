@@ -45,11 +45,14 @@ NSString*   g_gifPath = nil;
     self.toolbarItems = [NSArray arrayWithObjects:funcBtn, flexible, deleteBtn, nil];
 
     ///////////////////////////////////////////////////////////////////////////////////////
-    
+#if 1
     NSArray* dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     g_gifPath = [dirPath objectAtIndex:0];
-    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/bear.gif"];
+//    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/frozen_pond.gif"];
+//    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/big bear.gif"];
+    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/color test.gif"];
 //  g_gifPath = [g_gifPath stringByAppendingString:@"/apple_logo_animated.gif"];
+#endif
     NSLog(@"document path = \"%@\"",g_gifPath);
     
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -64,19 +67,46 @@ NSString*   g_gifPath = nil;
     
     ///////////////////////////////////////////////////////////////////////////////////////
     
-    __block CGRect      Outframe;
+    __block CGRect      rcFrame;
     __block UIImageView *gifView;
     
-    Outframe = self.view.frame;
+    rcFrame = self.view.frame;
 
+    NSLog(@"(%f,%f)-(%f,%f)",rcFrame.origin.x,rcFrame.origin.y,rcFrame.size.width,rcFrame.size.height);
+    
     gifView = [GIF_Library giflib_get_gif_view_from_path:g_gifPath parent:self completion:^(int width,int height)
     {
         CGRect frame;
+        float   x,t_width,power_x;
+        float   y,t_height,power_y;
         
-        frame.origin.x = (Outframe.size.width - width) / 2;
-        frame.origin.y = (Outframe.size.height - height) / 2;
-        frame.size.width = width;
-        frame.size.height = height;
+        if (width > rcFrame.size.width || height > rcFrame.size.height)
+        {
+            power_x = width / rcFrame.size.width;
+            power_y = height / rcFrame.size.height;
+            if (power_x > power_y)
+            {
+                x = 0, t_width = rcFrame.size.width;
+                t_height = height / power_x;
+                y = (rcFrame.size.height - t_height) / 2;
+            } else
+            {
+                y = 0, t_height = rcFrame.size.height;
+                t_width = width / power_y;
+                x = (rcFrame.size.width - t_width) / 2;
+            }
+        } else
+        {
+            x = (rcFrame.size.width - width) / 2;
+            y = (rcFrame.size.height - height) / 2;
+            t_width = width;
+            t_height = height;
+        }
+
+        frame.origin.x = x;
+        frame.origin.y = y;
+        frame.size.width = t_width;
+        frame.size.height = t_height;
 
         gifView.frame = frame;
     }];

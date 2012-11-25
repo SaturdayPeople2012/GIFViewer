@@ -8,7 +8,7 @@
 
 #import "GIF_Library.h"
 
-//#define __PRINT_NSLOG__
+#define __PRINT_NSLOG__
 
 @implementation GifQueueObject
 
@@ -287,7 +287,8 @@ static GIF_Library* instance;
 {
     if ([self giflib_get_n_bytes:&m_gif_gceb length:sizeof(m_gif_gceb)] < 0) return;
     
-    [m_gif_delays addObject:[NSNumber numberWithInt: m_gif_gceb.delay]];
+    if (m_gif_gceb.delay == 0) [m_gif_delays addObject:[NSNumber numberWithInt:10]];
+    else                       [m_gif_delays addObject:[NSNumber numberWithInt: m_gif_gceb.delay]];
 
 #ifdef __PRINT_NSLOG__
     NSLog(@"delay = %d",m_gif_gceb.delay);
@@ -451,6 +452,10 @@ static GIF_Library* instance;
 		{
 			total += [[m_gif_delays objectAtIndex:i] doubleValue];
 		}
+                
+#ifdef __PRINT_NSLOG__
+        NSLog(@"total delay = %f",total);
+#endif
 		
 		// GIFs store the delays as 1/100th of a second,
         // UIImageViews want it in seconds.
