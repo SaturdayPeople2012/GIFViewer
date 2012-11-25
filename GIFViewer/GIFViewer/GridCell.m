@@ -18,6 +18,10 @@
         self.gifImgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bear.gif"]];
         _gifImgView.center = self.center;
         self.backgroundView = _gifImgView;
+        
+        self.button = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.button.frame = frame;
+        
 
         //document 경로
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

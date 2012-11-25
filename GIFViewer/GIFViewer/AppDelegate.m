@@ -8,7 +8,10 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
-
+#import "GridViewController.h"
+#import "ListViewController.h"
+#define kGridMode 0
+#define kListMode 1
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -21,12 +24,44 @@
     MainViewController *mainVC = [[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
     [self.naviController pushViewController:mainVC animated:NO];
     [self.naviController setToolbarHidden:NO];
+
+    //////////////////////////////////////////////////////
+    UIBarButtonItem *loadBtn = [[UIBarButtonItem alloc]initWithTitle:@"Load" style:UIBarButtonItemStyleBordered
+                                                              target:self action:@selector(goLoad:)];
+    UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
+                                 UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:@[@"Grid",@"List"]];
+    segmentedControl.selectedSegmentIndex=0;
+    segmentedControl.frame = CGRectMake(0, 0, 130, 30);
+    [segmentedControl addTarget:self action:@selector(selectedMode:) forControlEvents:UIControlEventValueChanged];
+    
+    UIBarButtonItem *segBtn = [[UIBarButtonItem alloc]initWithCustomView:segmentedControl];
+
+    self.naviController.toolbar.items = [NSArray arrayWithObjects:flexible, segBtn,flexible, loadBtn, nil];
+    /////////////////////////////////////////////////////
+
+    
     self.window.rootViewController = self.naviController;
-        
     [self.window makeKeyAndVisible];
     return YES;
 }
-
+- (void) selectedMode:(UISegmentedControl *)sender{
+    UISegmentedControl *control = sender;
+    //TODO: 추후 AppDelegate로 뺄것!
+    GridViewController *gridVC = [[GridViewController alloc]initWithNibName:@"GridViewController" bundle:nil];
+    ListViewController *listVC = [[ListViewController alloc]initWithNibName:@"ListViewController" bundle:nil];
+    switch (control.selectedSegmentIndex) {
+        case kGridMode:
+            [self.window.rootViewController.view addSubview:gridVC.view];
+            break;
+        case kListMode:
+            [self.window.rootViewController.view addSubview:listVC.view];
+            break;
+        default:
+            break;
+    }
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
