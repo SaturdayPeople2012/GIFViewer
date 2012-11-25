@@ -2,8 +2,8 @@
 //  GIF_Library.h
 //  GIFViewer
 //
-//  Created by 태상 조 on 12. 10. 28..
-//  Copyright (c) 2012년 양원석. All rights reserved.
+//  Created by 조 태상 on 12. 10. 28..
+//  Copyright (c) 2012년 조 태상. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
