@@ -2,8 +2,8 @@
 //  GIF_Header.h
 //  GIFViewer
 //
-//  Created by 태상 조 on 12. 10. 30..
-//  Copyright (c) 2012년 양원석. All rights reserved.
+//  Created by CHO,TAE-SANG on 12. 10. 30..
+//  Copyright (c) 2012년 CHO,TAE-SANG. All rights reserved.
 //
 
 #ifndef GIFViewer_GIF_Header_h

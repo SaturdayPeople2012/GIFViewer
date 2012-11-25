@@ -2,8 +2,8 @@
 //  GIFDetailViewController.m
 //  GIFViewer
 //
-//  Created by 양원석 on 12. 10. 22..
-//  Copyright (c) 2012년 양원석. All rights reserved.
+//  Created by CHO,TAE-SANG on 12. 10. 22..
+//  Copyright (c) 2012년 CHO,TAE-SANG. All rights reserved.
 //
 
 #import "GIFDetailViewController.h"
@@ -50,7 +50,9 @@ NSString*   g_gifPath = nil;
     g_gifPath = [dirPath objectAtIndex:0];
 //    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/frozen_pond.gif"];
 //    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/big bear.gif"];
-    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/color test.gif"];
+//    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/color test.gif"];
+//    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/cat.gif"];
+    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/kid_and_cat.gif"];
 //  g_gifPath = [g_gifPath stringByAppendingString:@"/apple_logo_animated.gif"];
 #endif
     NSLog(@"document path = \"%@\"",g_gifPath);
