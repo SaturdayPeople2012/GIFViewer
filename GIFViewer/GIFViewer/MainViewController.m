@@ -158,26 +158,7 @@
     //[twitpicEngine setAccessToken:token];
 
        
-    
-    
-    SA_OAuthTwitterEngine *eng = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate: self];
-	self.engine = eng;
-    [eng release];
-	engine.consumerKey = "R1BhPnDtKjCFFRsMxzVIcw";
-    engine.consumerSecret = "xFoPSV3rjANck3FHN9hSRyLBUH93Cq6DPu35AjsWy4A";
-	
-	UIViewController *controller = [SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:engine delegate:self];
-	
-	if (controller) {
-		[self presentModalViewController:controller animated:YES];
-	} else {
-        [twitpicEngine setAccessToken:[engine getAccessToken]];
-        [twitpicEngine uploadPicture:[UIImage imageNamed:@"image.jpg"] withMessage:@"my photo"];
-	}
 
-    
-    return;
-    
     
     ActivityViewCustomProvider *customProvider =
     [[ActivityViewCustomProvider alloc]init];
