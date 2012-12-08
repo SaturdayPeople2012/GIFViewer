@@ -83,7 +83,7 @@
 		D768EC151658B36B00D2F362 /* Test2.gif in Resources */ = {isa = PBXBuildFile; fileRef = D768EC131658B36B00D2F362 /* Test2.gif */; };
 		F25DB9561636846F00C488D5 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DB9541636846E00C488D5 /* ListCell.m */; };
 		F25DB9571636846F00C488D5 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25DB9551636846F00C488D5 /* ListCell.xib */; };
-		F286BD46163566A4004395AE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F286BD44163566A4004395AE /* MainViewController.m */; };
+		F286BD46163566A4004395AE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F286BD44163566A4004395AE /* MainViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F286BD47163566A4004395AE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F286BD45163566A4004395AE /* MainViewController.xib */; };
 		F286BD5A163570D2004395AE /* GridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F286BD58163570D2004395AE /* GridViewController.m */; };
 		F286BD5B163570D2004395AE /* GridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F286BD59163570D2004395AE /* GridViewController.xib */; };

@@ -13,6 +13,7 @@
 #import "ELCImagePickerDemoViewController.h"
 #import "MessageComposerViewController.h"
 
+#import "SA_OAuthTwitterEngine.h"
 
 #import "ActivityViewCustomProvider.h"
 #import "ActivityViewCustomActivity.h"
@@ -24,7 +25,8 @@
 @end
 
 @implementation MainViewController
-
+@synthesize twitpicEngine;
+@synthesize engine;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -77,7 +79,52 @@
 }
 
 
+//====================================================================================
+#pragma mark SA_OAuthTwitterEngineDelegate
+- (void) storeCachedTwitterOAuthData: (NSString *) data forUsername: (NSString *) username {
+	NSUserDefaults			*defaults = [NSUserDefaults standardUserDefaults];
+    
+	[defaults setObject: data forKey: @"authData"];
+	[defaults synchronize];
+    
+    NSLog(@"DATA: %@",data);
+}
 
+- (NSString *) cachedTwitterOAuthDataForUsername: (NSString *) username {
+    NSLog(@"DATA: %@",[[NSUserDefaults standardUserDefaults] objectForKey: @"authData"]);
+	return [[NSUserDefaults standardUserDefaults] objectForKey: @"authData"];
+}
+
+//====================================================================================
+#pragma mark SA_OAuthTwitterControllerDelegate
+- (void) OAuthTwitterController: (SA_OAuthTwitterController *) controller authenticatedWithUsername: (NSString *) username {
+	NSLog(@"Authenicated for %@", username);
+    [twitpicEngine setAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey: @"authData"]];
+    [twitpicEngine uploadPicture:[UIImage imageNamed:@"image.jpg"] withMessage:@"my test photo"];
+}
+
+- (void) OAuthTwitterControllerFailed: (SA_OAuthTwitterController *) controller {
+	NSLog(@"Authentication Failed!");
+}
+
+- (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller {
+	NSLog(@"Authentication Canceled.");
+}
+
+//====================================================================================
+#pragma mark TwitterEngineDelegate
+- (void) requestSucceeded: (NSString *) requestIdentifier {
+	NSLog(@"Request %@ succeeded", requestIdentifier);
+}
+
+- (void) requestFailed: (NSString *) requestIdentifier withError: (NSError *) error {
+	NSLog(@"Request %@ failed with error: %@", requestIdentifier, error);
+}
+
+
+
+//====================================================================================
+#pragma mark GSTwitPicEngineDelegate
 - (void)twitpicDidFinishUpload:(NSDictionary *)response {
     NSLog(@"TwitPic finished uploading: %@", response);
     
@@ -86,7 +133,7 @@
     
     if ([[[response objectForKey:@"request"] userInfo] objectForKey:@"message"] > 0 && [[response objectForKey:@"parsedResponse"] count] > 0) {
         // Uncomment to update status upon successful upload, using MGTwitterEngine's instance.
-        // [twitterEngine sendUpdate:[NSString stringWithFormat:@"%@ %@", [[[response objectForKey:@"request"] userInfo] objectForKey:@"message"], [[response objectForKey:@"parsedResponse"] objectForKey:@"url"]]];
+        [engine sendUpdate:[NSString stringWithFormat:@"%@ %@", [[[response objectForKey:@"request"] userInfo] objectForKey:@"message"], [[response objectForKey:@"parsedResponse"] objectForKey:@"url"]]];
     }
 }
 
@@ -97,6 +144,11 @@
         // UIAlertViewQuick(@"Authentication failed", [error objectForKey:@"errorDescription"], @"OK");
     }
 }
+//====================================================================================
+
+
+
+
 
 -(IBAction)goActivityButtonPressed:(id)sender{
     
@@ -107,6 +159,24 @@
 
        
     
+    
+    SA_OAuthTwitterEngine *eng = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate: self];
+	self.engine = eng;
+    [eng release];
+	engine.consumerKey = "R1BhPnDtKjCFFRsMxzVIcw";
+    engine.consumerSecret = "xFoPSV3rjANck3FHN9hSRyLBUH93Cq6DPu35AjsWy4A";
+	
+	UIViewController *controller = [SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:engine delegate:self];
+	
+	if (controller) {
+		[self presentModalViewController:controller animated:YES];
+	} else {
+        [twitpicEngine setAccessToken:[engine getAccessToken]];
+        [twitpicEngine uploadPicture:[UIImage imageNamed:@"image.jpg"] withMessage:@"my photo"];
+	}
+
+    
+    return;
     
     
     ActivityViewCustomProvider *customProvider =
