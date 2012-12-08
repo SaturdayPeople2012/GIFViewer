@@ -39,8 +39,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
+    //원석컨트롤러가 먼저 불림
+//    [self goGridView:nil];
     
     // Do any additional setup after loading the view from its nib.
 }

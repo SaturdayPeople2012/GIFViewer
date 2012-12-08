@@ -8,10 +8,11 @@
 
 #import "GridViewController.h"
 #import "GridCell.h"
+#import "GIFDetailViewController.h"
 #define kGridMode 0
 #define kListMode 1
 @interface GridViewController ()
-
+@property (strong, nonatomic)NSArray *fileLists;
 @end
 
 @implementation GridViewController
@@ -21,8 +22,8 @@ static NSString *CellIdentifier = @"Cell";
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
     NSFileManager *manager = [NSFileManager defaultManager];
-    NSArray *fileLists = [manager contentsOfDirectoryAtPath:documentsDirectory error:nil];
-    for (NSString *string in fileLists) {
+    self.fileLists = [manager contentsOfDirectoryAtPath:documentsDirectory error:nil];
+    for (NSString *string in _fileLists) {
         [self.gifDataArray addObject:[string stringByDeletingPathExtension]];
     }//self.gifDataArray는 파일명만 갖고 있도록 했는데... 왜했는지는 까묵음..
 }
@@ -73,7 +74,7 @@ static NSString *CellIdentifier = @"Cell";
     
     UIBarButtonItem *segBtn = [[UIBarButtonItem alloc]initWithCustomView:segmentedControl];
     
-    
+
     /////////////////////////////////////////////////////
     self.toolbarItems = [NSArray arrayWithObjects:flexible, segBtn,flexible, loadBtn, nil];
     
@@ -86,8 +87,7 @@ static NSString *CellIdentifier = @"Cell";
     UISegmentedControl *control = sender;
     //TODO: 추후 AppDelegate로 뺄것!
     switch (control.selectedSegmentIndex) {
-        case kGridMode:
-            
+        case kGridMode:   
             break;
         case kListMode:
             break;
@@ -121,8 +121,21 @@ static NSString *CellIdentifier = @"Cell";
     GridCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     
     UIImage *thumnails = [self getImageFromDocFolderAtIndex:indexPath.row];
-    cell.gifImgView.image = thumnails;
+//    cell.gifImgView.image = thumnails;
+    cell.button.imageView.image = thumnails;
+    [cell.button addTarget:self action:@selector(openGIF:) forControlEvents:UIControlEventTouchUpInside];
+    cell.button.tag = indexPath.row;
+    
     return cell;
+}
+
+- (void)openGIF:(id)sender{
+    UIButton *btn = sender;
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = [dirPaths objectAtIndex:0];
+    g_gifPath = [docsDir stringByAppendingPathComponent:[self.fileLists objectAtIndex:btn.tag]];
+    GIFDetailViewController *detailViewController = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
+
 }
 
 

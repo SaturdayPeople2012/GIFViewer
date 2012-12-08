@@ -1,14 +1,46 @@
 //
-//  GIF_Library.m
-//  GIFViewer
+//  AnimatedGif.m
 //
-//  Created by 태상 조 on 12. 10. 28..
-//  Copyright (c) 2012년 양원석. All rights reserved.
+//  Created by Stijn Spijker (http://www.stijnspijker.nl/) on 2009-07-03.
+//  Based on gifdecode written april 2009 by Martin van Spanje, P-Edge media.
+//  Modified by Shinya (https://github.com/kasatani/AnimatedGifExample) on 2010-05-20
+//  Modified by Arturo Gutierrez to support Optimized Animate Gif with differentes Disposal Methods, 2011-03-12
+//  Midified by CHO,TAE-SANG to support write Comment Extension Block, 2012-11-25
+//
+//  Changes on gifdecode:
+//  - Small optimizations (mainly arrays)
+//  - Object Orientated Approach (Class Methods as well as Object Methods)
+//  - Added the Graphic Control Extension Frame for transparancy
+//  - Changed header to GIF89a
+//  - Added methods for ease-of-use
+//  - Added animations with transparancy
+//  - No need to save frames to the filesystem anymore
+//
+//  Changelog:
+//
+//  2011-03-12: Support to Optimized Animated GIFs witch Disposal Methods: None, Restore and Background.
+//	2010-03-16: Added queing mechanism for static class use
+//  2010-01-24: Rework of the entire module, adding static methods, better memory management and URL asynchronous loading
+//  2009-10-08: Added dealloc method, and removed leaks, by Pedro Silva
+//  2009-08-10: Fixed double release for array, by Christian Garbers
+//  2009-06-05: Initial Version
+//
+//  Permission is given to use this source code file, free of charge, in any
+//  project, commercial or otherwise, entirely at your risk, with the condition
+//  that any redistribution (in part or whole) of source code must retain
+//  this copyright and permission notice. Attribution in compiled projects is
+//  appreciated but not required.
 //
 
 #import "GIF_Library.h"
 
 //#define __PRINT_NSLOG__
+
+@implementation AnimatedGifFrame
+
+@synthesize data, delay, disposalMethod, area, header;
+
+@end
 
 @implementation GifQueueObject
 
@@ -171,10 +203,8 @@ static GIF_Library* instance;
     m_gif_offset = 0;
     
     m_gif_global_color_table = nil;
-    m_gif_delays = nil;
     m_gif_frames = nil;
     
-    m_gif_delays = [[NSMutableArray alloc] init];
     m_gif_frames = [[NSMutableArray alloc] init];
         
     ////////////////////////////////////////////////////////////////////////
@@ -285,13 +315,22 @@ static GIF_Library* instance;
 
 -(void) giflib_graphic_control_extension_block
 {
-    if ([self giflib_get_n_bytes:&m_gif_gceb length:sizeof(m_gif_gceb)] < 0) return;
-    
-    [m_gif_delays addObject:[NSNumber numberWithInt: m_gif_gceb.delay]];
+    GIF_GRAPHIC_CONTROL_EXTENSION_BLOCK b;
 
+    if ([self giflib_get_n_bytes:&b length:sizeof(b)] < 0) return;
+    
+    AnimatedGifFrame* frame = [[AnimatedGifFrame alloc] init];
+    
+    frame.disposalMethod = (b.flag & 0x1c) >> 2;
+    frame.delay = b.delay;
+    frame.header = [NSData dataWithBytes:&b length:sizeof(b)];
+    
 #ifdef __PRINT_NSLOG__
-    NSLog(@"delay = %d",m_gif_gceb.delay);
+    NSLog(@"flag = %x, disposalMethod = %x",b.flag,frame.disposalMethod);
+    NSLog(@"delay = %d",b.delay);
 #endif
+    
+    [m_gif_frames addObject:frame];
 }
 
 -(void) giflib_comment_extension_block
@@ -346,7 +385,11 @@ static GIF_Library* instance;
     
 #ifdef __PRINT_NSLOG__
     NSLog(@"image block : position = (%d,%d)-(%d,%d)",b.left_position,b.top_position,b.width,b.height);
+    NSLog(@"image block : flags = %02X",b.flags);
 #endif
+    
+    AnimatedGifFrame* frame = [m_gif_frames lastObject];
+    frame.area = CGRectMake(b.left_position,b.top_position,b.width,b.height);
     
     int gif_lctf = (b.flags & 0x80) ? 1 : 0;
     
@@ -375,13 +418,18 @@ static GIF_Library* instance;
     {
         NSMutableData* gif_lct = [self giflib_get_n_bytes: (3 * gif_colors)];
         if (gif_lct == nil) return;
+
+#ifdef __PRINT_NSLOG__
+        NSLog(@"local color table = %@",gif_lct);
+#endif
+        
         [gif_data appendData:gif_lct];
     } else
     {
         [gif_data appendData:m_gif_global_color_table];
     }
     
-    [gif_data appendBytes:&m_gif_gceb length:sizeof(m_gif_gceb)];
+    [gif_data appendData:frame.header];
     
     b.flags &= 0x40;    // Interlace Flag
     
@@ -408,12 +456,12 @@ static GIF_Library* instance;
     u8 = 0x3b; // Trailer
     [gif_data appendBytes:&u8 length:sizeof(u8)];
     
-    [m_gif_frames addObject:[gif_data copy]];
+    frame.data = gif_data;
 }
 
 - (UIImage*) giflib_get_frame_as_image_index:(int)index
 {
-    NSData* frameData = (index < [m_gif_frames count]) ? [m_gif_frames objectAtIndex:index] : nil;
+    NSData* frameData = (index < [m_gif_frames count]) ? ((AnimatedGifFrame *)[m_gif_frames objectAtIndex:index]).data : nil;
     UIImage* image = nil;
     
     if (frameData != nil)
@@ -443,14 +491,118 @@ static GIF_Library* instance;
 			[array addObject: [self giflib_get_frame_as_image_index:i]];
 		}
 		
-		[self.m_gifView setAnimationImages:array];
-		
+		NSMutableArray *overlayArray = [[NSMutableArray alloc] init];
+		UIImage *firstImage = [array objectAtIndex:0];
+		CGSize size = firstImage.size;
+		CGRect rect = CGRectZero;
+		rect.size = size;
+        
+		UIGraphicsBeginImageContext(size);
+		CGContextRef ctx = UIGraphicsGetCurrentContext();
+        
+		int i = 0;
+		AnimatedGifFrame *lastFrame = nil;
+		for (UIImage *image in array)
+        {
+            // Get Frame
+			AnimatedGifFrame *frame = [m_gif_frames objectAtIndex:i];
+            
+            // Initialize Flag
+            UIImage *previousCanvas = nil;
+            
+            // Save Context
+			CGContextSaveGState(ctx);
+            // Change CTM
+			CGContextScaleCTM(ctx, 1.0, -1.0);
+			CGContextTranslateCTM(ctx, 0.0, -size.height);
+            
+            // Check if lastFrame exists
+            CGRect clipRect;
+            
+            // Disposal Method (Operations before draw frame)
+            switch (frame.disposalMethod)
+            {
+                case 1: // Do not dispose (draw over context)
+                    // Create Rect (y inverted) to clipping
+                    clipRect = CGRectMake(frame.area.origin.x, size.height - frame.area.size.height - frame.area.origin.y, frame.area.size.width, frame.area.size.height);
+                    // Clip Context
+                    CGContextClipToRect(ctx, clipRect);
+                    break;
+                case 2: // Restore to background the rect when the actual frame will go to be drawed
+                    // Create Rect (y inverted) to clipping
+                    clipRect = CGRectMake(frame.area.origin.x, size.height - frame.area.size.height - frame.area.origin.y, frame.area.size.width, frame.area.size.height);
+                    // Clip Context
+                    CGContextClipToRect(ctx, clipRect);
+                    break;
+                case 3: // Restore to Previous
+                    // Get Canvas
+                    previousCanvas = UIGraphicsGetImageFromCurrentImageContext();
+                    
+                    // Create Rect (y inverted) to clipping
+                    clipRect = CGRectMake(frame.area.origin.x, size.height - frame.area.size.height - frame.area.origin.y, frame.area.size.width, frame.area.size.height);
+                    // Clip Context
+                    CGContextClipToRect(ctx, clipRect);
+                    break;
+            }
+            
+            // Draw Actual Frame
+			CGContextDrawImage(ctx, rect, image.CGImage);
+            // Restore State
+			CGContextRestoreGState(ctx);
+            // Add Image created (only if the delay > 0)
+            if (frame.delay > 0)
+            {
+                [overlayArray addObject:UIGraphicsGetImageFromCurrentImageContext()];
+            }
+            // Set Last Frame
+			lastFrame = frame;
+            
+            // Disposal Method (Operations afte draw frame)
+            switch (frame.disposalMethod)
+            {
+                case 2: // Restore to background color the zone of the actual frame
+                    // Save Context
+                    CGContextSaveGState(ctx);
+                    // Change CTM
+                    CGContextScaleCTM(ctx, 1.0, -1.0);
+                    CGContextTranslateCTM(ctx, 0.0, -size.height);
+                    // Clear Context
+                    CGContextClearRect(ctx, clipRect);
+                    // Restore Context
+                    CGContextRestoreGState(ctx);
+                    break;
+                case 3: // Restore to Previous Canvas
+                    // Save Context
+                    CGContextSaveGState(ctx);
+                    // Change CTM
+                    CGContextScaleCTM(ctx, 1.0, -1.0);
+                    CGContextTranslateCTM(ctx, 0.0, -size.height);
+                    // Clear Context
+                    CGContextClearRect(ctx, lastFrame.area);
+                    // Draw previous frame
+                    CGContextDrawImage(ctx, rect, previousCanvas.CGImage);
+                    // Restore State
+                    CGContextRestoreGState(ctx);
+                    break;
+            }
+            
+            // Increment counter
+			i++;
+		}
+		UIGraphicsEndImageContext();
+        
+		[self.m_gifView setAnimationImages:overlayArray];
+        		
 		// Count up the total delay, since Cocoa doesn't do per frame delays.
 		double total = 0;
-		for (int i = 0; i < [m_gif_delays count]; i++)
-		{
-			total += [[m_gif_delays objectAtIndex:i] doubleValue];
+		for (AnimatedGifFrame *frame in m_gif_frames)
+        {
+			total += frame.delay;
 		}
+        
+#ifdef __PRINT_NSLOG__
+        NSLog(@"total delay = %f",total);
+#endif
 		
 		// GIFs store the delays as 1/100th of a second,
         // UIImageViews want it in seconds.
