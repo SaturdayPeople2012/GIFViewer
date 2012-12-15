@@ -120,6 +120,10 @@
      {
          if(result == nil)
          {
+#warning Need work localized strings.
+             UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"알림" message:@"사진첩에 로드할 GIF가 없습니다." delegate:self cancelButtonTitle:@"닫기" otherButtonTitles:nil, nil] autorelease];
+             alert.tag = kAlertTagEmptyGifFile;
+             [alert show];
              return;
          }
          //lkm - get data info
@@ -167,6 +171,14 @@
 	return 57;
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == kAlertTagEmptyGifFile)
+    {
+        if([self.parent respondsToSelector:@selector(cancelImagePicker)])
+            [self.parent performSelector:@selector(cancelImagePicker) withObject:self];
+    }
+}
 #pragma mark -
 #pragma mark Memory management
 

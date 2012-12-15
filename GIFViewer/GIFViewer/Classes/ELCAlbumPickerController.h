@@ -8,7 +8,10 @@
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@interface ELCAlbumPickerController : UITableViewController {
+#define kAlertTagEmptyGifFile 1
+
+@interface ELCAlbumPickerController : UITableViewController <UIAlertViewDelegate>
+{
 	
 	NSMutableArray *assetGroups;
 	NSOperationQueue *queue;
