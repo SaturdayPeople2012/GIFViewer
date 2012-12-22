@@ -76,7 +76,11 @@
     self.twitpicEngine = (GSTwitPicEngine *)[GSTwitPicEngine twitpicEngineWithDelegate:self];
     
     //[twitpicEngine setAccessToken:token];
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 6f60c5d6a780eed729db39d18f7847c3af93f697
     
     ActivityViewCustomProvider *customProvider =
     [[ActivityViewCustomProvider alloc]init];
@@ -102,15 +106,15 @@
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
-      /*  self.presentViewController = [[UIPopoverController alloc] initWithContentViewController:activityVC];
-        
-        CGRect rect = [[UIScreen mainScreen] bounds];
-        
-        [self.presentViewController
+        /*  self.presentViewController = [[UIPopoverController alloc] initWithContentViewController:activityVC];
+         
+         CGRect rect = [[UIScreen mainScreen] bounds];
+         
+         [self.presentViewController
          presentPopoverFromRect:rect inView:self.view
          permittedArrowDirections:0
          animated:YES];
-       */
+         */
     }
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]){
@@ -136,12 +140,12 @@
         [controller addURL:[NSURL URLWithString:@"http://www.naver.com"]];
         [controller addImage:[UIImage imageNamed:@"fb.png"]];
         [self presentViewController:activityVC animated:YES completion:nil];
-
+        
         
         
     } else if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]){
         [self presentViewController:activityVC animated:YES completion:nil];
-
+        
     } else{
         NSLog(@"UnAvailable");
     }

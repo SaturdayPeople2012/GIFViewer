@@ -120,6 +120,14 @@
      {
          if(result == nil)
          {
+<<<<<<< HEAD
+=======
+#warning Need work localized strings.
+//lkm bug.
+             //             UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"알림" message:@"사진첩에 로드할 GIF가 없습니다." delegate:self cancelButtonTitle:@"닫기" otherButtonTitles:nil, nil] autorelease];
+//             alert.tag = kAlertTagEmptyGifFile;
+//             [alert show];
+>>>>>>> 6f60c5d6a780eed729db39d18f7847c3af93f697
              return;
          }
          //lkm - get data info

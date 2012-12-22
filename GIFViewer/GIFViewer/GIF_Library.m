@@ -550,7 +550,11 @@ static GIF_Library* instance;
             // Restore State
 			CGContextRestoreGState(ctx);
             // Add Image created (only if the delay > 0)
+<<<<<<< HEAD
             //          if (frame.delay > 0)
+=======
+//          if (frame.delay > 0)
+>>>>>>> 6f60c5d6a780eed729db39d18f7847c3af93f697
             {
                 [overlayArray addObject:UIGraphicsGetImageFromCurrentImageContext()];
             }
@@ -601,7 +605,11 @@ static GIF_Library* instance;
 		}
         
         if (total == 0) total = ([m_gif_frames count] / 10) * 100;
+<<<<<<< HEAD
         
+=======
+                
+>>>>>>> 6f60c5d6a780eed729db39d18f7847c3af93f697
         self.m_delay_total = total;
         
 #ifdef __PRINT_NSLOG__

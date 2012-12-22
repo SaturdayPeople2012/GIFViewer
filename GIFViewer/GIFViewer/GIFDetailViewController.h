@@ -22,4 +22,4 @@
 
 @end
 
-extern NSString*   g_gifPath;
+extern NSString*    g_gifPath;

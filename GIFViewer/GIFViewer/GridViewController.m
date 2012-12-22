@@ -11,6 +11,11 @@
 #import "GIFDetailViewController.h"
 #import "MainViewController.h"
 #import "ListViewController.h"
+<<<<<<< HEAD
+=======
+#import "GifLoadViewController.h"
+
+>>>>>>> 6f60c5d6a780eed729db39d18f7847c3af93f697
 
 #define kGridMode 0
 #define kListMode 1
@@ -36,7 +41,7 @@ static NSString *CellIdentifier = @"Cell";
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
     NSArray *fileLists = [manager contentsOfDirectoryAtPath:documentsDirectory error:nil];
-
+    
     NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:[fileLists objectAtIndex:index]];
     UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
     return image;
@@ -77,9 +82,16 @@ static NSString *CellIdentifier = @"Cell";
     self.title = @"GridView";
     [self.gridView registerClass:[GridCell class] forCellWithReuseIdentifier:CellIdentifier];
     
+<<<<<<< HEAD
     UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
                                                                             target:self action:@selector(goEdit:)];
     self.navigationItem.rightBarButtonItem = editBtn;
+=======
+    //    self.editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+    //                                                                            target:self action:@selector(goEdit:)];
+    self.editBtn = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(goEdit:)];
+    self.navigationItem.rightBarButtonItem = _editBtn;
+>>>>>>> 6f60c5d6a780eed729db39d18f7847c3af93f697
     self.toolbarItems = [NSArray arrayWithObjects:flexible, segBtn,flexible, loadBtn, nil];
     
     self.gifDataArray = [NSMutableArray array];
@@ -102,12 +114,26 @@ static NSString *CellIdentifier = @"Cell";
 }
 #pragma mark - UIBarButton 관련 매서드
 - (void)goEdit:(id)sender{
-    
+
+    _editMode  =!_editMode;
+    if (_editMode) {
+        self.title = @"Edit Mode";
+        self.editBtn.title = @"Cancel";
+        
+    }else{
+        self.title = @"Grid VIew";
+        self.editBtn.title = @"Edit";
+    }
 }
 
 //기명이형 클래스와 연결
 - (void)goLoad:(id)sender{
+    ELCAlbumPickerController *albumController = [[ELCAlbumPickerController alloc] initWithNibName:@"ELCAlbumPickerController" bundle:[NSBundle mainBundle]];
+	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initWithRootViewController:albumController];
+    [albumController setParent:elcPicker];
+	[elcPicker setDelegate:self];
     
+    [self presentViewController:elcPicker animated:YES completion:nil];
 }
 
 
@@ -120,7 +146,11 @@ static NSString *CellIdentifier = @"Cell";
     
     UIImage *thumnails = [self getImageFromDocFolderAtIndex:indexPath.row];
     cell.gifImgView.image = thumnails;
+<<<<<<< HEAD
 //    cell.button.imageView.image = thumnails;
+=======
+    //    cell.button.imageView.image = thumnails;
+>>>>>>> 6f60c5d6a780eed729db39d18f7847c3af93f697
     [cell.button addTarget:self action:@selector(openGIF:) forControlEvents:UIControlEventTouchUpInside];
     cell.button.tag = indexPath.row;
     NSLog(@"index :%d   x : %f , y : %f",indexPath.row,cell.button.frame.origin.x,cell.button.frame.origin.y);
@@ -128,16 +158,30 @@ static NSString *CellIdentifier = @"Cell";
     return cell;
 }
 
+
+
+
+
 - (void)openGIF:(id)sender{
+<<<<<<< HEAD
     /*
      여기가 터치 메소드
      
      if( !edit){
+=======
+    if(_editMode == YES){
+        //태그저장 + 체크이미지
+        /*
+         [cell addcheck];
+         */
+    }else{
+>>>>>>> 6f60c5d6a780eed729db39d18f7847c3af93f697
         UIButton *btn = sender;
         NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *docsDir = [dirPaths objectAtIndex:0];
         g_gifPath = [docsDir stringByAppendingPathComponent:[self.fileLists objectAtIndex:btn.tag]];
         GIFDetailViewController *detailViewController = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
+<<<<<<< HEAD
          
         detailViewController.filePath = g_gifPath;
          
@@ -163,8 +207,61 @@ static NSString *CellIdentifier = @"Cell";
     detailViewController.filePath = g_gifPath;
 
     [self.navigationController pushViewController:detailViewController animated:YES];
-
+=======
+        
+//        detailViewController.filePath = g_gifPath;
+        
+        [self.navigationController pushViewController:detailViewController animated:YES];
+    }
 }
+
+#pragma mark - ELC Delegate
+
+- (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info {
+	
+	[self dismissModalViewControllerAnimated:YES];
+    for(NSDictionary *dict in info) {
+        
+        UIImage *gifImage = [dict objectForKey:UIImagePickerControllerOriginalImage];
+        //document 경로
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        
+        NSString *fileName = [documentsDirectory stringByAppendingPathComponent:@"123.gif"];
+	}
+    
+    
+    //기명처리
+    /*
+     for (UIView *v in [scrollview subviews]) {
+     [v removeFromSuperview];
+     }
+     
+     CGRect workingFrame = scrollview.frame;
+     workingFrame.origin.x = 0;
+     
+     for(NSDictionary *dict in info) {
+     
+     UIImageView *imageview = [[UIImageView alloc] initWithImage:[dict objectForKey:UIImagePickerControllerOriginalImage]];
+     [imageview setContentMode:UIViewContentModeScaleAspectFit];
+     imageview.frame = workingFrame;
+     
+     [scrollview addSubview:imageview];
+     
+     workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
+     }
+     
+     [scrollview setPagingEnabled:YES];
+     [scrollview setContentSize:CGSizeMake(workingFrame.origin.x, workingFrame.size.height)];
+     */
+}
+>>>>>>> 6f60c5d6a780eed729db39d18f7847c3af93f697
+
+- (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker {
+    
+	[self dismissModalViewControllerAnimated:YES];
+}
+
 
 
 @end
