@@ -105,6 +105,7 @@ static NSString *CellIdentifier = @"Cell";
 }
 #pragma mark - UIBarButton 관련 매서드
 - (void)goEdit:(id)sender{
+
     _editMode  =!_editMode;
     if (_editMode) {
         self.title = @"Edit Mode";
