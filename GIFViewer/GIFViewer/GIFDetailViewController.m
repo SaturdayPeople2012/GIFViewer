@@ -32,95 +32,125 @@ NSString*   g_gifPath = nil;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithTitle:@"편집" style:UIBarButtonItemStyleBordered
-                                                              target:self action:@selector(goEdit:)];
-    UIBarButtonItem *funcBtn = [[UIBarButtonItem alloc]initWithTitle:@"기능" style:UIBarButtonItemStyleBordered
-                                                              target:self action:@selector(goFunc:)];
-    UIBarButtonItem *deleteBtn = [[UIBarButtonItem alloc]initWithTitle:@"삭제" style:UIBarButtonItemStyleBordered
-                                                              target:self action:@selector(goDelete:)];
-    UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
-                                 UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+//    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithTitle:@"편집" style:UIBarButtonItemStyleBordered target:self action:@selector(goEdit:)];
+    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(goEdit:)];
+    UIBarButtonItem *funcBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(goFunc:)];
+    UIBarButtonItem *deleteBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(goDelete:)];
+    UIBarButtonItem *slowBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(goPlaySpeed:)];
+    UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(goPausePlay:)];
+    UIBarButtonItem *fastBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(goPlaySpeed:)];
+    UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    slowBtn.tag = -1;
+    fastBtn.tag =  1;
     
     self.navigationItem.rightBarButtonItem = editBtn;
-    self.toolbarItems = [NSArray arrayWithObjects:funcBtn, flexible, deleteBtn, nil];
+    self.toolbarItems = [NSArray arrayWithObjects:funcBtn, flexible, slowBtn, flexible, pauseBtn, flexible, fastBtn, flexible, deleteBtn, nil];
 
     ///////////////////////////////////////////////////////////////////////////////////////
-#if 1
+#if 0
     NSArray* dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     g_gifPath = [dirPath objectAtIndex:0];
 //    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/frozen_pond.gif"];
 //    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/big bear.gif"];
-    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/color test.gif"];
-//    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/cat.gif"];
+//    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/color_test.gif"];
+//    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/psy-gangnam-style-1.gif"];
+    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/aa.gif"];
 //    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/kid_and_cat.gif"];
 //  g_gifPath = [g_gifPath stringByAppendingString:@"/apple_logo_animated.gif"];
 #endif
     NSLog(@"document path = \"%@\"",g_gifPath);
     
-    g_gifPath = _filePath;
-    ///////////////////////////////////////////////////////////////////////////////////////
+    self.title = @"GIFViewer";
 
-#if 0
-    
-    NSFileManager *manager = [NSFileManager defaultManager];
-    NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"bear" ofType:@"gif"];    
-    [manager copyItemAtPath:resourcePath toPath:g_gifPath error:nil];
+    NSRange range = [g_gifPath rangeOfString:@"/" options:NSBackwardsSearch];
+    if (range.location != NSNotFound)
+    {
+        NSRange rangeToFileName = NSMakeRange(range.location+1,[g_gifPath length] - 1); // get a range without the space character
+        NSLog(@"Range = %@",NSStringFromRange(rangeToFileName));
+//        NSString *strTitle = [g_gifPath substringWithRange:rangeToFileName];
+//        NSLog(@"Found ain at %@",strTitle);
+    }
+    // prints "Found ain at 40"
+    ///////////////////////////////////////////////////////////////////////////////////////
+                             
+//    self.navigationController.view.alpha = 0.5;
 
-#endif
-    
     ///////////////////////////////////////////////////////////////////////////////////////
     
-    m_width = m_height = 0;
+    m_width = m_height = m_delay = 0, m_isPlay = 1, m_showMenu = 1;
     
-    __block CGRect      rcFrame;
     __block UIImageView *gifView;
-    
-    rcFrame = self.view.frame;
-
-    NSLog(@"(%f,%f)-(%f,%f)",rcFrame.origin.x,rcFrame.origin.y,rcFrame.size.width,rcFrame.size.height);
     
     gifView = [GIF_Library giflib_get_gif_view_from_path:g_gifPath parent:self completion:^(int width,int height)
     {
         m_width = width, m_height = height;
-        gifView.frame = [self adjustViewSize:rcFrame width:width height:height];
+        gifView.frame = [self adjustViewSizeAndLocate:width height:height];
     }];
     
     gifView.tag = 100;
         
     [m_gifPlayer addSubview:gifView];
+    self.view.backgroundColor = [UIColor blackColor];
 }
 
-- (CGRect)adjustViewSize:(CGRect)screen width:(int)width height:(int)height
+- (CGRect)adjustViewSizeAndLocate:(int)width height:(int)height
 {
     CGRect view;
     float   x,t_width,power_x;
-    float   y,t_height,power_y;
+    float   y,t_height,power_y,statusBarHeight;
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    CGRect fullScreenRect = [[UIScreen mainScreen] bounds]; //implicitly in Portrait orientation.
+    CGRect statusBar = [[UIApplication sharedApplication] statusBarFrame];
+
+    NSLog(@"Status Bar Size : %@",NSStringFromCGRect(statusBar));
     
-    if (width > screen.size.width || height > screen.size.height)
+    if (orientation == UIInterfaceOrientationLandscapeRight || orientation ==  UIInterfaceOrientationLandscapeLeft)
     {
-        power_x = width / screen.size.width;
-        power_y = height / screen.size.height;
+        CGRect temp = CGRectZero;
+        temp.size.width = fullScreenRect.size.height;
+        temp.size.height = fullScreenRect.size.width;
+        fullScreenRect = temp;
+        
+        statusBarHeight = statusBar.size.width;
+    } else
+    {
+        statusBarHeight = statusBar.size.height;
+    }
+    
+    NSLog(@"FullScreenRect : %@",NSStringFromCGRect(fullScreenRect));
+    
+    if (width > fullScreenRect.size.width || height > fullScreenRect.size.height)
+    {
+        power_x = width / fullScreenRect.size.width;
+        power_y = height / fullScreenRect.size.height;
         if (power_x > power_y)
         {
-            x = 0, t_width = screen.size.width;
+            x = 0, t_width = fullScreenRect.size.width;
             t_height = height / power_x;
-            y = (screen.size.height - t_height) / 2;
+            y = (fullScreenRect.size.height - t_height) / 2;
         } else
         {
-            y = 0, t_height = screen.size.height;
+            y = 0, t_height = fullScreenRect.size.height;
             t_width = width / power_y;
-            x = (screen.size.width - t_width) / 2;
+            x = (fullScreenRect.size.width - t_width) / 2;
         }
     } else
     {
-        x = (screen.size.width - width) / 2;
-        y = (screen.size.height - height) / 2;
+        x = (fullScreenRect.size.width - width) / 2;
+        y = (fullScreenRect.size.height - height) / 2;
         t_width = width;
         t_height = height;
     }
+
+//    CGPoint winPoint = [self.view.superview convertPoint:self.view.bounds.origin  toView:nil];
+//    NSLog(@"winPoint.x=%f, winPoint.y=%f",winPoint.x, winPoint.y);
+
+    NSLog(@"view.origin.x=%f, view.origin.y=%f",self.view.frame.origin.x,self.view.frame.origin.y);
     
     view.origin.x = x;
-    view.origin.y = y;
+    if (m_showMenu) view.origin.y = y - (self.navigationController.navigationBar.frame.size.height + statusBarHeight);
+    else            view.origin.y = y;
     view.size.width = t_width;
     view.size.height = t_height;
     
@@ -161,30 +191,55 @@ NSString*   g_gifPath = nil;
 
 - (void)goFunc:(id)sender
 {
-    UIImageView* gifAnimation = [[m_gifPlayer subviews] objectAtIndex:0];
-    
-//    NSLog(@"--<3>--(%.0f,%.0f)-(%.0f,%.0f)",gifAnimation.frame.origin.x,gifAnimation.frame.origin.y,gifAnimation.frame.size.width,gifAnimation.frame.size.height);
-//
-//    gifAnimation.frame = CGRectMake(100,100,gifAnimation.frame.size.width+50,gifAnimation.frame.size.height+50);
-//
-//    [self.m_gifView setAnimationDuration:total/100];
-
-    NSLog(@"animationDuration=%f",gifAnimation.animationDuration + 1);
-    
-    [gifAnimation setAnimationDuration:gifAnimation.animationDuration + 1];
-    
-    [gifAnimation startAnimating];
 }
 
 - (void)goDelete:(id)sender
 {
+}
+
+- (void)goPlaySpeed:(UIBarButtonItem*)sender
+{
+    int tag = sender.tag * -1;
+    
+    if ((m_delay + tag) < -5 || (m_delay + tag) > 5) return;
+    
+    m_delay += tag;
+    
+    NSLog(@"delay = %d",m_delay);
+    
     UIImageView* gifAnimation = [[m_gifPlayer subviews] objectAtIndex:0];
 
-    NSLog(@"animationDuration=%f",gifAnimation.animationDuration - 1);
+    GIF_Library* inst = [GIF_Library giflib_sharedInstance];
+        
+    NSLog(@"animationDuration=%f",(inst.m_delay_total + ((inst.m_delay_total / 8) * m_delay)) / 100);
     
-    [gifAnimation setAnimationDuration:gifAnimation.animationDuration - 1];
-
+    [gifAnimation setAnimationDuration:(inst.m_delay_total + ((inst.m_delay_total / 8) * m_delay)) / 100];
+    
     [gifAnimation startAnimating];
+}
+
+- (void)goPausePlay:(UIBarButtonItem*)sender
+{
+    UIImageView* gifAnimation = [[m_gifPlayer subviews] objectAtIndex:0];
+
+    if (m_isPlay == 1) [gifAnimation stopAnimating];
+    else               [gifAnimation startAnimating];
+ 
+    m_isPlay ^= 1;
+
+    NSMutableArray* btnItems = [self.toolbarItems mutableCopy];
+
+    if (m_isPlay)
+    {
+        UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(goPausePlay:)];
+        [btnItems replaceObjectAtIndex:4 withObject:pauseBtn];
+    } else
+    {
+        UIBarButtonItem *playBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(goPausePlay:)];
+        [btnItems replaceObjectAtIndex:4 withObject:playBtn];
+    }
+    
+    self.toolbarItems = btnItems;
 }
 
 - (void)didReceiveMemoryWarning
@@ -197,17 +252,28 @@ NSString*   g_gifPath = nil;
 {
 //    NSLog(@"willAnimateRotationToInterfaceOrientation");
 
-    CGRect rc = self.view.frame;  
+    [m_gifPlayer viewWithTag:100].frame = [self adjustViewSizeAndLocate:m_width height:m_height];
+}
 
-    [m_gifPlayer viewWithTag:100].frame = [self adjustViewSize:rc width:m_width height:m_height];
-
-//    NSLog(@"(%f,%f)-(%f,%f)",rc.origin.x,rc.origin.y,rc.size.width,rc.size.height);
+-(void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
+{
+    m_gifPlayer.center = self.view.center;
     
-    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
-        toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
+    m_showMenu ^= 1;
+
+    if (m_showMenu)
     {
-        
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+        [self.navigationController setNavigationBarHidden:NO animated:NO];
+        [self.navigationController setToolbarHidden:NO];
+    } else
+    {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
+        [self.navigationController setToolbarHidden:YES];
     }
+    
+    [m_gifPlayer viewWithTag:100].frame = [self adjustViewSizeAndLocate:m_width height:m_height];
 }
 
 @end

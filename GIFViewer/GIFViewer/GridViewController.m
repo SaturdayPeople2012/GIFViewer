@@ -161,7 +161,7 @@ static NSString *CellIdentifier = @"Cell";
         g_gifPath = [docsDir stringByAppendingPathComponent:[self.fileLists objectAtIndex:btn.tag]];
         GIFDetailViewController *detailViewController = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
         
-        detailViewController.filePath = g_gifPath;
+//        detailViewController.filePath = g_gifPath;
         
         [self.navigationController pushViewController:detailViewController animated:YES];
     }

@@ -80,6 +80,7 @@
 }
 
 @property bool m_busyInstance;
+@property double m_delay_total;
 @property (nonatomic, strong) UIImageView* m_gifView;
 @property (nonatomic, strong) void (^m_blockCompletion)(int width,int height);
 @property (nonatomic, strong) UIViewController* m_parentVC;
