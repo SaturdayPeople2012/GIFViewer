@@ -12,5 +12,4 @@
 //gif 올릴 이미지뷰
 @property (strong, nonatomic) UIImageView *gifImgView;
 @property (strong, nonatomic) UIButton *button;
-@property (strong, nonatomic) UITapGestureRecognizer *tapGesture;
 @end

@@ -2,14 +2,24 @@
 //  GIFDetailViewController.h
 //  GIFViewer
 //
-//  Created by 양원석 on 12. 10. 22..
-//  Copyright (c) 2012년 양원석. All rights reserved.
+//  Created by CHO,TAE-SANG on 12. 10. 22..
+//  Copyright (c) 2012년 CHO,TAE-SANG. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "GIF_Library.h"
 
 @interface GIFDetailViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *gifPlayer;
+{
+    int m_width;
+    int m_height;
+    int m_isPlay;
+    int m_delay;
+    int m_showMenu;
+}
+@property (weak, nonatomic) IBOutlet UIImageView *m_gifPlayer;
+@property (strong, nonatomic) NSString *filePath;
 
 @end
+
+extern NSString*   g_gifPath;

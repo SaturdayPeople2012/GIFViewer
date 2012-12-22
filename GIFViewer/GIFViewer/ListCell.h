@@ -14,5 +14,5 @@
 @property (weak,nonatomic) IBOutlet UILabel *title;
 @property (weak,nonatomic) IBOutlet UILabel *time;
 @property (weak,nonatomic) IBOutlet UILabel *date;
-
+@property (strong, nonatomic) UIButton *button;
 @end

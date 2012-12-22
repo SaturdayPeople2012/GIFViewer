@@ -13,6 +13,11 @@
 #import "ELCImagePickerDemoViewController.h"
 #import "MessageComposerViewController.h"
 
+#import "ActivityViewCustomProvider.h"
+#import "ActivityViewCustomActivity.h"
+
+
+
 @interface MainViewController ()
 
 @end
@@ -31,75 +36,84 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
+    GridViewController *gVC = [[GridViewController alloc]initWithNibName:@"GridViewController" bundle:nil];
+    [self.navigationController pushViewController:gVC animated:NO];
     
-    // Do any additional setup after loading the view from its nib.
 }
 
+- (void)goLoad:(id)sender{
+    //기명
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)goGridView:(id)sender {
-    GridViewController *gridVC = [[GridViewController alloc]initWithNibName:@"GridViewController" bundle:nil];
-    [self.navigationController pushViewController:gridVC animated:YES];
-}
-
-
-
-- (IBAction)goSMSView:(id)sender {
-   // MessageComposerViewController *gridVC = [[MessageComposerViewController alloc]initWithNibName:@"MessageComposerViewController" bundle:nil];
-   // [self.navigationController pushViewController:gridVC animated:YES];
-}
-
-- (IBAction)goListView:(id)sender {
-    ListViewController *listVC = [[ListViewController alloc]initWithNibName:@"ListViewController" bundle:nil];
-    [self.navigationController pushViewController:listVC animated:YES];
-}
-
-- (IBAction)goGIFView:(id)sender {
-    GIFDetailViewController *gifVC = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
-    [self.navigationController pushViewController:gifVC animated:YES];
-}
-
-- (IBAction)goGIFLoaderViewController:(id)sender {
-    ELCImagePickerDemoViewController *elDemoViewController = [[ELCImagePickerDemoViewController alloc]initWithNibName:@"ELCImagePickerDemoViewController" bundle:nil];
-    [self presentViewController:elDemoViewController animated:YES completion:nil];
-}
-
-
-- (IBAction)activityButtonPressed:(id)sender {
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
-    {
-        NSString *text = @"Lime Cat";
-        UIImage *image = [UIImage imageNamed:@"lime-cat"];
-        NSArray *activityItems = [NSArray arrayWithObjects:text,image , nil];
-        UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems: activityItems applicationActivities:nil];
-        [self presentViewController:avc animated:YES completion:nil];
+- (void)twitpicDidFinishUpload:(NSDictionary *)response {
+    NSLog(@"TwitPic finished uploading: %@", response);
+    
+    // [response objectForKey:@"parsedResponse"] gives an NSDictionary of the response one of the parsing libraries was available.
+    // Otherwise, use [[response objectForKey:@"request"] objectForKey:@"responseString"] to parse yourself.
+    
+    if ([[[response objectForKey:@"request"] userInfo] objectForKey:@"message"] > 0 && [[response objectForKey:@"parsedResponse"] count] > 0) {
+        // Uncomment to update status upon successful upload, using MGTwitterEngine's instance.
+        // [twitterEngine sendUpdate:[NSString stringWithFormat:@"%@ %@", [[[response objectForKey:@"request"] userInfo] objectForKey:@"message"], [[response objectForKey:@"parsedResponse"] objectForKey:@"url"]]];
     }
 }
 
--(IBAction)goSNS_FaceBook:(id)sender{
+- (void)twitpicDidFailUpload:(NSDictionary *)error {
+    NSLog(@"TwitPic failed to upload: %@", error);
+    
+    if ([[error objectForKey:@"request"] responseStatusCode] == 401) {
+        // UIAlertViewQuick(@"Authentication failed", [error objectForKey:@"errorDescription"], @"OK");
+    }
+}
+
+-(IBAction)goActivityButtonPressed:(id)sender{
     
     
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+    self.twitpicEngine = (GSTwitPicEngine *)[GSTwitPicEngine twitpicEngineWithDelegate:self];
+    
+    //[twitpicEngine setAccessToken:token];
+
+    
+    ActivityViewCustomProvider *customProvider =
+    [[ActivityViewCustomProvider alloc]init];
+    
+    NSString *text2 = @"'짤방 테스트 입니다'";
+    UIImage *image2 = [UIImage imageNamed:@"Test2.gif"];
+    
+    NSArray *items = [NSArray arrayWithObjects:customProvider,text2,image2,nil];
+    
+    ActivityViewCustomActivity *ca = [[ActivityViewCustomActivity alloc]init];
+    
+    UIActivityViewController *activityVC =
+    [[UIActivityViewController alloc] initWithActivityItems:items
+                                      applicationActivities:[NSArray arrayWithObject:ca]];
+    
+    activityVC.excludedActivityTypes = @[UIActivityTypePostToWeibo, UIActivityTypeAssignToContact, UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeSaveToCameraRoll];
+    
+    activityVC.completionHandler = ^(NSString *activityType, BOOL completed)
     {
-        NSString *text = @"'짤방 테스트 입니다'";
+        NSLog(@" activityType: %@", activityType);
+        NSLog(@" completed: %i", completed);
+    };
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+      /*  self.presentViewController = [[UIPopoverController alloc] initWithContentViewController:activityVC];
         
-        UIImage *image = [UIImage imageNamed:@"Test1.jpeg"];
-        NSArray *activityItems = [NSArray arrayWithObjects:text,image , nil];
-        UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems: activityItems applicationActivities:nil];
-        [self presentViewController:avc animated:YES completion:nil];
+        CGRect rect = [[UIScreen mainScreen] bounds];
+        
+        [self.presentViewController
+         presentPopoverFromRect:rect inView:self.view
+         permittedArrowDirections:0
+         animated:YES];
+       */
     }
-
     
-    
-    return;
-    
-    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]){
         
         SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         
@@ -121,11 +135,14 @@
         [controller setInitialText:@"Uploaded by GifViewer App"];
         [controller addURL:[NSURL URLWithString:@"http://www.naver.com"]];
         [controller addImage:[UIImage imageNamed:@"fb.png"]];
+        [self presentViewController:activityVC animated:YES completion:nil];
+
         
-        [self presentViewController:controller animated:YES completion:Nil];
         
-    }
-    else{
+    } else if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]){
+        [self presentViewController:activityVC animated:YES completion:nil];
+
+    } else{
         NSLog(@"UnAvailable");
     }
 }

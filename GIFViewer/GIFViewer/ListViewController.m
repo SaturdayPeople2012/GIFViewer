@@ -10,28 +10,71 @@ static NSString *kDeleteAllTitle = @"Delete All";
 static NSString *kDeletePartialTitle = @"Delete (%d)";
 
 #import "ListViewController.h"
+#import "GIFDetailViewController.h"
 
 #define kListCellHeight 112.0f
 
 @interface ListViewController ()
+@property (strong, nonatomic)NSArray *fileLists;
 
 @end
 
 @implementation ListViewController
 @synthesize  listData, editButton, cancelButton, deleteButton;
 
+-(void) getDataFromDocumentFolder{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    self.fileLists = [manager contentsOfDirectoryAtPath:documentsDirectory error:nil];
+    for (NSString *string in _fileLists) {
+        [self.gifDataArray addObject:[string stringByDeletingPathExtension]];
+    }//self.gifDataArray는 파일명만 갖고 있도록 했는데... 왜했는지는 까묵음..
+}
+
+- (UIImage *) getImageFromDocFolderAtIndex:(NSInteger)index{
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSArray *fileLists = [manager contentsOfDirectoryAtPath:documentsDirectory error:nil];
+    
+    NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:[fileLists objectAtIndex:index]];
+    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+    return image;
+}
+
 - (void)resetUI
 {
+    editButton = [[UIBarButtonItem alloc]initWithTitle:@"편집" style:UIBarButtonItemStyleBordered
+                                                target:self action:@selector(edit:)];
+    self.navigationItem.rightBarButtonItem = editButton;
+    self.navigationItem.hidesBackButton = YES;
+    
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:@[@"Grid",@"List"]];
+    segmentedControl.frame = CGRectMake(0, 0, 130, 30);
+    [segmentedControl addTarget:self action:@selector(selectedMode:) forControlEvents:UIControlEventValueChanged];
+    
+    segmentedControl.selectedSegmentIndex=1;
+    segBtn = [[UIBarButtonItem alloc]initWithCustomView:segmentedControl];
+    
+    
+    flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    loadButton = [[UIBarButtonItem alloc]initWithTitle:@"Load" style:UIBarButtonItemStyleBordered
+                                                target:self action:@selector(load:)];
+    loadButton.tintColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0f];
+    self.toolbarItems = [NSArray arrayWithObjects:flexible, segBtn,flexible, loadButton, nil];
+    
+    
+    self.tableView.allowsMultipleSelectionDuringEditing = YES;
+    
+    self.deleteButton.tintColor = [UIColor redColor];
+    self.navigationItem.rightBarButtonItem = self.editButton;
     
     NSLog(@"resetui");
     // leave edit mode for our table and apply the edit button
     self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.rightBarButtonItem = self.editButton;
     [self.tableView setEditing:NO animated:YES];
-    flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    loadButton = [[UIBarButtonItem alloc] initWithTitle:@"load" style:UIBarButtonItemStyleBordered target:self action:@selector(load:)];
-    loadButton.tintColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0f];
-    self.toolbarItems = [NSArray arrayWithObjects:flexible,loadButton,nil];
     
 }
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -48,11 +91,25 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"didselectatindexpath\n");
+    
+    
+
+    
 	if (!self.tableView.isEditing)
     {
         self.title = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
         //[[self navigationController] pushViewController:self.viewController animated:YES];
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *docsDir = [dirPaths objectAtIndex:0];
+        g_gifPath = [docsDir stringByAppendingPathComponent:[self.fileLists objectAtIndex:indexPath.row]];
+        GIFDetailViewController *detailViewController = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
+        
+        detailViewController.filePath = g_gifPath;
+        
+        [self.navigationController pushViewController:detailViewController animated:YES];
+        
     }
     else
     {
@@ -64,58 +121,48 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
             deleteButtonTitle = kDeleteAllTitle;
         }
         self.deleteButton.title = deleteButtonTitle;
+        
+        
     }
 }
 
-- (void)viewDidUnload
-{
-    NSLog(@"view did unload");
-	[super viewDidUnload];
-    
-    
-    self.editButton = nil;
-    self.cancelButton = nil;
-    self.deleteButton = nil;
-    
-}
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    printf("Call NibName\n");
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    printf("Call NibName\n");
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        // Custom initialization
+//    }
+//    return self;
+//}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSMutableArray *testArray = [[NSMutableArray alloc] initWithObjects:@"a",@"b",@"c",nil];
-    self.listData = testArray;
+    NSLog(@"viewDidLoad");
+    self.title = @"ListView";
+    self.tableView.delegate = self;
+    self.tableView.dataSource  =self;
     
     editButton = [[UIBarButtonItem alloc]initWithTitle:@"편집" style:UIBarButtonItemStyleBordered
-                                                target:self action:@selector(edit:)];
+                                                              target:self action:@selector(edit:)];
     self.navigationItem.rightBarButtonItem = editButton;
+    self.navigationItem.hidesBackButton = YES;
     
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:@[@"Grid",@"List"]];
+    segmentedControl.frame = CGRectMake(0, 0, 130, 30);
+    [segmentedControl addTarget:self action:@selector(selectedMode:) forControlEvents:UIControlEventValueChanged];
     
-    
-    
-    
+    segmentedControl.selectedSegmentIndex=1;
+    segBtn = [[UIBarButtonItem alloc]initWithCustomView:segmentedControl];
     
     
     flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     loadButton = [[UIBarButtonItem alloc]initWithTitle:@"Load" style:UIBarButtonItemStyleBordered
-                                                target:self action:@selector(load:)];
+                                                              target:self action:@selector(load:)];
     loadButton.tintColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0f];
-    self.toolbarItems = [NSArray arrayWithObjects:flexible,loadButton,nil];
-    
-    
-    NSLog(@"view did load");
-	[super viewDidLoad];
-	
-    
+    self.toolbarItems = [NSArray arrayWithObjects:flexible, segBtn,flexible, loadButton, nil];
+
     
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
     
@@ -123,11 +170,21 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     self.navigationItem.rightBarButtonItem = self.editButton;
     
     [self resetUI];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipe:)];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.tableView addGestureRecognizer:swipeGesture];
+
+    
+    self.gifDataArray = [NSMutableArray array];
+    [self getDataFromDocumentFolder];
+    NSLog(@"EXIT VIEWDIDLOAD");
+}
+- (void)selectedMode:(UISegmentedControl *)control{
+    if (control.selectedSegmentIndex == 0) {
+        [self.navigationController popViewControllerAnimated:NO];
+    }
+    [control setSelectedSegmentIndex:1];
 }
 
 -(void)load:(id)sender{
@@ -150,8 +207,8 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
 }
 
 -(void)edit:(id)sender{
-    
-    
+
+
     cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"close" style:UIBarButtonItemStyleBordered target:self action:@selector(close:)];
     self.navigationItem.rightBarButtonItem = cancelButton;
     
@@ -161,23 +218,14 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     deleteButton =[[UIBarButtonItem alloc] initWithTitle:@"Delete" style:UIBarButtonItemStyleBordered target:self action:@selector(delete:)];
     deleteButton.tintColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0f];
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     NSLog(@"editAction\n");
     // setup our UI for editing
     self.navigationItem.rightBarButtonItem = self.cancelButton;
     
     self.deleteButton.title = kDeleteAllTitle;
     
-    // self.navigationItem.leftBarButtonItem = self.deleteButton;
+   // self.navigationItem.leftBarButtonItem = self.deleteButton;
     
     [self.tableView setEditing:YES animated:YES];
     self.toolbarItems = [NSArray arrayWithObjects:flexible,deleteButton,nil];
@@ -186,20 +234,10 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
 
 
 -(void)close:(id)sender{
-    NSLog(@"cancle action\n");
-    [self resetUI]; // reset our UI
-
+ NSLog(@"cancle action\n");
+ [self resetUI]; // reset our UI
 }
-/*
- //액션시트
- 
- -(void)buttonPressed{
- NSLog(@"삭제합니까?\n");
- UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"지우시겠습니까?" delegate:self cancelButtonTitle:@"취 소" destructiveButtonTitle:@"삭 제" otherButtonTitles:nil];
- [actionSheet showInView:self.view];
- 
- }
- */
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"actionSheet\n");
@@ -214,16 +252,15 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
             NSMutableArray *deletionArray = [NSMutableArray array];
             for (NSIndexPath *selectionIndex in selectedRows)
             {
-                [deletionArray addObject:[self.listData objectAtIndex:selectionIndex.row]];
+                [deletionArray addObject:[self.gifDataArray objectAtIndex:selectionIndex.row]];
             }
-            [self.listData removeObjectsInArray:deletionArray];
-            
+            [self.gifDataArray removeObjectsInArray:deletionArray];
             // then delete the only the rows in our table that were selected
             [self.tableView deleteRowsAtIndexPaths:selectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
         }
         else
         {
-            [self.listData removeAllObjects];
+            [self.gifDataArray removeAllObjects];
             
             // since we are deleting all the rows, just reload the current table section
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -232,11 +269,10 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
         [self resetUI]; // reset our UI
         [self.tableView setEditing:NO animated:YES];
         
-        self.editButton.enabled = (self.listData.count > 0) ? YES : NO;
+        self.editButton.enabled = (self.gifDataArray.count > 0) ? YES : NO;
+        [self.tableView reloadData];
+        
 	}
-    
-
-    
 }
 - (void)didReceiveMemoryWarning
 {
@@ -247,19 +283,30 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
 #pragma mark - Table view data source
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"heightForRowIndex");
     return kListCellHeight;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
-    return 1;
+   // Return the number of sections.
+    return [_gifDataArray count];
 }
+
+//-(CGFloat)getLabelHeightForIndex:(NSInteger)index
+//{
+//    return 105;
+//}
+
+
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.listData count];
+    return [self.gifDataArray count];
+    //return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -267,7 +314,7 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     printf("셀 리턴\n");
     
     
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"BaseCell";
     ListCell *listCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (listCell == nil)
@@ -279,30 +326,21 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
                 listCell = (ListCell *)oneObject;
     }
     listCell.time.text = @"시간라벨";
+    UIImage *thumnails = [self getImageFromDocFolderAtIndex:indexPath.row];
     
-    UIImage *image = [UIImage imageNamed:@"apple_logo_animated.gif"];
-    listCell.gifImage.image = image;
+    listCell.gifImage.image = thumnails;
     
     NSUInteger row = [indexPath row];
     listCell.title.text = [listData objectAtIndex:row];
     //[self.view reloadInputViews];
     
+    [listCell.button addTarget:self action:@selector(openGIF:) forControlEvents:UIControlEventTouchUpInside];
+    listCell.button.tag = indexPath.row;
+
+    
     return listCell;
 }
 
-- (void) loadView
-{
-    //수신 노티피케이션
-    NSNotificationCenter *nc = [ NSNotificationCenter defaultCenter ];
-    [nc addObserver:self selector:@selector(viewchange:) name:@"cellInfo" object:nil];
-    
-    [super loadView];
-    printf("로드뷰\n");
-}
-
--(void)viewChange:(id)sender{
-    NSLog(@"뷰전환 메소드 구현해야됨\n");
-}
 
 //todo 삭제 기능
 
@@ -315,49 +353,49 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     
     return UITableViewCellEditingStyleDelete;
 }
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+
+
+
+
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
 }
 
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
 
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        NSFileManager *manager = [NSFileManager defaultManager];
+        NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *docDir = [dirPaths objectAtIndex:0];
+        NSString *imagePath = [docDir stringByAppendingPathComponent:[_fileLists objectAtIndex:indexPath.row]];
 
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
+        [manager removeItemAtPath:imagePath error:nil];
+    }   
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }   
+}
 
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
+- (void)openGIF:(id)sender{
+    UIButton *btn = sender;
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = [dirPaths objectAtIndex:0];
+    g_gifPath = [docsDir stringByAppendingPathComponent:[self.fileLists objectAtIndex:btn.tag]];
+    GIFDetailViewController *detailViewController = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
+    
+    detailViewController.filePath = g_gifPath;
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    
+}
+
 
 @end

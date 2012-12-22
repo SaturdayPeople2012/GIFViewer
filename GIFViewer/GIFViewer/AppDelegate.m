@@ -8,23 +8,41 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
-
+#import "GridViewController.h"
+#import "ListViewController.h"
+#define kGridMode 0
+#define kListMode 1
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+//    [UIView Start];
+    self.naviController = [[UINavigationController alloc]init];
+//    self.segmentedContol
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
-    self.naviController = [[UINavigationController alloc]init];
     MainViewController *mainVC = [[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
     [self.naviController pushViewController:mainVC animated:NO];
     [self.naviController setToolbarHidden:NO];
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+    self.naviController.navigationBar.tintColor = [UIColor blackColor];
+    self.naviController.toolbar.tintColor = [UIColor blackColor];
+    
     self.window.rootViewController = self.naviController;
-        
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (NSArray *)segmentViewControllers{
+    UIViewController *gridViewContorller =[[GridViewController alloc]initWithNibName:@"GridViewController" bundle:nil];
+    UIViewController *listViewController = [[ListViewController alloc]init];
+    
+    NSArray *viewContollers = @[gridViewContorller,listViewController];
+    return viewContollers;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

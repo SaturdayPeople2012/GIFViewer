@@ -14,8 +14,13 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
         // Initialization code
-    }
+        self.button = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.button.frame = CGRectMake(0, 0, 65, 65);//self.frame;
+        
+        [self addSubview:_button];
+        }
     return self;
 }
 

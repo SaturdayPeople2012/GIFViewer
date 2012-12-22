@@ -15,13 +15,18 @@
     self = [super initWithFrame:frame];
     if (self) {   
         //나중에 썸네일이 어레이로 넘어올경우에는 GridViewController에서 작업하면됨.. 여기는 DefaultImage로 바꾸고..
-        self.gifImgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bear.gif"]];
+        //document 경로
+//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//        NSString *documentsDirectory = [paths objectAtIndex:0];
+        self.gifImgView = [[UIImageView alloc]init];//WithImage:[UIImage imageNamed:@"bear.gif"]];
         _gifImgView.center = self.center;
         self.backgroundView = _gifImgView;
+        
+        self.button = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.button.frame = CGRectMake(0, 0, 65, 65);//self.frame;
 
-        //document 경로
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
+        [self addSubview:_button];
+
         
         
 //        self.tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapped:)];
