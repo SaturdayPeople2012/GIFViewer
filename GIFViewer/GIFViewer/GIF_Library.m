@@ -550,7 +550,7 @@ static GIF_Library* instance;
             // Restore State
 			CGContextRestoreGState(ctx);
             // Add Image created (only if the delay > 0)
-            if (frame.delay > 0)
+//          if (frame.delay > 0)
             {
                 [overlayArray addObject:UIGraphicsGetImageFromCurrentImageContext()];
             }
@@ -600,8 +600,12 @@ static GIF_Library* instance;
 			total += frame.delay;
 		}
         
+        if (total == 0) total = ([m_gif_frames count] / 10) * 100;
+                
+        self.m_delay_total = total;
+        
 #ifdef __PRINT_NSLOG__
-        NSLog(@"total delay = %f",total);
+        NSLog(@"total delay = %f, frame count = %d",total,[m_gif_frames count]);
 #endif
 		
 		// GIFs store the delays as 1/100th of a second,

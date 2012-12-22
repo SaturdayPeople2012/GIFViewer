@@ -13,10 +13,12 @@
 {
     int m_width;
     int m_height;
+    int m_isPlay;
+    int m_delay;
+    int m_showMenu;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *m_gifPlayer;
-@property (strong, nonatomic) NSString *filePath;
 
 @end
 
-extern NSString*   g_gifPath;
+extern NSString*    g_gifPath;
