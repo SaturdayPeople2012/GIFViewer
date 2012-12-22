@@ -57,6 +57,7 @@ NSString*   g_gifPath = nil;
 #endif
     NSLog(@"document path = \"%@\"",g_gifPath);
     
+    g_gifPath = _filePath;
     ///////////////////////////////////////////////////////////////////////////////////////
 
 #if 0

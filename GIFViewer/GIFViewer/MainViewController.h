@@ -15,9 +15,17 @@
 
 #import "SA_OAuthTwitterController.h"
 
+
 @class SA_OAuthTwitterEngine;
 
+@class ListViewController,GridViewController;
+
 @interface MainViewController : UIViewController <GSTwitPicEngineDelegate>
+
+@property (strong, nonatomic) ListViewController *listVC;
+@property (strong, nonatomic) GridViewController *gridVC;
+
+
 - (IBAction)goActivityButtonPressed:(id)sender;
 - (IBAction)SMSTest:(id)sender;
 - (IBAction)goGridView:(id)sender;
@@ -29,7 +37,7 @@
 
 
 
-   
+
 - (IBAction)activityButtonPressed:(id)sender;
 
 

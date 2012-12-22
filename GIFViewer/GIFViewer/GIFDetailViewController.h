@@ -15,6 +15,7 @@
     int m_height;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *m_gifPlayer;
+@property (strong, nonatomic) NSString *filePath;
 
 @end
 

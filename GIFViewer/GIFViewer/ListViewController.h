@@ -8,17 +8,26 @@
 
 #import <UIKit/UIKit.h>
 #import "ListCell.h"
+#import "GridViewController.h"
 @interface ListViewController : UITableViewController <UIActionSheetDelegate>{
-    UIBarButtonItem *editButton;
-    UIBarButtonItem *deleteButton;
-    UIBarButtonItem *closeButton;
-    
+    /*
+     UIBarButtonItem *editButton;
+     UIBarButtonItem *deleteButton;
+     UIBarButtonItem *closeButton;
+     */
     UIBarButtonItem *loadButton;
     UIBarButtonItem *flexible;
-
+    
+    UIBarButtonItem *editButton;
+    UIBarButtonItem *cancelButton;
+    UIBarButtonItem *deleteButton;
+    UIBarButtonItem *segBtn;
 }
 
-@property (strong,nonatomic) NSArray *listData;
+@property (strong,nonatomic) NSMutableArray *listData;
+@property (nonatomic, strong) UIBarButtonItem *editButton;
+@property (nonatomic, strong) UIBarButtonItem *cancelButton;
+@property (nonatomic, strong) UIBarButtonItem *deleteButton;
 
 
 @end

@@ -7,10 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ELCImagePickerDemoAppDelegate.h"
+#import "ELCImagePickerDemoViewController.h"
+#import "ELCImagePickerController.h"
+#import "ELCAlbumPickerController.h"
 
-@interface GridViewController : UIViewController<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface GridViewController : UIViewController <UICollectionViewDelegate,UICollectionViewDataSource,ELCImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *gridView;
 
 @property (strong, nonatomic) NSMutableArray *gifDataArray;
+
+@property (assign, nonatomic) BOOL editMode;
+
+@property (strong, nonatomic) UIBarButtonItem *editBtn;
 
 @end

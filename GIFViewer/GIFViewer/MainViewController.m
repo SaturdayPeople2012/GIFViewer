@@ -13,8 +13,6 @@
 #import "ELCImagePickerDemoViewController.h"
 #import "MessageComposerViewController.h"
 
-#import "SA_OAuthTwitterEngine.h"
-
 #import "ActivityViewCustomProvider.h"
 #import "ActivityViewCustomActivity.h"
 
@@ -25,8 +23,7 @@
 @end
 
 @implementation MainViewController
-@synthesize twitpicEngine;
-@synthesize engine;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -39,92 +36,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //원석컨트롤러가 먼저 불림
-//    [self goGridView:nil];
+    GridViewController *gVC = [[GridViewController alloc]initWithNibName:@"GridViewController" bundle:nil];
+    [self.navigationController pushViewController:gVC animated:NO];
     
-    // Do any additional setup after loading the view from its nib.
 }
 
+- (void)goLoad:(id)sender{
+    //기명
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)goGridView:(id)sender {
-    GridViewController *gridVC = [[GridViewController alloc]initWithNibName:@"GridViewController" bundle:nil];
-    [self.navigationController pushViewController:gridVC animated:YES];
-}
-
-
-
-- (IBAction)goSMSView:(id)sender {
-   // MessageComposerViewController *gridVC = [[MessageComposerViewController alloc]initWithNibName:@"MessageComposerViewController" bundle:nil];
-   // [self.navigationController pushViewController:gridVC animated:YES];
-}
-
-- (IBAction)goListView:(id)sender {
-    ListViewController *listVC = [[ListViewController alloc]initWithNibName:@"ListViewController" bundle:nil];
-    [self.navigationController pushViewController:listVC animated:YES];
-}
-
-- (IBAction)goGIFView:(id)sender {
-    GIFDetailViewController *gifVC = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
-    [self.navigationController pushViewController:gifVC animated:YES];
-}
-
-- (IBAction)goGIFLoaderViewController:(id)sender {
-    ELCImagePickerDemoViewController *elDemoViewController = [[ELCImagePickerDemoViewController alloc]initWithNibName:@"ELCImagePickerDemoViewController" bundle:nil];
-    [self presentViewController:elDemoViewController animated:YES completion:nil];
-}
-
-
-//====================================================================================
-#pragma mark SA_OAuthTwitterEngineDelegate
-- (void) storeCachedTwitterOAuthData: (NSString *) data forUsername: (NSString *) username {
-	NSUserDefaults			*defaults = [NSUserDefaults standardUserDefaults];
-    
-	[defaults setObject: data forKey: @"authData"];
-	[defaults synchronize];
-    
-    NSLog(@"DATA: %@",data);
-}
-
-- (NSString *) cachedTwitterOAuthDataForUsername: (NSString *) username {
-    NSLog(@"DATA: %@",[[NSUserDefaults standardUserDefaults] objectForKey: @"authData"]);
-	return [[NSUserDefaults standardUserDefaults] objectForKey: @"authData"];
-}
-
-//====================================================================================
-#pragma mark SA_OAuthTwitterControllerDelegate
-- (void) OAuthTwitterController: (SA_OAuthTwitterController *) controller authenticatedWithUsername: (NSString *) username {
-	NSLog(@"Authenicated for %@", username);
-    [twitpicEngine setAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey: @"authData"]];
-    [twitpicEngine uploadPicture:[UIImage imageNamed:@"image.jpg"] withMessage:@"my test photo"];
-}
-
-- (void) OAuthTwitterControllerFailed: (SA_OAuthTwitterController *) controller {
-	NSLog(@"Authentication Failed!");
-}
-
-- (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller {
-	NSLog(@"Authentication Canceled.");
-}
-
-//====================================================================================
-#pragma mark TwitterEngineDelegate
-- (void) requestSucceeded: (NSString *) requestIdentifier {
-	NSLog(@"Request %@ succeeded", requestIdentifier);
-}
-
-- (void) requestFailed: (NSString *) requestIdentifier withError: (NSError *) error {
-	NSLog(@"Request %@ failed with error: %@", requestIdentifier, error);
-}
-
-
-
-//====================================================================================
-#pragma mark GSTwitPicEngineDelegate
 - (void)twitpicDidFinishUpload:(NSDictionary *)response {
     NSLog(@"TwitPic finished uploading: %@", response);
     
@@ -133,7 +58,7 @@
     
     if ([[[response objectForKey:@"request"] userInfo] objectForKey:@"message"] > 0 && [[response objectForKey:@"parsedResponse"] count] > 0) {
         // Uncomment to update status upon successful upload, using MGTwitterEngine's instance.
-        [engine sendUpdate:[NSString stringWithFormat:@"%@ %@", [[[response objectForKey:@"request"] userInfo] objectForKey:@"message"], [[response objectForKey:@"parsedResponse"] objectForKey:@"url"]]];
+        // [twitterEngine sendUpdate:[NSString stringWithFormat:@"%@ %@", [[[response objectForKey:@"request"] userInfo] objectForKey:@"message"], [[response objectForKey:@"parsedResponse"] objectForKey:@"url"]]];
     }
 }
 
@@ -144,11 +69,6 @@
         // UIAlertViewQuick(@"Authentication failed", [error objectForKey:@"errorDescription"], @"OK");
     }
 }
-//====================================================================================
-
-
-
-
 
 -(IBAction)goActivityButtonPressed:(id)sender{
     
@@ -156,9 +76,7 @@
     self.twitpicEngine = (GSTwitPicEngine *)[GSTwitPicEngine twitpicEngineWithDelegate:self];
     
     //[twitpicEngine setAccessToken:token];
-
-       
-
+    
     
     ActivityViewCustomProvider *customProvider =
     [[ActivityViewCustomProvider alloc]init];
@@ -184,15 +102,15 @@
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
-      /*  self.presentViewController = [[UIPopoverController alloc] initWithContentViewController:activityVC];
-        
-        CGRect rect = [[UIScreen mainScreen] bounds];
-        
-        [self.presentViewController
+        /*  self.presentViewController = [[UIPopoverController alloc] initWithContentViewController:activityVC];
+         
+         CGRect rect = [[UIScreen mainScreen] bounds];
+         
+         [self.presentViewController
          presentPopoverFromRect:rect inView:self.view
          permittedArrowDirections:0
          animated:YES];
-       */
+         */
     }
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]){
@@ -218,12 +136,12 @@
         [controller addURL:[NSURL URLWithString:@"http://www.naver.com"]];
         [controller addImage:[UIImage imageNamed:@"fb.png"]];
         [self presentViewController:activityVC animated:YES completion:nil];
-
+        
         
         
     } else if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]){
         [self presentViewController:activityVC animated:YES completion:nil];
-
+        
     } else{
         NSLog(@"UnAvailable");
     }
