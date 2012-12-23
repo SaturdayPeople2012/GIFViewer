@@ -61,17 +61,8 @@ NSString*   g_gifPath = nil;
 #endif
     NSLog(@"document path = \"%@\"",g_gifPath);
     
-    self.title = @"GIFViewer";
-
-    NSRange range = [g_gifPath rangeOfString:@"/" options:NSBackwardsSearch];
-    if (range.location != NSNotFound)
-    {
-        NSRange rangeToFileName = NSMakeRange(range.location+1,[g_gifPath length] - 1); // get a range without the space character
-        NSLog(@"Range = %@",NSStringFromRange(rangeToFileName));
-//        NSString *strTitle = [g_gifPath substringWithRange:rangeToFileName];
-//        NSLog(@"Found ain at %@",strTitle);
-    }
-    // prints "Found ain at 40"
+    self.title = [g_gifPath lastPathComponent];
+    
     ///////////////////////////////////////////////////////////////////////////////////////
                              
 //    self.navigationController.view.alpha = 0.5;
@@ -79,13 +70,34 @@ NSString*   g_gifPath = nil;
     ///////////////////////////////////////////////////////////////////////////////////////
     
     m_width = m_height = m_delay = 0, m_isPlay = 1, m_showMenu = 1;
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    UIActivityIndicatorView* spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    CGPoint center;
+    NSLog(@"m_gifPlayer frame = %@",NSStringFromCGRect(self.navigationController.view.frame));
+    if (orientation == UIInterfaceOrientationLandscapeRight || orientation ==  UIInterfaceOrientationLandscapeLeft)
+    {
+        center = CGPointMake(self.navigationController.view.frame.size.height/2.0, self.navigationController.view.frame.size.width/2.0);
+    } else {
+        center = CGPointMake(self.navigationController.view.frame.size.width/2.0, self.navigationController.view.frame.size.height/2.0);
+    }
+    [spinner setCenter:center]; // I do this because I'm in landscape mode
+    [self.navigationController.view addSubview:spinner]; // spinner is not visible until started
     
+    [spinner startAnimating];
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+
     __block UIImageView *gifView;
     
     gifView = [GIF_Library giflib_get_gif_view_from_path:g_gifPath parent:self completion:^(int width,int height)
     {
         m_width = width, m_height = height;
         gifView.frame = [self adjustViewSizeAndLocate:width height:height];
+
+        [spinner stopAnimating];
     }];
     
     gifView.tag = 100;
@@ -159,11 +171,13 @@ NSString*   g_gifPath = nil;
 
 - (void)goEdit:(id)sender
 {
+    m_alertType = kAlertType_Edit;
+    
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"GIF의 제목을 입력하십시요"
                                                 message:@""
                                                 delegate:self
-                                                cancelButtonTitle:@"확인"
-                                                otherButtonTitles:@"취소", nil];
+                                                cancelButtonTitle:@"취소"
+                                                otherButtonTitles:@"확인", nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
 
     
@@ -172,29 +186,54 @@ NSString*   g_gifPath = nil;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 0)
+    NSLog(@"buttonIndex = %d",buttonIndex);
+    if (buttonIndex == 1)
     {
-        NSString *name = [alertView textFieldAtIndex:0].text;
-        // name contains the entered value
+        if (m_alertType == kAlertType_Edit)
+        {
+            NSString *name = [alertView textFieldAtIndex:0].text;
+            // name contains the entered value
 
-        self.title = name;
-                
-        GIF_Library* inst = [GIF_Library giflib_sharedInstance];
-        
-        NSMutableData* gif_new = [inst giflib_gif_copy_with_comment:name];
-        
-        NSLog(@"gif_new length = %d",[gif_new length]);
-        
-        [gif_new writeToFile:g_gifPath atomically:YES];
+            self.title = name;
+                    
+            GIF_Library* inst = [GIF_Library giflib_sharedInstance];
+            
+            NSMutableData* gif_new = [inst giflib_gif_copy_with_comment:name];
+            
+            NSLog(@"gif_new length = %d",[gif_new length]);
+            
+            [gif_new writeToFile:g_gifPath atomically:YES];
+        } else
+        if (m_alertType == kAlertType_Delete)
+        {
+             NSFileManager *fileMgr = [NSFileManager defaultManager];
+             NSError *error;
+             
+             if ([fileMgr removeItemAtPath:g_gifPath error:&error] != YES) NSLog(@"Unable to delete file: %@", [error localizedDescription]);
+        }
     }
 }
 
 - (void)goFunc:(id)sender
 {
+//    self.title 에 GIFViwer 파일의 제목이 들어있습니다.
 }
 
 - (void)goDelete:(id)sender
 {
+    // 모달뷰로 "확인" 메세지를 띄웁니다. ////////////////////////////////////
+    m_alertType = kAlertType_Delete;
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"삭제 확인" message:@"정말로 파일을 지우시겠습니까?" delegate:self cancelButtonTitle:@"취소" otherButtonTitles:@"삭제", nil];
+    [alert show];
+    
+    NSRunLoop *rl = [NSRunLoop currentRunLoop];
+    NSDate *d;
+    while ([alert isVisible])
+    {
+        d = [[NSDate alloc] init];
+        [rl runUntilDate:d];
+    }
 }
 
 - (void)goPlaySpeed:(UIBarButtonItem*)sender
@@ -257,6 +296,8 @@ NSString*   g_gifPath = nil;
 
 -(void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
 {
+    [super touchesEnded:touches withEvent:event];
+    
     m_gifPlayer.center = self.view.center;
     
     m_showMenu ^= 1;

@@ -150,16 +150,17 @@ static NSString *CellIdentifier = @"Cell";
 
 
 - (void)openGIF:(id)sender{
+    UIButton *btn = sender;
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = [dirPaths objectAtIndex:0];
+    g_gifPath = [docsDir stringByAppendingPathComponent:[self.fileLists objectAtIndex:btn.tag]];
+
     if(_editMode == YES){
         //태그저장 + 체크이미지
         /*
          [cell addcheck];
          */
     }else{
-        UIButton *btn = sender;
-        NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *docsDir = [dirPaths objectAtIndex:0];
-        g_gifPath = [docsDir stringByAppendingPathComponent:[self.fileLists objectAtIndex:btn.tag]];
         GIFDetailViewController *detailViewController = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
         
 //        detailViewController.filePath = g_gifPath;

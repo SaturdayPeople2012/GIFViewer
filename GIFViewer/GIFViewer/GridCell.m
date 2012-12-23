@@ -20,13 +20,14 @@
         self.backgroundView = _gifImgView;
         
         self.button = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.button.frame = frame;
+        self.button.frame = CGRectMake(0, 0, 65, 65);
+        [self addSubview:_button];
         
 
         //document 경로
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        
+//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//        NSString *documentsDirectory = [paths objectAtIndex:0];
+//        
         
 //        self.tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapped:)];
 //        [self addGestureRecognizer:_tapGesture];

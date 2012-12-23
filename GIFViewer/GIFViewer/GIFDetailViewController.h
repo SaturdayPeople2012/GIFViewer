@@ -9,13 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "GIF_Library.h"
 
-@interface GIFDetailViewController : UIViewController
+#define kAlertType_Edit     1
+#define kAlertType_Delete   2
+
+@interface GIFDetailViewController : UIViewController <UIAlertViewDelegate>
 {
     int m_width;
     int m_height;
     int m_isPlay;
     int m_delay;
     int m_showMenu;
+    int m_alertType;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *m_gifPlayer;
 
