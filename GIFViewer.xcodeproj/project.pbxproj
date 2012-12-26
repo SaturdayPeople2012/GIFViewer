@@ -26,7 +26,6 @@
 		7A36AC9D163BF2DE00DDE531 /* GifLoadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A36AC9B163BF2DE00DDE531 /* GifLoadViewController.xib */; };
 		7A36AC9F163BF72900DDE531 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A36AC9E163BF72900DDE531 /* MobileCoreServices.framework */; };
 		7AAC8C971645FCD600555BD6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAC8C961645FCD600555BD6 /* AssetsLibrary.framework */; };
-		B91DE65A16460ED80088A7E8 /* MessageComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91DE65916460ED80088A7E8 /* MessageComposerViewController.xib */; };
 		B91DE65C164610640088A7E8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B91DE65B164610640088A7E8 /* Social.framework */; };
 		B931B2D21658C88C00482E22 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B931B2D11658C88C00482E22 /* libxml2.dylib */; };
 		B931B2D41658C8EE00482E22 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B931B2D31658C8EE00482E22 /* CFNetwork.framework */; };
@@ -78,7 +77,6 @@
 		B9958207163C2167008E696C /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9958206163C2167008E696C /* Twitter.framework */; };
 		B995820A163C2189008E696C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9958209163C2189008E696C /* Accounts.framework */; };
 		B995821D163C2E7D008E696C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B995821C163C2E7C008E696C /* MessageUI.framework */; };
-		B9958223163C2F2C008E696C /* MailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9958222163C2F2C008E696C /* MailViewController.m */; };
 		B995822B163C31BB008E696C /* TiwPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B995822A163C31BB008E696C /* TiwPicViewController.m */; };
 		B9ECB9C016589366005F5FA5 /* ActivityViewCustomProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ECB9BF16589366005F5FA5 /* ActivityViewCustomProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B9ECB9C4165893BE005F5FA5 /* ActivityViewCustomActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ECB9C3165893BE005F5FA5 /* ActivityViewCustomActivity.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -137,9 +135,6 @@
 		7A36AC9B163BF2DE00DDE531 /* GifLoadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GifLoadViewController.xib; sourceTree = "<group>"; };
 		7A36AC9E163BF72900DDE531 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		7AAC8C961645FCD600555BD6 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		B91DE65616460D9C0088A7E8 /* MessageComposerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageComposerViewController.h; sourceTree = "<group>"; };
-		B91DE65716460D9C0088A7E8 /* MessageComposerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageComposerViewController.m; sourceTree = "<group>"; };
-		B91DE65916460ED80088A7E8 /* MessageComposerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageComposerViewController.xib; sourceTree = "<group>"; };
 		B91DE65B164610640088A7E8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		B931B2D11658C88C00482E22 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		B931B2D31658C8EE00482E22 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -253,8 +248,6 @@
 		B9958219163C2AE5008E696C /* FaceBookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceBookViewController.h; sourceTree = "<group>"; };
 		B995821A163C2AE5008E696C /* FaceBookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceBookViewController.m; sourceTree = "<group>"; };
 		B995821C163C2E7C008E696C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		B9958221163C2F2C008E696C /* MailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailViewController.h; sourceTree = "<group>"; };
-		B9958222163C2F2C008E696C /* MailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailViewController.m; sourceTree = "<group>"; };
 		B9958229163C31BB008E696C /* TiwPicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiwPicViewController.h; sourceTree = "<group>"; };
 		B995822A163C31BB008E696C /* TiwPicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiwPicViewController.m; sourceTree = "<group>"; };
 		B995822E163C3309008E696C /* GSTwitPicEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSTwitPicEngine.h; sourceTree = "<group>"; };
@@ -365,16 +358,6 @@
 				7A36AC9B163BF2DE00DDE531 /* GifLoadViewController.xib */,
 			);
 			name = "기명";
-			sourceTree = "<group>";
-		};
-		B91DE64D16460A990088A7E8 /* SMS */ = {
-			isa = PBXGroup;
-			children = (
-				B91DE65916460ED80088A7E8 /* MessageComposerViewController.xib */,
-				B91DE65616460D9C0088A7E8 /* MessageComposerViewController.h */,
-				B91DE65716460D9C0088A7E8 /* MessageComposerViewController.m */,
-			);
-			name = SMS;
 			sourceTree = "<group>";
 		};
 		B931B3C71658D25C00482E22 /* Twitpic */ = {
@@ -591,8 +574,6 @@
 		B995820B163C21D6008E696C /* 초란 */ = {
 			isa = PBXGroup;
 			children = (
-				B91DE64D16460A990088A7E8 /* SMS */,
-				B995821E163C2EAE008E696C /* Mail */,
 				B995820C163C2225008E696C /* SNS */,
 				B9ECB9BE16589366005F5FA5 /* ActivityViewCustomProvider.h */,
 				B9ECB9BF16589366005F5FA5 /* ActivityViewCustomProvider.m */,
@@ -628,15 +609,6 @@
 				B9958210163C23F9008E696C /* TweetingViewController.m */,
 			);
 			name = twitter;
-			sourceTree = "<group>";
-		};
-		B995821E163C2EAE008E696C /* Mail */ = {
-			isa = PBXGroup;
-			children = (
-				B9958221163C2F2C008E696C /* MailViewController.h */,
-				B9958222163C2F2C008E696C /* MailViewController.m */,
-			);
-			name = Mail;
 			sourceTree = "<group>";
 		};
 		B9958228163C31A7008E696C /* twitpic */ = {
@@ -830,7 +802,6 @@
 				7A19D9DC164606E200B414FB /* Overlay.png in Resources */,
 				7A19D9DD164606E200B414FB /* Overlay@2x.png in Resources */,
 				7A19D9DE164606E200B414FB /* ELCImagePickerDemoViewController.xib in Resources */,
-				B91DE65A16460ED80088A7E8 /* MessageComposerViewController.xib in Resources */,
 				B9ECB9C61658A9F9005F5FA5 /* apple-touch-icon.png in Resources */,
 				D768EC141658B36B00D2F362 /* Test1.gif in Resources */,
 				D768EC151658B36B00D2F362 /* Test2.gif in Resources */,
@@ -862,7 +833,6 @@
 				F25DB9561636846F00C488D5 /* ListCell.m in Sources */,
 				F2EB33441639739300293A7B /* GridCell.m in Sources */,
 				7A36AC9C163BF2DE00DDE531 /* GifLoadViewController.m in Sources */,
-				B9958223163C2F2C008E696C /* MailViewController.m in Sources */,
 				B995822B163C31BB008E696C /* TiwPicViewController.m in Sources */,
 				D704B7461645E5A400DBE35F /* GIF_Library.m in Sources */,
 				7A19D9D0164606E100B414FB /* ELCAlbumPickerController.m in Sources */,

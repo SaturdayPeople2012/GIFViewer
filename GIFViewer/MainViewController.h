@@ -10,7 +10,6 @@
 #import <Social/Social.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <Accounts/Accounts.h>
-#import "MessageComposerViewController.h"
 #import "GSTwitPicEngine.h"
 
 #import "SA_OAuthTwitterController.h"

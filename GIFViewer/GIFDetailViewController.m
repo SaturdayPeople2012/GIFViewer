@@ -9,7 +9,6 @@
 #import "GIFDetailViewController.h"
 
 #import "ELCImagePickerDemoViewController.h"
-#import "MessageComposerViewController.h"
 
 #import "SA_OAuthTwitterEngine.h"
 
@@ -225,11 +224,8 @@ NSString*   g_gifPath = nil;
 
 - (void)goFunc:(id)sender
 {
-//    self.title 에 GIFViwer 파일의 제목이 들어있습니다.
-    
-    
+
     NSString *textItem =self.title;
-    
     textItem = [ textItem  stringByReplacingOccurrencesOfString: @".gif" withString:@""];
     
     NSString *string1 = @"[";

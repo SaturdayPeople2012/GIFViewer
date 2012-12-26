@@ -11,7 +11,6 @@
 #import "ListViewController.h"
 #import "GIFDetailViewController.h"
 #import "ELCImagePickerDemoViewController.h"
-#import "MessageComposerViewController.h"
 
 #import "ActivityViewCustomProvider.h"
 #import "ActivityViewCustomActivity.h"
