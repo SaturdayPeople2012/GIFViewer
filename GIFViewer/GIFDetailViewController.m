@@ -8,6 +8,15 @@
 
 #import "GIFDetailViewController.h"
 
+#import "ELCImagePickerDemoViewController.h"
+#import "MessageComposerViewController.h"
+
+#import "SA_OAuthTwitterEngine.h"
+
+#import "ActivityViewCustomProvider.h"
+#import "ActivityViewCustomActivity.h"
+
+
 @interface GIFDetailViewController ()
 
 @end
@@ -217,6 +226,37 @@ NSString*   g_gifPath = nil;
 - (void)goFunc:(id)sender
 {
 //    self.title 에 GIFViwer 파일의 제목이 들어있습니다.
+    
+    NSString *textItem = @"Gif 짤방 이름 넣기...";
+    
+    //클립보드 복사하기
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.persistent = YES;
+    NSString *gifPath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"KTH.gif"];
+    NSData *gifData = [[NSData alloc] initWithContentsOfFile:gifPath];
+    [pasteboard setData:gifData forPasteboardType:@"com.compuserve.gif"];
+    
+    
+    ActivityViewCustomProvider *customProvider = [[ActivityViewCustomProvider alloc]init];
+    NSArray *items = [NSArray arrayWithObjects:customProvider,textItem,gifData,nil];
+    
+    ActivityViewCustomActivity *ca = [[ActivityViewCustomActivity alloc]init];
+    
+    UIActivityViewController *activityVC =
+    [[UIActivityViewController alloc] initWithActivityItems:items
+                                      applicationActivities:[NSArray arrayWithObject:ca]];
+    
+    activityVC.excludedActivityTypes = @[UIActivityTypeMessage ,UIActivityTypePostToWeibo, UIActivityTypeAssignToContact, UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeSaveToCameraRoll];
+    
+    activityVC.completionHandler = ^(NSString *activityType, BOOL completed)
+    {
+        NSLog(@" activityType: %@", activityType);
+        NSLog(@" completed: %i", completed);
+    };
+    
+    [self presentViewController:activityVC animated:YES completion:nil];
+
+    
 }
 
 - (void)goDelete:(id)sender

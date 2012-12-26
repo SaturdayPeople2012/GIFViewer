@@ -8,11 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "GIF_Library.h"
+#import <Social/Social.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <Accounts/Accounts.h>
+#import "MessageComposerViewController.h"
+#import "GSTwitPicEngine.h"
+
+#import "SA_OAuthTwitterController.h"
 
 #define kAlertType_Edit     1
 #define kAlertType_Delete   2
 
-@interface GIFDetailViewController : UIViewController <UIAlertViewDelegate>
+@interface GIFDetailViewController : UIViewController <UIAlertViewDelegate,GSTwitPicEngineDelegate>
 {
     int m_width;
     int m_height;
