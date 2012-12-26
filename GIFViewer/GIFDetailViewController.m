@@ -228,7 +228,10 @@ NSString*   g_gifPath = nil;
 //    self.title 에 GIFViwer 파일의 제목이 들어있습니다.
     
     
-    NSString *textItem = @"Gif 짤방 이름 넣기...";
+    NSString *textItem =self.title;
+    
+    textItem = [ textItem  stringByReplacingOccurrencesOfString: @"gif" withString:@""];
+
     
     //클립보드 복사하기
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
@@ -247,7 +250,7 @@ NSString*   g_gifPath = nil;
     [[UIActivityViewController alloc] initWithActivityItems:items
                                       applicationActivities:[NSArray arrayWithObject:ca]];
     
-    activityVC.excludedActivityTypes = @[UIActivityTypeMessage ,UIActivityTypePostToWeibo, UIActivityTypeAssignToContact, UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeSaveToCameraRoll];
+    activityVC.excludedActivityTypes = @[UIActivityTypeMessage ,UIActivityTypePostToWeibo, UIActivityTypeSaveToCameraRoll];
     
     activityVC.completionHandler = ^(NSString *activityType, BOOL completed)
     {
