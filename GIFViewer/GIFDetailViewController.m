@@ -227,6 +227,7 @@ NSString*   g_gifPath = nil;
 {
 //    self.title 에 GIFViwer 파일의 제목이 들어있습니다.
     
+    
     NSString *textItem = @"Gif 짤방 이름 넣기...";
     
     //클립보드 복사하기
@@ -255,7 +256,7 @@ NSString*   g_gifPath = nil;
     };
     
     [self presentViewController:activityVC animated:YES completion:nil];
-
+    
     
 }
 
