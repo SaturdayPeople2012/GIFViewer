@@ -230,8 +230,12 @@ NSString*   g_gifPath = nil;
     
     NSString *textItem =self.title;
     
-    textItem = [ textItem  stringByReplacingOccurrencesOfString: @"gif" withString:@""];
-
+    textItem = [ textItem  stringByReplacingOccurrencesOfString: @".gif" withString:@""];
+    
+    NSString *string1 = @"[";
+    NSString *string2 = @"]";
+    textItem = [string1 stringByAppendingString:textItem];
+    textItem = [textItem stringByAppendingString:string2];
     
     //클립보드 복사하기
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
