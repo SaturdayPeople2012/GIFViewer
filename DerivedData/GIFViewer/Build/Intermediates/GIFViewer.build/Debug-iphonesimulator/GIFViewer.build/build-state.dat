@@ -1,0 +1,501 @@
+TGIFViewer
+v5
+r1
+cCheck dependencies
+cProcessInfoPlistFile /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/Info.plist GIFViewer/GIFViewer-Info.plist
+cProcessPCH /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch.pth GIFViewer/GIFViewer-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/main.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/AppDelegate.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/MainViewController.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GIFDetailViewController.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GIFDetailViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/ListViewController.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/AnimatedGif.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/AnimatedGif.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GridViewController.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/ListCell.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListCell.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GridCell.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridCell.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLd /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/GIFViewer normal i386
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk
+c00000000504916AD0000000000000110
+t1346967213
+s272
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c00000000506736A40000000000228FD0
+t1348941476
+s2265040
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c00000000506736A600000000003DCEF0
+t1348941478
+s4050672
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c00000000506736A500000000000015F7
+t1348941477
+s5623
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c00000000506736A90000000000000E8D
+t1348941481
+s3725
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c00000000506736AB0000000000AB3D60
+t1348941483
+s11222368
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/include/Availability.h
+c00000000506736B80000000000001B54
+t1348941496
+s6996
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/AnimatedGif.o
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/AppDelegate.o
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GIFDetailViewController.o
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GIFViewer.LinkFileList
+c00000000508C37040000000000000629
+t1351366404
+s1577
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GridCell.o
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GridViewController.o
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/ListCell.o
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/ListViewController.o
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/MainViewController.o
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/main.o
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch.pth
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app.dSYM
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/Default-568h@2x.png
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/Default.png
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/Default@2x.png
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/GIFDetailViewController.nib
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/GIFViewer
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/GridViewController.nib
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/Info.plist
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/ListCell.nib
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/ListViewController.nib
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/MainViewController.nib
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/PkgInfo
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/apple_logo_animated.gif
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/bear.gif
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/en.lproj/InfoPlist.strings
+t2
+s0
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/AnimatedGif.m
+c00000000508C350900000000000030B2
+t1351365897
+s12466
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/AppDelegate.m
+c0000000050856CF50000000000000A0B
+t1350921461
+s2571
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/Default-568h@2x.png
+c00000000508359F000000000000048A2
+t1350785520
+s18594
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/Default.png
+c00000000508359F0000000000000198C
+t1350785520
+s6540
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/Default@2x.png
+c00000000508359F00000000000003EEB
+t1350785520
+s16107
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GIFDetailViewController.m
+c00000000508C35090000000000000F28
+t1351365897
+s3880
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GIFDetailViewController.xib
+c00000000508C35090000000000003133
+t1351365897
+s12595
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GIFViewer-Prefix.pch
+c0000000050856CF5000000000000015F
+t1350921461
+s351
+i<Availability.h>
+i<UIKit/UIKit.h>
+i<Foundation/Foundation.h>
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridCell.m
+c00000000508C35090000000000000365
+t1351365897
+s869
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridViewController.m
+c00000000508C35090000000000000CB7
+t1351365897
+s3255
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridViewController.xib
+c00000000508C35090000000000003D06
+t1351365897
+s15622
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListCell.m
+c000000005085A9030000000000000211
+t1350936835
+s529
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListCell.xib
+c000000005085ADA70000000000005FC3
+t1350938023
+s24515
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListViewController.m
+c00000000508C34E70000000000000F82
+t1351365863
+s3970
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListViewController.xib
+c00000000508694C10000000000001B6B
+t1350997185
+s7019
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/MainViewController.m
+c00000000508C35090000000000000711
+t1351365897
+s1809
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/MainViewController.xib
+c00000000508C35090000000000005D93
+t1351365897
+s23955
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/apple_logo_animated.gif
+c0000000050856CF50000000000001573
+t1350921461
+s5491
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/bear.gif
+c00000000508C350900000000001EC2F8
+t1351365897
+s2015992
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/en.lproj/InfoPlist.strings
+c00000000508359F0000000000000002D
+t1350785520
+s45
+
+N/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/main.m
+c00000000508359F00000000000000155
+t1350785520
+s341
+
+NGIFViewer/GIFViewer-Info.plist
+c00000000508359F00000000000000495
+t1350785520
+s1173
+
+CBuild AST from /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/AnimatedGif.m
+r0
+
+CBuild AST from /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/AppDelegate.m
+r0
+
+CBuild AST from /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GIFDetailViewController.m
+r0
+
+CBuild AST from /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridCell.m
+r0
+
+CBuild AST from /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridViewController.m
+r0
+
+CBuild AST from /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListCell.m
+r0
+
+CBuild AST from /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListViewController.m
+r0
+
+CBuild AST from /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/MainViewController.m
+r0
+
+CBuild AST from /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/main.m
+r0
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciesde20e2836e3cb641^e2733f846e3cb641^---0#1#0#--18"Check dependencies36"6AD6587F-DDC6-4387-890D-E55C226CA18B-
+
+CCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/AnimatedGif.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/AnimatedGif.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s373059206.392092
+e373059207.971025
+r1
+xCompileC
+xDerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/AnimatedGif.o
+x/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/AnimatedGif.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection74"Compile /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/AnimatedGif.ma9dc64866e3cb641^83e0f9876e3cb641^---0#0#0#-19%DVTDocumentLocation2@82"file://localhost/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/AnimatedGif.m0000000000000000^4061"CompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/AnimatedGif.o GIFViewer/AnimatedGif.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/apple/Desktop/cruisediary/GIFViewer    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=6.0 -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-generated-files.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-own-target-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-all-target-headers.hmap -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-project-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources/i386 -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources -F/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator -include /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch -MMD -MT dependencies -MF /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/AnimatedGif.d --serialize-diagnostics /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/AnimatedGif.dia -c /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/AnimatedGif.m -o /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/AnimatedGif.o36"CE5AE3F7-635A-4EE5-80BC-A8C27E9C7C92-
+
+CCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/AppDelegate.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s373059206.391242
+e373059207.780760
+r1
+xCompileC
+xDerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/AppDelegate.o
+x/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/AppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection74"Compile /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/AppDelegate.mc61765866e3cb641^23bbca876e3cb641^---0#0#0#-19%DVTDocumentLocation2@82"file://localhost/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/AppDelegate.m0000000000000000^4061"CompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/AppDelegate.o GIFViewer/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/apple/Desktop/cruisediary/GIFViewer    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=6.0 -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-generated-files.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-own-target-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-all-target-headers.hmap -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-project-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources/i386 -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources -F/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator -include /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch -MMD -MT dependencies -MF /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/AppDelegate.d --serialize-diagnostics /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/AppDelegate.dia -c /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/AppDelegate.m -o /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/AppDelegate.o36"6A35EF13-1143-49FC-8B4A-EDD17F6A01E8-
+
+CCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GIFDetailViewController.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GIFDetailViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s373059206.391854
+e373059207.785991
+r1
+xCompileC
+xDerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GIFDetailViewController.o
+x/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GIFDetailViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection86"Compile /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GIFDetailViewController.m21cd64866e3cb641^bfd5ca876e3cb641^---0#0#0#-19%DVTDocumentLocation2@94"file://localhost/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GIFDetailViewController.m0000000000000000^4133"CompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GIFDetailViewController.o GIFViewer/GIFDetailViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/apple/Desktop/cruisediary/GIFViewer    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=6.0 -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-generated-files.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-own-target-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-all-target-headers.hmap -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-project-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources/i386 -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources -F/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator -include /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch -MMD -MT dependencies -MF /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GIFDetailViewController.d --serialize-diagnostics /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GIFDetailViewController.dia -c /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GIFDetailViewController.m -o /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GIFDetailViewController.o36"CD5AA03D-DAF0-4F8A-8155-1B0EE4B40637-
+
+CCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GridCell.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridCell.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s373059207.783373
+e373059208.071138
+r1
+xCompileC
+xDerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GridCell.o
+x/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridCell.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection71"Compile /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridCell.m4c88c9876e3cb641^6a6d12886e3cb641^---0#0#0#-19%DVTDocumentLocation2@79"file://localhost/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridCell.m0000000000000000^4043"CompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GridCell.o GIFViewer/GridCell.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/apple/Desktop/cruisediary/GIFViewer    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=6.0 -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-generated-files.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-own-target-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-all-target-headers.hmap -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-project-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources/i386 -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources -F/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator -include /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch -MMD -MT dependencies -MF /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GridCell.d --serialize-diagnostics /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GridCell.dia -c /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridCell.m -o /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GridCell.o36"A2802893-FE33-4C22-832C-4DE0D759FE0C-
+
+CCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GridViewController.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s373059206.392729
+e373059207.783025
+r1
+xCompileC
+xDerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GridViewController.o
+x/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridViewController.me06665866e3cb641^eacbca876e3cb641^---0#0#0#-19%DVTDocumentLocation2@89"file://localhost/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridViewController.m0000000000000000^4103"CompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GridViewController.o GIFViewer/GridViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/apple/Desktop/cruisediary/GIFViewer    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=6.0 -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-generated-files.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-own-target-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-all-target-headers.hmap -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-project-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources/i386 -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources -F/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator -include /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch -MMD -MT dependencies -MF /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GridViewController.d --serialize-diagnostics /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GridViewController.dia -c /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridViewController.m -o /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GridViewController.o36"AFCA6DD5-B65A-45AA-9798-EB18AF6596E4-
+
+CCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/ListCell.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListCell.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s373059206.394883
+e373059207.572577
+r1
+xCompileC
+xDerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/ListCell.o
+x/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListCell.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection71"Compile /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListCell.m9acf65866e3cb641^3fa9ca876e3cb641^---0#0#0#-19%DVTDocumentLocation2@79"file://localhost/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListCell.m0000000000000000^4043"CompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/ListCell.o GIFViewer/ListCell.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/apple/Desktop/cruisediary/GIFViewer    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=6.0 -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-generated-files.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-own-target-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-all-target-headers.hmap -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-project-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources/i386 -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources -F/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator -include /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch -MMD -MT dependencies -MF /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/ListCell.d --serialize-diagnostics /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/ListCell.dia -c /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListCell.m -o /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/ListCell.o36"34D66724-64E0-47E3-A845-D97FD115BB1B-
+
+CCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/ListViewController.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s373059206.392041
+e373059207.780119
+r1
+xCompileC
+xDerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/ListViewController.o
+x/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListViewController.mc0cf64866e3cb641^abb3ca876e3cb641^---0#0#0#-19%DVTDocumentLocation2@89"file://localhost/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListViewController.m0000000000000000^4103"CompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/ListViewController.o GIFViewer/ListViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/apple/Desktop/cruisediary/GIFViewer    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=6.0 -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-generated-files.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-own-target-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-all-target-headers.hmap -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-project-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources/i386 -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources -F/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator -include /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch -MMD -MT dependencies -MF /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/ListViewController.d --serialize-diagnostics /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/ListViewController.dia -c /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListViewController.m -o /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/ListViewController.o36"DC9D53D6-0FC9-426A-B6F3-F196522590C8-
+
+CCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/MainViewController.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s373059206.391758
+e373059207.781355
+r1
+xCompileC
+xDerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/MainViewController.o
+x/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/MainViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/MainViewController.m572165866e3cb641^54c3ca876e3cb641^---0#0#0#-19%DVTDocumentLocation2@89"file://localhost/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/MainViewController.m0000000000000000^4103"CompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/MainViewController.o GIFViewer/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/apple/Desktop/cruisediary/GIFViewer    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=6.0 -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-generated-files.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-own-target-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-all-target-headers.hmap -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-project-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources/i386 -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources -F/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator -include /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch -MMD -MT dependencies -MF /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/MainViewController.d --serialize-diagnostics /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/MainViewController.dia -c /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/MainViewController.m -o /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/MainViewController.o36"238FF3EC-EE76-4DD7-820D-193AAD65781D-
+
+CCompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/main.o /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s373059206.390900
+e373059207.560402
+r1
+xCompileC
+xDerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/main.o
+x/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection67"Compile /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/main.mf79464866e3cb641^13d58f876e3cb641^---0#0#0#-19%DVTDocumentLocation2@75"file://localhost/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/main.m0000000000000000^4019"CompileC DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/main.o GIFViewer/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/apple/Desktop/cruisediary/GIFViewer    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=6.0 -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-generated-files.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-own-target-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-all-target-headers.hmap -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-project-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources/i386 -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources -F/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator -include /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch -MMD -MT dependencies -MF /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/main.d --serialize-diagnostics /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/main.dia -c /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/main.m -o /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/main.o36"54156DEF-4F9E-4105-BCF8-49AE0D023EBB-
+
+CCompileXIB /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GIFDetailViewController.xib
+r0
+
+CCompileXIB /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GridViewController.xib
+r0
+
+CCompileXIB /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListCell.xib
+r0
+
+CCompileXIB /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/ListViewController.xib
+r0
+
+CCompileXIB /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/MainViewController.xib
+r0
+
+CCopyStringsFile /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/en.lproj/InfoPlist.strings GIFViewer/en.lproj/InfoPlist.strings
+r0
+
+CCpResource GIFViewer/Default-568h@2x.png DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/Default-568h@2x.png
+r0
+
+CCpResource GIFViewer/Default.png DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/Default.png
+r0
+
+CCpResource GIFViewer/Default@2x.png DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/Default@2x.png
+r0
+
+CCpResource GIFViewer/apple_logo_animated.gif DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/apple_logo_animated.gif
+r0
+
+CCpResource GIFViewer/bear.gif DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/bear.gif
+r0
+
+CGenerateDSYMFile /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app.dSYM /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/GIFViewer
+r0
+
+CLd /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/GIFViewer normal i386
+s373059208.098719
+e373059208.574066
+r0
+xLd
+x/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/GIFViewer
+xnormal
+xi386
+oUndefined symbols for architecture i386:
+o  "_OBJC_CLASS_$_GifLoadViewController", referenced from:
+o      objc-class-ref in MainViewController.o
+old: symbol(s) not found for architecture i386
+oclang: error: linker command failed with exit code 1 (use -v to see invocation)
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection130"Link /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/GIFViewer2c9b19886e3cb641^d4ef92886e3cb641^-270"Undefined symbols for architecture i386:  "_OBJC_CLASS_$_GifLoadViewController", referenced from:      objc-class-ref in MainViewController.old: symbol(s) not found for architecture i386clang: error: linker command failed with exit code 1 (use -v to see invocation)4(21%IDEActivityLogMessage2@55""_OBJC_CLASS_$_GifLoadViewController", referenced from:-373059208#41#58#-2#-23%DVTTextDocumentLocation3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#25"Apple Mach-O Linker Error--2@38"Objc-class-ref in MainViewController.o-373059208#99#45#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#26"Apple Mach-O Linker Notice--2@41"Symbol(s) not found for architecture i386-373059208#144#46#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#26"Apple Mach-O Linker Notice--2@65"Linker command failed with exit code 1 (use -v to see invocation)-373059208#190#80#-2#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#25"Apple Mach-O Linker Error--0#0#0#--1341"Ld DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/GIFViewer normal i386    cd /Users/apple/Desktop/cruisediary/GIFViewer    setenv IPHONEOS_DEPLOYMENT_TARGET 6.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -L/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator -F/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator -filelist /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/Objects-normal/i386/GIFViewer.LinkFileList -Xlinker -objc_abi_version -Xlinker 2 -fobjc-arc -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=6.0 -framework UIKit -framework Foundation -framework CoreGraphics -o /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/GIFViewer36"549BF27B-8750-455D-8174-679E30C175E3-
+
+CProcessInfoPlistFile /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/Info.plist GIFViewer/GIFViewer-Info.plist
+s373059204.275413
+e373059204.305263
+r1
+xProcessInfoPlistFile
+x/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/Info.plist
+xGIFViewer/GIFViewer-Info.plist
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection38"Process GIFViewer/GIFViewer-Info.plist533f47846e3cb641^e42e4e846e3cb641^---0#0#0#-19%DVTDocumentLocation2@89"file://localhost/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GIFViewer-Info.plist0000000000000000^769"ProcessInfoPlistFile DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/Info.plist GIFViewer/GIFViewer-Info.plist    cd /Users/apple/Desktop/cruisediary/GIFViewer    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility GIFViewer/GIFViewer-Info.plist -genpkginfo /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app/Info.plist36"2842960A-F913-456A-BD92-C16E79714CA8-
+
+CProcessPCH /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch.pth GIFViewer/GIFViewer-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s373059204.328298
+e373059206.381759
+r1
+xProcessPCH
+x/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch.pth
+xGIFViewer/GIFViewer-Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection41"Precompile GIFViewer/GIFViewer-Prefix.pch068357846e3cb641^9dbb61866e3cb641^---0#0#0#-19%DVTDocumentLocation2@89"file://localhost/Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GIFViewer-Prefix.pch0000000000000000^3908"ProcessPCH DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch.pth GIFViewer/GIFViewer-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/apple/Desktop/cruisediary/GIFViewer    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -mios-simulator-version-min=6.0 -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-generated-files.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-own-target-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-all-target-headers.hmap -iquote /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/GIFViewer-project-headers.hmap -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources/i386 -I/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/GIFViewer.build/Debug-iphonesimulator/GIFViewer.build/DerivedSources -F/Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator --serialize-diagnostics /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch.dia -c /Users/apple/Desktop/cruisediary/GIFViewer/GIFViewer/GIFViewer-Prefix.pch -o /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch.pth -MMD -MT dependencies -MF /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Intermediates/PrecompiledHeaders/GIFViewer-Prefix-fmxvlzqahgwnmnbucbqaxcbvkert/GIFViewer-Prefix.pch.d36"261ECDEF-1DB6-4546-93E0-665F1407E436-
+
+CProcessPCH /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Index/PrecompiledHeaders/GIFViewer-Prefix-dsisairgwcwgurargldnlmhtltux_ast/GIFViewer-Prefix.pch.pth GIFViewer/GIFViewer-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+
+CTouch /Users/apple/Desktop/cruisediary/GIFViewer/DerivedData/GIFViewer/Build/Products/Debug-iphonesimulator/GIFViewer.app
+r0
+
