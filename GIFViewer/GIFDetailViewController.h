@@ -28,6 +28,7 @@
     int m_alertType;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *m_gifPlayer;
+@property (strong, nonatomic) UITextField *m_speedGuide;
 
 @end
 

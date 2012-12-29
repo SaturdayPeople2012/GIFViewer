@@ -23,6 +23,7 @@
 @implementation GIFDetailViewController
 
 @synthesize m_gifPlayer;
+@synthesize m_speedGuide;
 
 NSString*   g_gifPath = nil;
 
@@ -84,7 +85,7 @@ NSString*   g_gifPath = nil;
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     UIActivityIndicatorView* spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     CGPoint center;
-    NSLog(@"m_gifPlayer frame = %@",NSStringFromCGRect(self.navigationController.view.frame));
+    NSLog(@"self.navigationController.view.frame frame = %@",NSStringFromCGRect(self.navigationController.view.frame));
     if (orientation == UIInterfaceOrientationLandscapeRight || orientation ==  UIInterfaceOrientationLandscapeLeft)
     {
         center = CGPointMake(self.navigationController.view.frame.size.height/2.0, self.navigationController.view.frame.size.width/2.0);
@@ -280,6 +281,51 @@ NSString*   g_gifPath = nil;
     }
 }
 
+- (void)showSpeedGuide:(int)show
+{
+    if (show)
+    {
+        if (m_speedGuide == NULL)
+        {
+            CGRect rect;
+            UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+            CGRect fullScreenRect = [[UIScreen mainScreen] bounds]; //implicitly in Portrait orientation.
+            
+            if (orientation == UIInterfaceOrientationLandscapeRight || orientation ==  UIInterfaceOrientationLandscapeLeft)
+            {
+                CGRect temp = CGRectZero;
+                temp.size.width = fullScreenRect.size.height;
+                temp.size.height = fullScreenRect.size.width;
+                fullScreenRect = temp;
+            }
+            
+//            rect.origin.x = (fullScreenRect.size.width / 2) - 20;
+//            rect.origin.y = (fullScreenRect.size.height - self.navigationController.toolbar.frame.size.height) - 40;
+//            rect.size.width = 40;
+//            rect.size.height = 20;
+
+            rect.origin.x = (m_gifPlayer.frame.size.width / 2) - 20;
+            rect.origin.y = (m_gifPlayer.frame.size.height) - 40;
+            rect.size.width = 40;
+            rect.size.height = 20;
+            
+            NSLog(@"rect : %@",NSStringFromCGRect(rect));
+
+            m_speedGuide = [[UITextField alloc] initWithFrame:rect];
+            m_speedGuide.borderStyle = UITextBorderStyleNone;
+            m_speedGuide.textAlignment = NSTextAlignmentCenter;
+            m_speedGuide.textColor = [UIColor whiteColor];
+            m_speedGuide.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+            
+            [m_gifPlayer addSubview:m_speedGuide];
+        }
+        m_speedGuide.text = [NSString stringWithFormat:@"%dx",m_delay];
+    } else
+    {
+        if (m_speedGuide) [m_speedGuide removeFromSuperview];
+    }
+}
+
 - (void)goPlaySpeed:(UIBarButtonItem*)sender
 {
     int tag = sender.tag * -1;
@@ -299,6 +345,8 @@ NSString*   g_gifPath = nil;
     [gifAnimation setAnimationDuration:(inst.m_delay_total + ((inst.m_delay_total / 8) * m_delay)) / 100];
     
     [gifAnimation startAnimating];
+    
+    [self showSpeedGuide:true];
 }
 
 - (void)goPausePlay:(UIBarButtonItem*)sender
