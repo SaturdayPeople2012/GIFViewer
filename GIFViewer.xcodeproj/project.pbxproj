@@ -103,6 +103,7 @@
 		F2C2F946163390E500E93A97 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F2C2F945163390E500E93A97 /* Default.png */; };
 		F2C2F948163390E500E93A97 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2C2F947163390E500E93A97 /* Default@2x.png */; };
 		F2C2F94A163390E500E93A97 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2C2F949163390E500E93A97 /* Default-568h@2x.png */; };
+		F2D1540716969FAE00C0EAF4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D1540616969FAE00C0EAF4 /* QuartzCore.framework */; };
 		F2EB33441639739300293A7B /* GridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EB33431639739300293A7B /* GridCell.m */; };
 /* End PBXBuildFile section */
 
@@ -290,6 +291,7 @@
 		F2C2F945163390E500E93A97 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F2C2F947163390E500E93A97 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F2C2F949163390E500E93A97 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F2D1540616969FAE00C0EAF4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F2EB33421639739300293A7B /* GridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridCell.h; sourceTree = "<group>"; };
 		F2EB33431639739300293A7B /* GridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -299,6 +301,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2D1540716969FAE00C0EAF4 /* QuartzCore.framework in Frameworks */,
 				B931B2DA1658C90B00482E22 /* libz.1.2.5.dylib in Frameworks */,
 				B931B2D61658C8F400482E22 /* SystemConfiguration.framework in Frameworks */,
 				B931B2D41658C8EE00482E22 /* CFNetwork.framework in Frameworks */,
@@ -665,6 +668,7 @@
 		F2C2F924163390E500E93A97 = {
 			isa = PBXGroup;
 			children = (
+				F2D1540616969FAE00C0EAF4 /* QuartzCore.framework */,
 				F2C2F939163390E500E93A97 /* GIFViewer */,
 				F2C2F932163390E500E93A97 /* Frameworks */,
 				F2C2F930163390E500E93A97 /* Products */,
@@ -959,6 +963,8 @@
 		F2C2F94E163390E500E93A97 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: wonseok Yang (36K24A774P)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GIFViewer/GIFViewer-Prefix.pch";
 				INFOPLIST_FILE = "GIFViewer/GIFViewer-Info.plist";
@@ -968,6 +974,8 @@
 					"\"$(SRCROOT)/GIFViewer/Twitpic/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "806BB7FE-1CF0-4E2D-A2BD-A190D50DE2EA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -975,6 +983,8 @@
 		F2C2F94F163390E500E93A97 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: wonseok Yang (36K24A774P)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GIFViewer/GIFViewer-Prefix.pch";
 				INFOPLIST_FILE = "GIFViewer/GIFViewer-Info.plist";
@@ -984,6 +994,8 @@
 					"\"$(SRCROOT)/GIFViewer/Twitpic/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "806BB7FE-1CF0-4E2D-A2BD-A190D50DE2EA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
