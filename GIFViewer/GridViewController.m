@@ -24,12 +24,6 @@
 @implementation GridViewController
 static NSString *CellIdentifier = @"Cell";
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.gridView reloadData];
-}
-
 -(void) getDataFromDocumentFolder{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];

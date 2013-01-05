@@ -909,7 +909,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -925,6 +925,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
@@ -941,7 +942,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -952,6 +953,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB9F33C9-C21B-435C-8533-AA7DED5CCDC3";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
@@ -963,8 +965,8 @@
 		F2C2F94E163390E500E93A97 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: wonseok Yang (36K24A774P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GIFViewer/GIFViewer-Prefix.pch";
 				INFOPLIST_FILE = "GIFViewer/GIFViewer-Info.plist";
@@ -974,8 +976,8 @@
 					"\"$(SRCROOT)/GIFViewer/Twitpic/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "806BB7FE-1CF0-4E2D-A2BD-A190D50DE2EA";
+				PROVISIONING_PROFILE = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -983,8 +985,8 @@
 		F2C2F94F163390E500E93A97 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: wonseok Yang (36K24A774P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GIFViewer/GIFViewer-Prefix.pch";
 				INFOPLIST_FILE = "GIFViewer/GIFViewer-Info.plist";
@@ -994,8 +996,8 @@
 					"\"$(SRCROOT)/GIFViewer/Twitpic/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "806BB7FE-1CF0-4E2D-A2BD-A190D50DE2EA";
+				PROVISIONING_PROFILE = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
