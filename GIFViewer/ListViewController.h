@@ -10,7 +10,7 @@
 #import "ListCell.h"
 #import "GridViewController.h"
 #import "GIFDetailViewController.h"
-@interface ListViewController : UITableViewController <UIActionSheetDelegate>{
+@interface ListViewController : UITableViewController <UIActionSheetDelegate,ELCImagePickerControllerDelegate>{
     /*
      UIBarButtonItem *editButton;
      UIBarButtonItem *deleteButton;

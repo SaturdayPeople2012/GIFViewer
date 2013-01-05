@@ -7,7 +7,7 @@
 //
 
 #import "GridCell.h"
-
+#import <QuartzCore/QuartzCore.h>
 @implementation GridCell
 
 - (id)initWithFrame:(CGRect)frame
@@ -18,12 +18,14 @@
         self.gifImgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bear.gif"]];
         _gifImgView.center = self.center;
         self.backgroundView = _gifImgView;
-        
-        self.button = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.button.frame = CGRectMake(0, 0, 65, 65);
-        [self addSubview:_button];
-        
 
+        self.backgroundColor = [UIColor redColor];
+        UIView *bgView = [[UIView alloc] initWithFrame:self.backgroundView.frame];
+        bgView.backgroundColor = [UIColor blueColor];
+        bgView.layer.borderColor = [[UIColor whiteColor] CGColor];
+        bgView.layer.borderWidth = 4;
+        self.selectedBackgroundView = bgView;
+        
         //document 경로
 //        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 //        NSString *documentsDirectory = [paths objectAtIndex:0];
