@@ -24,8 +24,12 @@
 
 @synthesize m_gifPlayer;
 @synthesize m_speedGuide;
+@synthesize m_timer;
 
 NSString*   g_gifPath = nil;
+
+//                  0    1    2    3    4    5    6    7    8    9
+float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,7 +45,7 @@ NSString*   g_gifPath = nil;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-//    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithTitle:@"편집" style:UIBarButtonItemStyleBordered target:self action:@selector(goEdit:)];
+    //    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithTitle:@"편집" style:UIBarButtonItemStyleBordered target:self action:@selector(goEdit:)];
     UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(goEdit:)];
     UIBarButtonItem *funcBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(goFunc:)];
     UIBarButtonItem *deleteBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(goDelete:)];
@@ -55,33 +59,34 @@ NSString*   g_gifPath = nil;
     
     self.navigationItem.rightBarButtonItem = editBtn;
     self.toolbarItems = [NSArray arrayWithObjects:funcBtn, flexible, slowBtn, flexible, pauseBtn, flexible, fastBtn, flexible, deleteBtn, nil];
-
+    
     ///////////////////////////////////////////////////////////////////////////////////////
 #if 0
     NSArray* dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     g_gifPath = [dirPath objectAtIndex:0];
-//    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/frozen_pond.gif"];
-//    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/big bear.gif"];
-//    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/color_test.gif"];
-//    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/psy-gangnam-style-1.gif"];
+    //    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/frozen_pond.gif"];
+    //    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/big bear.gif"];
+    //    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/color_test.gif"];
+    //    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/psy-gangnam-style-1.gif"];
     g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/aa.gif"];
-//    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/kid_and_cat.gif"];
-//  g_gifPath = [g_gifPath stringByAppendingString:@"/apple_logo_animated.gif"];
+    //    g_gifPath = [g_gifPath stringByAppendingPathComponent:@"/kid_and_cat.gif"];
+    //  g_gifPath = [g_gifPath stringByAppendingString:@"/apple_logo_animated.gif"];
 #endif
     NSLog(@"document path = \"%@\"",g_gifPath);
     
-    self.title = [g_gifPath lastPathComponent];
+//    self.title = [g_gifPath lastPathComponent];
     
     ///////////////////////////////////////////////////////////////////////////////////////
-                             
-//    self.navigationController.view.alpha = 0.5;
-
+    
+    //    self.navigationController.view.alpha = 0.5;
+    
     ///////////////////////////////////////////////////////////////////////////////////////
     
-    m_width = m_height = m_delay = 0, m_isPlay = 1, m_showMenu = 1;
-
+    m_width = m_height = 0, m_isPlay = 1, m_showMenu = 1;
+    m_delay = 5;
+    
     ///////////////////////////////////////////////////////////////////////////////////////
-
+    
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     UIActivityIndicatorView* spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     CGPoint center;
@@ -96,21 +101,23 @@ NSString*   g_gifPath = nil;
     [self.navigationController.view addSubview:spinner]; // spinner is not visible until started
     
     [spinner startAnimating];
-
+    
     ///////////////////////////////////////////////////////////////////////////////////////
-
+    
     __block UIImageView *gifView;
     
     gifView = [GIF_Library giflib_get_gif_view_from_path:g_gifPath parent:self completion:^(int width,int height)
-    {
-        m_width = width, m_height = height;
-        gifView.frame = [self adjustViewSizeAndLocate:width height:height];
+               {
+                   m_width = width, m_height = height;
+                   gifView.frame = [self adjustViewSizeAndLocate:width height:height];
 
-        [spinner stopAnimating];
-    }];
+                   if (self.title == nil) self.title = [g_gifPath lastPathComponent];
+                   
+                   [spinner stopAnimating];
+               }];
     
     gifView.tag = 100;
-        
+    
     [m_gifPlayer addSubview:gifView];
     self.view.backgroundColor = [UIColor blackColor];
 }
@@ -123,7 +130,7 @@ NSString*   g_gifPath = nil;
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     CGRect fullScreenRect = [[UIScreen mainScreen] bounds]; //implicitly in Portrait orientation.
     CGRect statusBar = [[UIApplication sharedApplication] statusBarFrame];
-
+    
     NSLog(@"Status Bar Size : %@",NSStringFromCGRect(statusBar));
     
     if (orientation == UIInterfaceOrientationLandscapeRight || orientation ==  UIInterfaceOrientationLandscapeLeft)
@@ -163,10 +170,10 @@ NSString*   g_gifPath = nil;
         t_width = width;
         t_height = height;
     }
-
-//    CGPoint winPoint = [self.view.superview convertPoint:self.view.bounds.origin  toView:nil];
-//    NSLog(@"winPoint.x=%f, winPoint.y=%f",winPoint.x, winPoint.y);
-
+    
+    //    CGPoint winPoint = [self.view.superview convertPoint:self.view.bounds.origin  toView:nil];
+    //    NSLog(@"winPoint.x=%f, winPoint.y=%f",winPoint.x, winPoint.y);
+    
     NSLog(@"view.origin.x=%f, view.origin.y=%f",self.view.frame.origin.x,self.view.frame.origin.y);
     
     view.origin.x = x;
@@ -183,12 +190,13 @@ NSString*   g_gifPath = nil;
     m_alertType = kAlertType_Edit;
     
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"GIF의 제목을 입력하십시요"
-                                                message:@""
-                                                delegate:self
-                                                cancelButtonTitle:@"취소"
-                                                otherButtonTitles:@"확인", nil];
+                                                        message:@""
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"OK", nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-
+    
+    [alertView textFieldAtIndex:0].text = self.title;
     
     [alertView show];
 }
@@ -202,9 +210,9 @@ NSString*   g_gifPath = nil;
         {
             NSString *name = [alertView textFieldAtIndex:0].text;
             // name contains the entered value
-
+            
             self.title = name;
-                    
+            
             GIF_Library* inst = [GIF_Library giflib_sharedInstance];
             
             NSMutableData* gif_new = [inst giflib_gif_copy_with_comment:name];
@@ -212,20 +220,13 @@ NSString*   g_gifPath = nil;
             NSLog(@"gif_new length = %d",[gif_new length]);
             
             [gif_new writeToFile:g_gifPath atomically:YES];
-        } else
-        if (m_alertType == kAlertType_Delete)
-        {
-             NSFileManager *fileMgr = [NSFileManager defaultManager];
-             NSError *error;
-             
-             if ([fileMgr removeItemAtPath:g_gifPath error:&error] != YES) NSLog(@"Unable to delete file: %@", [error localizedDescription]);
         }
     }
 }
 
 - (void)goFunc:(id)sender
 {
-
+    
     NSString *textItem =self.title;
     textItem = [ textItem  stringByReplacingOccurrencesOfString: @".gif" withString:@""];
     
@@ -267,8 +268,9 @@ NSString*   g_gifPath = nil;
 - (void)goDelete:(id)sender
 {
     // 모달뷰로 "확인" 메세지를 띄웁니다. ////////////////////////////////////
+/*
     m_alertType = kAlertType_Delete;
-
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"삭제 확인" message:@"정말로 파일을 지우시겠습니까?" delegate:self cancelButtonTitle:@"취소" otherButtonTitles:@"삭제", nil];
     [alert show];
     
@@ -279,70 +281,110 @@ NSString*   g_gifPath = nil;
         d = [[NSDate alloc] init];
         [rl runUntilDate:d];
     }
+ */
+    UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete File" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"OK" otherButtonTitles:nil];
+    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+    [actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	// the user clicked one of the OK/Cancel buttons
+	if (buttonIndex == 0)
+	{
+		NSLog(@"ok");
+
+        NSFileManager *fileMgr = [NSFileManager defaultManager];
+        NSError *error;
+        
+        if ([fileMgr removeItemAtPath:g_gifPath error:&error] != YES) NSLog(@"Unable to delete file: %@", [error localizedDescription]);
+	} else
+	{
+		NSLog(@"cancel");
+	}
+}
+
+- (void)timerTicked:(NSTimer*)timer
+{
+    m_tickDown --;
+
+    m_speedGuide.alpha -= 0.2;
+    
+    if (m_tickDown < 0)
+    {
+        [m_timer invalidate];
+        m_timer = nil;
+
+        if (m_speedGuide)
+        {
+            [m_speedGuide removeFromSuperview];
+            m_speedGuide = nil;
+        }
+    }
 }
 
 - (void)showSpeedGuide:(int)show
 {
+    if (m_speedGuide)
+    {
+        [m_speedGuide removeFromSuperview];
+        m_speedGuide = nil;
+    }
+    
     if (show)
     {
-        if (m_speedGuide == NULL)
+        CGRect rect;
+        
+        rect.origin.x = (m_gifPlayer.frame.size.width / 2) - 20;
+        rect.origin.y = (m_gifPlayer.frame.size.height) - 25;
+        rect.size.width = 40;
+        rect.size.height = 20;
+        
+        NSLog(@"rect : %@",NSStringFromCGRect(rect));
+        
+        m_speedGuide = [[UITextField alloc] initWithFrame:rect];
+        m_speedGuide.borderStyle = UITextBorderStyleNone;
+        m_speedGuide.textAlignment = NSTextAlignmentRight;
+        m_speedGuide.textColor = [UIColor whiteColor];
+        m_speedGuide.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        m_speedGuide.alpha = 1.0;
+        
+        [m_gifPlayer addSubview:m_speedGuide];
+        
+        m_speedGuide.text = [NSString stringWithFormat:@"%.1fx",delay_t[m_delay]];
+        
+        if (m_timer)
         {
-            CGRect rect;
-            UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-            CGRect fullScreenRect = [[UIScreen mainScreen] bounds]; //implicitly in Portrait orientation.
-            
-            if (orientation == UIInterfaceOrientationLandscapeRight || orientation ==  UIInterfaceOrientationLandscapeLeft)
-            {
-                CGRect temp = CGRectZero;
-                temp.size.width = fullScreenRect.size.height;
-                temp.size.height = fullScreenRect.size.width;
-                fullScreenRect = temp;
-            }
-            
-//            rect.origin.x = (fullScreenRect.size.width / 2) - 20;
-//            rect.origin.y = (fullScreenRect.size.height - self.navigationController.toolbar.frame.size.height) - 40;
-//            rect.size.width = 40;
-//            rect.size.height = 20;
-
-            rect.origin.x = (m_gifPlayer.frame.size.width / 2) - 20;
-            rect.origin.y = (m_gifPlayer.frame.size.height) - 40;
-            rect.size.width = 40;
-            rect.size.height = 20;
-            
-            NSLog(@"rect : %@",NSStringFromCGRect(rect));
-
-            m_speedGuide = [[UITextField alloc] initWithFrame:rect];
-            m_speedGuide.borderStyle = UITextBorderStyleNone;
-            m_speedGuide.textAlignment = NSTextAlignmentCenter;
-            m_speedGuide.textColor = [UIColor whiteColor];
-            m_speedGuide.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-            
-            [m_gifPlayer addSubview:m_speedGuide];
+            [m_timer invalidate];
+            m_timer = nil;
         }
-        m_speedGuide.text = [NSString stringWithFormat:@"%dx",m_delay];
-    } else
-    {
-        if (m_speedGuide) [m_speedGuide removeFromSuperview];
+
+        m_tickDown = 5;
+        m_timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerTicked:) userInfo:nil repeats:YES];
     }
 }
 
 - (void)goPlaySpeed:(UIBarButtonItem*)sender
 {
-    int tag = sender.tag * -1;
+    int tag = sender.tag;
     
-    if ((m_delay + tag) < -5 || (m_delay + tag) > 5) return;
+    if ((m_delay + tag) < 0 || (m_delay + tag) >= (sizeof(delay_t)/sizeof(delay_t[0])))
+    {
+        [self showSpeedGuide:true];
+        return;
+    }
     
     m_delay += tag;
     
     NSLog(@"delay = %d",m_delay);
     
     UIImageView* gifAnimation = [[m_gifPlayer subviews] objectAtIndex:0];
-
-    GIF_Library* inst = [GIF_Library giflib_sharedInstance];
-        
-    NSLog(@"animationDuration=%f",(inst.m_delay_total + ((inst.m_delay_total / 8) * m_delay)) / 100);
     
-    [gifAnimation setAnimationDuration:(inst.m_delay_total + ((inst.m_delay_total / 8) * m_delay)) / 100];
+    GIF_Library* inst = [GIF_Library giflib_sharedInstance];
+    
+    NSLog(@"animationDuration=%f",(inst.m_delay_total / delay_t[m_delay]) / 100);
+    
+    [gifAnimation setAnimationDuration:(inst.m_delay_total / delay_t[m_delay]) / 100];
     
     [gifAnimation startAnimating];
     
@@ -352,14 +394,14 @@ NSString*   g_gifPath = nil;
 - (void)goPausePlay:(UIBarButtonItem*)sender
 {
     UIImageView* gifAnimation = [[m_gifPlayer subviews] objectAtIndex:0];
-
+    
     if (m_isPlay == 1) [gifAnimation stopAnimating];
     else               [gifAnimation startAnimating];
- 
+    
     m_isPlay ^= 1;
-
+    
     NSMutableArray* btnItems = [self.toolbarItems mutableCopy];
-
+    
     if (m_isPlay)
     {
         UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(goPausePlay:)];
@@ -381,19 +423,41 @@ NSString*   g_gifPath = nil;
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-//    NSLog(@"willAnimateRotationToInterfaceOrientation");
+    //    NSLog(@"willAnimateRotationToInterfaceOrientation");
 
+    if (m_timer)
+    {
+        [m_timer invalidate];
+        m_timer = nil;
+    }
+    if (m_speedGuide)
+    {
+        [m_speedGuide removeFromSuperview];
+        m_speedGuide = nil;
+    }
+    
     [m_gifPlayer viewWithTag:100].frame = [self adjustViewSizeAndLocate:m_width height:m_height];
 }
 
 -(void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
 {
     [super touchesEnded:touches withEvent:event];
+
+    if (m_timer)
+    {
+        [m_timer invalidate];
+        m_timer = nil;
+    }
+    if (m_speedGuide)
+    {
+        [m_speedGuide removeFromSuperview];
+        m_speedGuide = nil;
+    }
     
     m_gifPlayer.center = self.view.center;
     
     m_showMenu ^= 1;
-
+    
     if (m_showMenu)
     {
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];

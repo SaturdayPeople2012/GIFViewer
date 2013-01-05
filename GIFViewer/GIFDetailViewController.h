@@ -18,7 +18,7 @@
 #define kAlertType_Edit     1
 #define kAlertType_Delete   2
 
-@interface GIFDetailViewController : UIViewController <UIAlertViewDelegate,GSTwitPicEngineDelegate>
+@interface GIFDetailViewController : UIViewController <UIAlertViewDelegate,UIActionSheetDelegate,GSTwitPicEngineDelegate>
 {
     int m_width;
     int m_height;
@@ -26,9 +26,11 @@
     int m_delay;
     int m_showMenu;
     int m_alertType;
+    int m_tickDown;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *m_gifPlayer;
 @property (strong, nonatomic) UITextField *m_speedGuide;
+@property (strong, nonatomic) NSTimer* m_timer;
 
 @end
 
