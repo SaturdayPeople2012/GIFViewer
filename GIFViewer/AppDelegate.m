@@ -25,6 +25,12 @@
     [self.naviController pushViewController:mainVC animated:NO];
     [self.naviController setToolbarHidden:NO];
 
+#if 0
+    NSArray* dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    g_gifPath = [dirPath objectAtIndex:0];
+    NSLog(@"document path = \"%@\"",g_gifPath);
+#endif
+
     //////////////////////////////////////////////////////
     UIBarButtonItem *loadBtn = [[UIBarButtonItem alloc]initWithTitle:@"Load" style:UIBarButtonItemStyleBordered
                                                               target:self action:@selector(goLoad:)];

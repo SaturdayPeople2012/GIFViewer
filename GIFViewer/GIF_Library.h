@@ -69,6 +69,7 @@
     NSMutableArray* m_gif_queue;
     
     GIF_HEADER	m_gif_hdr;
+    GIF_GRAPHIC_CONTROL_EXTENSION_BLOCK m_gif_gceb;
     
     int         m_gif_gctf;                // Global Color Table Flag(GCDF)
     int         m_gif_sorted;

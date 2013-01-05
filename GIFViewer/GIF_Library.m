@@ -215,9 +215,7 @@ static GIF_Library* instance;
     NSLog(@"logical_screen_width = %d",m_gif_hdr.logical_screen_width);
     NSLog(@"logical_screen_height = %d",m_gif_hdr.logical_screen_height);
 #endif
-    
-    self.m_blockCompletion(m_gif_hdr.logical_screen_width,m_gif_hdr.logical_screen_height);
-    
+        
     m_gif_gctf   = (m_gif_hdr.flags & 0x80) ? 1 : 0;
     m_gif_sorted = (m_gif_hdr.flags * 0x08) ? 1 : 0;
     m_gif_colorb = (m_gif_hdr.flags & 0x07);
@@ -288,6 +286,7 @@ static GIF_Library* instance;
 				[self giflib_image_block];
 				break;
 			case 0x3b:// Trailer
+                self.m_blockCompletion(m_gif_hdr.logical_screen_width,m_gif_hdr.logical_screen_height);
 #ifdef __PRINT_NSLOG__
 				NSLog(@"[END]");
 #endif
@@ -315,22 +314,14 @@ static GIF_Library* instance;
 
 -(void) giflib_graphic_control_extension_block
 {
-    GIF_GRAPHIC_CONTROL_EXTENSION_BLOCK b;
+//    GIF_GRAPHIC_CONTROL_EXTENSION_BLOCK b;
 
-    if ([self giflib_get_n_bytes:&b length:sizeof(b)] < 0) return;
-    
-    AnimatedGifFrame* frame = [[AnimatedGifFrame alloc] init];
-    
-    frame.disposalMethod = (b.flag & 0x1c) >> 2;
-    frame.delay = b.delay;
-    frame.header = [NSData dataWithBytes:&b length:sizeof(b)];
+    if ([self giflib_get_n_bytes:&m_gif_gceb length:sizeof(m_gif_gceb)] < 0) return;
     
 #ifdef __PRINT_NSLOG__
-    NSLog(@"flag = %x, disposalMethod = %x",b.flag,frame.disposalMethod);
-    NSLog(@"delay = %d",b.delay);
+    NSLog(@"flag = %x, disposalMethod = %x",m_gif_gceb.flag,(m_gif_gceb.flag & 0x1c) >> 2);
+    NSLog(@"delay = %d",m_gif_gceb.delay);
 #endif
-    
-    [m_gif_frames addObject:frame];
 }
 
 -(void) giflib_comment_extension_block
@@ -388,7 +379,10 @@ static GIF_Library* instance;
     NSLog(@"image block : flags = %02X",b.flags);
 #endif
     
-    AnimatedGifFrame* frame = [m_gif_frames lastObject];
+    AnimatedGifFrame* frame = [[AnimatedGifFrame alloc] init];
+    frame.disposalMethod = (m_gif_gceb.flag & 0x1c) >> 2;
+    frame.delay = m_gif_gceb.delay;
+    frame.header = [NSData dataWithBytes:&m_gif_gceb length:sizeof(m_gif_gceb)];
     frame.area = CGRectMake(b.left_position,b.top_position,b.width,b.height);
     
     int gif_lctf = (b.flags & 0x80) ? 1 : 0;
@@ -457,6 +451,8 @@ static GIF_Library* instance;
     [gif_data appendBytes:&u8 length:sizeof(u8)];
     
     frame.data = gif_data;
+
+    [m_gif_frames addObject:frame];
 }
 
 - (UIImage*) giflib_get_frame_as_image_index:(int)index
