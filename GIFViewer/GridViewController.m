@@ -174,6 +174,13 @@ static NSString *CellIdentifier = @"Cell";
     GIFDetailViewController *detailViewController = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
     if(!self.editMode)
     {
+        NSFileManager *manager = [NSFileManager defaultManager];
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        
+        g_gifPath =[documentsDirectory stringByAppendingPathComponent:[[manager contentsOfDirectoryAtPath:documentsDirectory error:nil]objectAtIndex:indexPath.row]];
+        
+        
         [self.navigationController pushViewController:detailViewController animated:YES];
         [self.gridView deselectItemAtIndexPath:indexPath animated:YES];
     }
