@@ -388,6 +388,18 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     
     [gifAnimation startAnimating];
     
+    if (m_isPlay == 0)
+    {
+        m_isPlay = 1;
+
+        NSMutableArray* btnItems = [self.toolbarItems mutableCopy];
+        
+        UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(goPausePlay:)];
+        [btnItems replaceObjectAtIndex:4 withObject:pauseBtn];
+
+        self.toolbarItems = btnItems;
+    }
+    
     [self showSpeedGuide:true];
 }
 
