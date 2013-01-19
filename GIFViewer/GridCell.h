@@ -11,5 +11,5 @@
 @interface GridCell : UICollectionViewCell
 //gif 올릴 이미지뷰
 @property (strong, nonatomic) UIImageView *gifImgView;
-
+//@property (strong, nonatomic) UIImageView *selectedView;
 @end

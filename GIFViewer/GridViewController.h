@@ -12,7 +12,7 @@
 #import "ELCImagePickerController.h"
 #import "ELCAlbumPickerController.h"
 
-@interface GridViewController : UIViewController <UICollectionViewDelegate,UICollectionViewDataSource,ELCImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate>
+@interface GridViewController : UIViewController <UICollectionViewDelegate,UICollectionViewDataSource,ELCImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *gridView;
 
 @property (strong, nonatomic) NSMutableArray *gifDataArray;
