@@ -284,12 +284,18 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
  */
     UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete File" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"OK" otherButtonTitles:nil];
     actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    [actionSheet showInView:self.view];
+    
+    self.navigationController.toolbarHidden = YES;
+//    [actionSheet showFromToolbar:(UIToolbar*)self.view];
+    [actionSheet showInView: self.view];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	// the user clicked one of the OK/Cancel buttons
+    
+    self.navigationController.toolbarHidden = NO;
+    
 	if (buttonIndex == 0)
 	{
 		NSLog(@"ok");
