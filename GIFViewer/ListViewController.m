@@ -400,7 +400,7 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     GIFDetailViewController *detailViewController = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
     detailViewController.view.frame = CGRectMake(0, 0, 0, 0);
     //[listCell.gifImage addSubview:detailViewController.view];
-    listCell.time.text = detailViewController.num;
+//    listCell.time.text = detailViewController.num;
     [listCell.button addTarget:self action:@selector(openGIF:) forControlEvents:UIControlEventTouchUpInside];
     listCell.button.tag = indexPath.row;
     //[detailViewController ad
