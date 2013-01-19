@@ -114,7 +114,7 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
                {
                    m_width = width, m_height = height;
                    gifView.frame = [self adjustViewSizeAndLocate:width height:height];
-                   NSLog(@"checececece");
+
                    if (self.title == nil) self.title = [g_gifPath lastPathComponent];
                    
                    [spinner stopAnimating];
@@ -123,7 +123,6 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     gifView.tag = 100;
     
     
-    NSLog(@"vvvvvvvvvvvvvvvvvvv");
     [m_gifPlayer addSubview:gifView];
     self.view.backgroundColor = [UIColor blackColor];
 }
@@ -190,7 +189,7 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     GIF_Library* inst = [GIF_Library giflib_sharedInstance];
     
     NSLog(@"animationDuration=%f",(inst.m_delay_total / delay_t[m_delay]) / 100);
-    [self.num initWithFormat:@"%f",inst.m_delay_total/100];
+
     return view;
 }
 
