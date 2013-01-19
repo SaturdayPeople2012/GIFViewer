@@ -13,18 +13,27 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {   
-        //나중에 썸네일이 어레이로 넘어올경우에는 GridViewController에서 작업하면됨.. 여기는 DefaultImage로 바꾸고..
-        self.gifImgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bear.gif"]];
-        _gifImgView.center = self.center;
-        self.backgroundView = _gifImgView;
-
+    if (self) {
         self.backgroundColor = [UIColor redColor];
         UIView *bgView = [[UIView alloc] initWithFrame:self.backgroundView.frame];
         bgView.backgroundColor = [UIColor blueColor];
-        bgView.layer.borderColor = [[UIColor whiteColor] CGColor];
-        bgView.layer.borderWidth = 4;
         self.selectedBackgroundView = bgView;
+
+        
+        self.gifImgView = [[UIImageView alloc]init];
+//        self.selectedView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Check-icon.png"]];
+        _gifImgView.center = self.center;
+//        self.backgroundView = _gifImgView;
+//        self.contentView.frame = CGRectMake(3, 3, 59, 59);
+        self.gifImgView.frame = CGRectMake(3, 3, 59, 59);
+        [self addSubview:_gifImgView];
+//        [self.contentView addSubview:_gifImgView];
+
+        self.backgroundColor = [UIColor clearColor];
+
+//        self.selectedView.hidden = YES;
+//        [self addSubview:_selectedView];
+        
         
         //document 경로
 //        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -33,6 +42,7 @@
         
 //        self.tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapped:)];
 //        [self addGestureRecognizer:_tapGesture];
+ 
     }
     return self;
 }
