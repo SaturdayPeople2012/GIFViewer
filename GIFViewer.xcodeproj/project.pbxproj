@@ -109,6 +109,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		182458DC16AAE50E005C0355 /* GIFDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GIFDetailViewController.h; sourceTree = "<group>"; };
 		7A19D9B9164606E100B414FB /* ELCAlbumPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAlbumPickerController.h; sourceTree = "<group>"; };
 		7A19D9BA164606E100B414FB /* ELCAlbumPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAlbumPickerController.m; sourceTree = "<group>"; };
 		7A19D9BB164606E100B414FB /* ELCAlbumPickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAlbumPickerController.xib; sourceTree = "<group>"; };
@@ -635,6 +636,7 @@
 				D704B7421645E5A400DBE35F /* GIF_Header.h */,
 				D704B7431645E5A400DBE35F /* GIF_Library.h */,
 				D704B7441645E5A400DBE35F /* GIF_Library.m */,
+				182458DC16AAE50E005C0355 /* GIFDetailViewController.h */,
 				F286BD60163575A6004395AE /* GIFDetailViewController.h */,
 				F286BD61163575A6004395AE /* GIFDetailViewController.m */,
 				F286BD62163575A6004395AE /* GIFDetailViewController.xib */,

@@ -28,10 +28,13 @@
     int m_alertType;
     int m_tickDown;
 }
+
 @property (weak, nonatomic) IBOutlet UIImageView *m_gifPlayer;
 @property (strong, nonatomic) UITextField *m_speedGuide;
 @property (strong, nonatomic) NSTimer* m_timer;
-
+@property (readwrite,strong,nonatomic) NSString* g_gifPath2;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil string:(NSString*)string;
 @end
-
+extern NSArray* g_gifPathArray;
+extern NSNumber* isCellCall;
 extern NSString*    g_gifPath;

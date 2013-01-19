@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ListCell.h"
 #import "GridViewController.h"
+#import "GIF_Header.h"
 #import "GIFDetailViewController.h"
 @interface ListViewController : UITableViewController <UIActionSheetDelegate,ELCImagePickerControllerDelegate>{
     /*
@@ -16,7 +17,7 @@
      UIBarButtonItem *deleteButton;
      UIBarButtonItem *closeButton;
      */
-    UIBarButtonItem *loadButton;
+    UIBarButtonItem*loadButton;
     UIBarButtonItem *flexible;
     
     UIBarButtonItem *editButton;
