@@ -21,6 +21,8 @@
     self.window.backgroundColor = [UIColor blackColor];
     
     self.naviController = [[UINavigationController alloc]init];
+    [self.naviController.navigationBar setBarStyle:UIBarStyleBlack];
+    [self.naviController.toolbar setBarStyle:UIBarStyleBlack];
     MainViewController *mainVC = [[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
     [self.naviController pushViewController:mainVC animated:NO];
     [self.naviController setToolbarHidden:NO];

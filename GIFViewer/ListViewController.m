@@ -12,7 +12,7 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
 #import "ListViewController.h"
 #import "GIFDetailViewController.h"
 
-#define kListCellHeight 75.0f
+#define kListCellHeight 65.0f
 
 @interface ListViewController ()
 @property (strong, nonatomic)NSArray *fileLists;
@@ -60,8 +60,11 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     
     
     flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    loadButton = [[UIBarButtonItem alloc]initWithTitle:@"Load" style:UIBarButtonItemStyleBordered
-                                                target:self action:@selector(goLoad:)];
+
+    loadButton.style = UIBarButtonSystemItemAdd;
+    loadButton.target = self;
+    loadButton.action = @selector(goLoad:);
+    
     loadButton.tintColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0f];
     self.toolbarItems = [NSArray arrayWithObjects:flexible, segBtn,flexible, loadButton, nil];
     
@@ -162,8 +165,8 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     
     
     flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    loadButton = [[UIBarButtonItem alloc]initWithTitle:@"Load" style:UIBarButtonItemStyleBordered
-                                                target:self action:@selector(load:)];
+    loadButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(load:) ];
+    
     loadButton.tintColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0f];
     self.toolbarItems = [NSArray arrayWithObjects:flexible, segBtn,flexible, loadButton, nil];
     
@@ -175,11 +178,11 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     self.navigationItem.rightBarButtonItem = self.editButton;
     
     [self resetUI];
-    
+    /*
     UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipe:)];
     
     [self.tableView addGestureRecognizer:swipeGesture];
-    
+    */
     
     self.gifDataArray = [NSMutableArray array];
     [self getDataFromDocumentFolder];
@@ -191,6 +194,7 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     }
     [control setSelectedSegmentIndex:1];
 }
+/*
 -(void)swipe:(id)sender{
     NSLog(@"swipe\n");
     GridViewController *gridVC = [[GridViewController alloc]initWithNibName:@"GridViewController" bundle:nil];
@@ -198,6 +202,7 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     NSLog(@"dd");
     [self.navigationController pushViewController:gridVC animated:YES];
 }
+ */
 -(void)load:(id)sender{
     NSLog(@"Call Load\n");
 }
@@ -267,6 +272,9 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
 	// the user clicked one of the OK/Cancel buttons
 	if (buttonIndex == 0)
 	{
+        
+                NSLog(@"FFF");
+
         [self.tableView beginUpdates];
 		// delete the selected rows
         NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
@@ -289,26 +297,24 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
                 }
             }
             
+        }else{
+            if ([manager fileExistsAtPath:documentsDirectory]) {
+                for (int i=0; i<[gifDataArray count]; i++) {
+                    [manager removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:[arr objectAtIndex:i]] error:nil];
+                }
+            }
+            [self.gifDataArray removeAllObjects];
+            [self.tableView deleteRowsAtIndexPaths:gifDataArray withRowAnimation:UITableViewRowAnimationAutomatic];
+            //[self.tableView endUpdates];
+            // since we are deleting all the rows, just reload the current table section
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
         }
         [self.tableView deleteRowsAtIndexPaths:selectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
         
         [self.tableView endUpdates];
         // then delete the only the rows in our table that were selected
-        }
-    else
-    {
-        [self.tableView beginUpdates];
-        [gifDataArray removeAllObjects];
-        if ([manager fileExistsAtPath:documentsDirectory]) {
-            for (int i=0; i<[gifDataArray count]; i++) {
-                [manager removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:[arr objectAtIndex:i]] error:nil];
-            }
-        }
-        [self.tableView deleteRowsAtIndexPaths:gifDataArray withRowAnimation:UITableViewRowAnimationAutomatic];
-        [self.tableView endUpdates];
-        // since we are deleting all the rows, just reload the current table section
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
+
     
     [self resetUI]; // reset our UI
     [self.tableView setEditing:NO animated:YES];
@@ -364,11 +370,11 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSFileManager *manager = [NSFileManager defaultManager];
     NSArray *arr = [manager contentsOfDirectoryAtPath:documentsDirectory error:nil];
-    
-    
+    NSDictionary *dic = [[NSDictionary alloc] init];
+    dic =[manager attributesOfItemAtPath:[documentsDirectory stringByAppendingPathComponent:[self.fileLists objectAtIndex:indexPath.row]] error:nil];
+    ;
     static NSString *CellIdentifier = @"BaseCell";
     ListCell *listCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
     if (listCell == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:self options:nil];
@@ -381,10 +387,23 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     UIImage *thumnails = [self getImageFromDocFolderAtIndex:indexPath.row];
     listCell.title.text = [arr objectAtIndex:indexPath.row];
     listCell.gifImage.image = thumnails;
-    
-    
+    NSString *tt = [[NSString alloc] initWithFormat:@"%@",[dic objectForKey:NSFileModificationDate ]];
+
+    NSRange range = [tt rangeOfString:@" "];
+    if (range.location != NSNotFound) {
+        NSString *str = [tt substringToIndex:range.location];
+        NSLog(@"%@",str);
+        listCell.date.text = str;
+    }
+   // listCell.date.text = [dic objectForKey:NSFileModificationDate];
+    g_gifPath = [documentsDirectory stringByAppendingPathComponent:[self.fileLists objectAtIndex:indexPath.row]];
+    GIFDetailViewController *detailViewController = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
+    detailViewController.view.frame = CGRectMake(0, 0, 0, 0);
+    //[listCell.gifImage addSubview:detailViewController.view];
+    listCell.time.text = detailViewController.num;
     [listCell.button addTarget:self action:@selector(openGIF:) forControlEvents:UIControlEventTouchUpInside];
     listCell.button.tag = indexPath.row;
+    //[detailViewController ad
     
     return listCell;
 }
@@ -461,5 +480,51 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
  return YES;
  }
  */
+
+#pragma mark - ELC Delegate
+
+- (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info {
+	
+	[self dismissModalViewControllerAnimated:YES];
+    for(NSDictionary *dict in info) {
+        
+        UIImage *gifImage = [dict objectForKey:UIImagePickerControllerOriginalImage];
+        //document 경로
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        
+        NSString *fileName = [documentsDirectory stringByAppendingPathComponent:@"123.gif"];
+	}
+    
+    
+    //기명처리
+    /*
+     for (UIView *v in [scrollview subviews]) {
+     [v removeFromSuperview];
+     }
+     
+     CGRect workingFrame = scrollview.frame;
+     workingFrame.origin.x = 0;
+     
+     for(NSDictionary *dict in info) {
+     
+     UIImageView *imageview = [[UIImageView alloc] initWithImage:[dict objectForKey:UIImagePickerControllerOriginalImage]];
+     [imageview setContentMode:UIViewContentModeScaleAspectFit];
+     imageview.frame = workingFrame;
+     
+     [scrollview addSubview:imageview];
+     
+     workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
+     }
+     
+     [scrollview setPagingEnabled:YES];
+     [scrollview setContentSize:CGSizeMake(workingFrame.origin.x, workingFrame.size.height)];
+     */
+}
+
+- (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker {
+    
+	[self dismissModalViewControllerAnimated:YES];
+}
 
 @end
