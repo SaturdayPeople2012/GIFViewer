@@ -238,18 +238,28 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     NSString *textItem =self.title;
     textItem = [ textItem  stringByReplacingOccurrencesOfString: @".gif" withString:@""];
     
-    NSString *string1 = @"[";
-    NSString *string2 = @"]";
+    NSString *string1 = @"/";
+    NSString *string2 = @"";
     textItem = [string1 stringByAppendingString:textItem];
     textItem = [textItem stringByAppendingString:string2];
+    
+    
+    NSArray *sysPaths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES );
+    NSString *docDirectory = [sysPaths objectAtIndex:0];
+    NSString *filePath = [NSString stringWithFormat:@"%@%@",docDirectory, textItem];
+    
     
     //클립보드 복사하기
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.persistent = YES;
-    NSString *gifPath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"KTH.gif"];
-    NSData *gifData = [[NSData alloc] initWithContentsOfFile:gifPath];
+    //NSString *gifPath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:filePath];
+    NSData *gifData = [[NSData alloc] initWithContentsOfFile:filePath];
     [pasteboard setData:gifData forPasteboardType:@"com.compuserve.gif"];
     
+    //  NSLog(@"gifPath : %@",gifPath);
+    NSLog(@"docDirectory : %@",docDirectory);
+    NSLog(@"filePath : %@",filePath);
+
     
     ActivityViewCustomProvider *customProvider = [[ActivityViewCustomProvider alloc]init];
     NSArray *items = [NSArray arrayWithObjects:customProvider,textItem,gifData,nil];
@@ -260,7 +270,7 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     [[UIActivityViewController alloc] initWithActivityItems:items
                                       applicationActivities:[NSArray arrayWithObject:ca]];
     
-    activityVC.excludedActivityTypes = @[UIActivityTypeMessage ,UIActivityTypePostToWeibo, UIActivityTypeSaveToCameraRoll];
+    activityVC.excludedActivityTypes = @[UIActivityTypeMessage ,UIActivityTypePostToWeibo, UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact,UIActivityTypePrint,UIActivityTypeCopyToPasteboard];
     
     activityVC.completionHandler = ^(NSString *activityType, BOOL completed)
     {
