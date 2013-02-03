@@ -46,7 +46,7 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
 
 - (void)resetUI
 {
-    editButton = [[UIBarButtonItem alloc]initWithTitle:@"편집" style:UIBarButtonItemStyleBordered
+    editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain
                                                 target:self action:@selector(edit:)];
     self.navigationItem.rightBarButtonItem = editButton;
     self.navigationItem.hidesBackButton = YES;
@@ -102,18 +102,16 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     
 	if (!self.tableView.isEditing)
     {
-        self.title = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
-        //[[self navigationController] pushViewController:self.viewController animated:YES];
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         
-        NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *docsDir = [dirPaths objectAtIndex:0];
-        g_gifPath = [docsDir stringByAppendingPathComponent:[self.fileLists objectAtIndex:indexPath.row]];
         GIFDetailViewController *detailViewController = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
+        NSFileManager *manager = [NSFileManager defaultManager];
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
         
-      //  detailViewController.filePath = g_gifPath;
+        g_gifPath =[documentsDirectory stringByAppendingPathComponent:[[manager contentsOfDirectoryAtPath:documentsDirectory error:nil]objectAtIndex:indexPath.row]];
+        
         [self.navigationController pushViewController:detailViewController animated:YES];
-    
+        
         
     }
     else
@@ -223,7 +221,7 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
 }
 
 -(void)edit:(id)sender{
-    cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"close" style:UIBarButtonItemStyleBordered target:self action:@selector(close:)];
+    cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStyleBordered target:self action:@selector(close:)];
     self.navigationItem.rightBarButtonItem = cancelButton;
     
     
@@ -388,22 +386,21 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     listCell.title.text = [arr objectAtIndex:indexPath.row];
     listCell.gifImage.image = thumnails;
     NSString *tt = [[NSString alloc] initWithFormat:@"%@",[dic objectForKey:NSFileModificationDate ]];
-
+    NSString *tt2 = [[NSString alloc] initWithFormat:@"%@",[dic objectForKey:NSFileSize]];
     NSRange range = [tt rangeOfString:@" "];
+
     if (range.location != NSNotFound) {
         NSString *str = [tt substringToIndex:range.location];
-        NSLog(@"%@",str);
         listCell.date.text = str;
     }
-   // listCell.date.text = [dic objectForKey:NSFileModificationDate];
-    g_gifPath = [documentsDirectory stringByAppendingPathComponent:[self.fileLists objectAtIndex:indexPath.row]];
-    GIFDetailViewController *detailViewController = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
-    detailViewController.view.frame = CGRectMake(0, 0, 0, 0);
-    //[listCell.gifImage addSubview:detailViewController.view];
-//    listCell.time.text = detailViewController.num;
-    [listCell.button addTarget:self action:@selector(openGIF:) forControlEvents:UIControlEventTouchUpInside];
+    if ([tt2 floatValue] > 1024*64) {
+        listCell.time.text = [NSString stringWithFormat:@"%.2fMB",tt2.floatValue/(1024*1024)];
+        
+    }else{
+        listCell.time.text = [NSString stringWithFormat:@"%.2fKB",tt2.floatValue/(1024)];
+    }
+   [listCell.button addTarget:self action:@selector(openGIF:) forControlEvents:UIControlEventTouchUpInside];
     listCell.button.tag = indexPath.row;
-    //[detailViewController ad
     
     return listCell;
 }
@@ -433,25 +430,6 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
 
 
 
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
-        /*
-        NSFileManager *manager = [NSFileManager defaultManager];
-        NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *docDir = [dirPaths objectAtIndex:0];
-        NSString *imagePath = [docDir stringByAppendingPathComponent:[_fileLists objectAtIndex:indexPath.row]];
-        
-        [manager removeItemAtPath:imagePath error:nil];
-         */
-    }else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-}
 
 - (void)openGIF:(id)sender{
     UIButton *btn = sender;
@@ -462,24 +440,6 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     [self.navigationController pushViewController:detailViewController animated:YES];
     
 }
-
-
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 #pragma mark - ELC Delegate
 
