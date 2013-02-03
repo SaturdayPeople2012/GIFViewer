@@ -186,6 +186,8 @@ static NSString *CellIdentifier = @"Cell";
         
         g_gifPath =[documentsDirectory stringByAppendingPathComponent:[[manager contentsOfDirectoryAtPath:documentsDirectory error:nil]objectAtIndex:indexPath.row]];
 
+        detailViewController.count = @([[manager contentsOfDirectoryAtPath:documentsDirectory error:nil] count]);
+        detailViewController.currentIndex = @(indexPath.row);
         [self.navigationController pushViewController:detailViewController animated:YES];
         [self.gridView deselectItemAtIndexPath:indexPath animated:YES];
 
@@ -203,7 +205,7 @@ static NSString *CellIdentifier = @"Cell";
         }else{
             [self.removeFileLists addObject:[[manager contentsOfDirectoryAtPath:documentsDirectory error:nil]objectAtIndex:indexPath.row]];
         }
-        NSLog(@"%@",self.removeFileLists);
+//        NSLog(@"%@",self.removeFileLists);
     }
 
 }
