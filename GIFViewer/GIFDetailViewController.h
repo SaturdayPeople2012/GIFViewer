@@ -29,6 +29,11 @@
     int m_tickDown;
 }
 
+
+
+@property (assign, nonatomic) NSNumber *count;
+@property (assign, nonatomic) NSNumber *currentIndex;
+
 @property (weak, nonatomic) IBOutlet UIImageView *m_gifPlayer;
 @property (strong, nonatomic) UITextField *m_speedGuide;
 @property (strong, nonatomic) NSTimer* m_timer;

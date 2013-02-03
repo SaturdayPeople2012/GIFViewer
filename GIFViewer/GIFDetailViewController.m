@@ -40,9 +40,28 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     return self;
 }
 
+- (void)swipeToNextFile:(UISwipeGestureRecognizer *)gesture{
+    if (gesture.direction == UISwipeGestureRecognizerDirectionLeft) {//다음파일
+        
+    }else if (gesture.direction == UISwipeGestureRecognizerDirectionRight){//이전파일
+        
+    }
+}
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeToNextFile:)];
+    
+    [self.view addGestureRecognizer:swipe];
+    
+    
+    
+    
     //UIImageView* gifAnimation = [[m_gifPlayer subviews] objectAtIndex:0];
     
     
