@@ -81,9 +81,10 @@
 		B9ECB9C016589366005F5FA5 /* ActivityViewCustomProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ECB9BF16589366005F5FA5 /* ActivityViewCustomProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B9ECB9C4165893BE005F5FA5 /* ActivityViewCustomActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ECB9C3165893BE005F5FA5 /* ActivityViewCustomActivity.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D704B7461645E5A400DBE35F /* GIF_Library.m in Sources */ = {isa = PBXBuildFile; fileRef = D704B7441645E5A400DBE35F /* GIF_Library.m */; };
-		D768EC141658B36B00D2F362 /* Test1.gif in Resources */ = {isa = PBXBuildFile; fileRef = D768EC121658B36B00D2F362 /* Test1.gif */; };
-		D768EC151658B36B00D2F362 /* Test2.gif in Resources */ = {isa = PBXBuildFile; fileRef = D768EC131658B36B00D2F362 /* Test2.gif */; };
-		EAC02A6516BA95E200CFF94C /* apple-touch-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B9ECB9C51658A9F9005F5FA5 /* apple-touch-icon.png */; };
+		D74812D016BE05110073AB52 /* backward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D74812CC16BE05110073AB52 /* backward@2x.png */; };
+		D74812D116BE05110073AB52 /* forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D74812CD16BE05110073AB52 /* forward@2x.png */; };
+		D74812D216BE05110073AB52 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D74812CE16BE05110073AB52 /* play@2x.png */; };
+		D74812D316BE05110073AB52 /* stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D74812CF16BE05110073AB52 /* stop@2x.png */; };
 		F258917B16AA4E2E000FBBF8 /* Check-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F258917A16AA4E2E000FBBF8 /* Check-icon.png */; };
 		F25DB9561636846F00C488D5 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DB9541636846E00C488D5 /* ListCell.m */; };
 		F25DB9571636846F00C488D5 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25DB9551636846F00C488D5 /* ListCell.xib */; };
@@ -263,6 +264,10 @@
 		D704B7421645E5A400DBE35F /* GIF_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIF_Header.h; sourceTree = "<group>"; };
 		D704B7431645E5A400DBE35F /* GIF_Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIF_Library.h; sourceTree = "<group>"; };
 		D704B7441645E5A400DBE35F /* GIF_Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIF_Library.m; sourceTree = "<group>"; };
+		D74812CC16BE05110073AB52 /* backward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backward@2x.png"; sourceTree = "<group>"; };
+		D74812CD16BE05110073AB52 /* forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward@2x.png"; sourceTree = "<group>"; };
+		D74812CE16BE05110073AB52 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
+		D74812CF16BE05110073AB52 /* stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop@2x.png"; sourceTree = "<group>"; };
 		D75D67CC16B02E750027CA07 /* backward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backward.png; sourceTree = "<group>"; };
 		D75D67CD16B02E750027CA07 /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward.png; sourceTree = "<group>"; };
 		D75D67CE16B02E750027CA07 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
@@ -633,6 +638,10 @@
 		F286BD6516357690004395AE /* 태상 */ = {
 			isa = PBXGroup;
 			children = (
+				D74812CC16BE05110073AB52 /* backward@2x.png */,
+				D74812CD16BE05110073AB52 /* forward@2x.png */,
+				D74812CE16BE05110073AB52 /* play@2x.png */,
+				D74812CF16BE05110073AB52 /* stop@2x.png */,
 				D75D67CC16B02E750027CA07 /* backward.png */,
 				D75D67CD16B02E750027CA07 /* forward.png */,
 				D75D67CE16B02E750027CA07 /* play.png */,
@@ -815,8 +824,6 @@
 				7A19D9DC164606E200B414FB /* Overlay.png in Resources */,
 				7A19D9DD164606E200B414FB /* Overlay@2x.png in Resources */,
 				7A19D9DE164606E200B414FB /* ELCImagePickerDemoViewController.xib in Resources */,
-				B9ECB9C61658A9F9005F5FA5 /* apple-touch-icon.png in Resources */,
-				B9ECB9C61658A9F9005F5FA5 /* apple-touch-icon.png in Resources */,
 				B931B4461658D25C00482E22 /* jQueryInject.txt in Resources */,
 				B931B4471658D25C00482E22 /* jQueryInjectLandscape.txt in Resources */,
 				B931B4591658D25C00482E22 /* twitter_load.png in Resources */,
@@ -826,10 +833,10 @@
 				B96D1813168B1E4500F9420C /* iOS6Share8.png in Resources */,
 				B96D1815168B1E4C00F9420C /* KTH.gif in Resources */,
 				F258917B16AA4E2E000FBBF8 /* Check-icon.png in Resources */,
-				D75D67D016B02E750027CA07 /* backward.png in Resources */,
-				D75D67D116B02E750027CA07 /* forward.png in Resources */,
-				D75D67D216B02E750027CA07 /* play.png in Resources */,
-				D75D67D316B02E750027CA07 /* stop.png in Resources */,
+				D74812D016BE05110073AB52 /* backward@2x.png in Resources */,
+				D74812D116BE05110073AB52 /* forward@2x.png in Resources */,
+				D74812D216BE05110073AB52 /* play@2x.png in Resources */,
+				D74812D316BE05110073AB52 /* stop@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -988,8 +995,8 @@
 					"\"$(SRCROOT)/GIFViewer/Twitpic/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0354526D-5052-451F-9B48-18F0F0E0F3CD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DF3A720B-BE0A-43EE-B77C-ECEEE3A65BC1";
+				PROVISIONING_PROFILE = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1008,8 +1015,8 @@
 					"\"$(SRCROOT)/GIFViewer/Twitpic/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0354526D-5052-451F-9B48-18F0F0E0F3CD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB9F33C9-C21B-435C-8533-AA7DED5CCDC3";
+				PROVISIONING_PROFILE = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
