@@ -81,6 +81,10 @@
 		B9ECB9C016589366005F5FA5 /* ActivityViewCustomProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ECB9BF16589366005F5FA5 /* ActivityViewCustomProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B9ECB9C4165893BE005F5FA5 /* ActivityViewCustomActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ECB9C3165893BE005F5FA5 /* ActivityViewCustomActivity.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D704B7461645E5A400DBE35F /* GIF_Library.m in Sources */ = {isa = PBXBuildFile; fileRef = D704B7441645E5A400DBE35F /* GIF_Library.m */; };
+		D74812D016BE05110073AB52 /* backward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D74812CC16BE05110073AB52 /* backward@2x.png */; };
+		D74812D116BE05110073AB52 /* forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D74812CD16BE05110073AB52 /* forward@2x.png */; };
+		D74812D216BE05110073AB52 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D74812CE16BE05110073AB52 /* play@2x.png */; };
+		D74812D316BE05110073AB52 /* stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D74812CF16BE05110073AB52 /* stop@2x.png */; };
 		F258917B16AA4E2E000FBBF8 /* Check-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F258917A16AA4E2E000FBBF8 /* Check-icon.png */; };
 		F25DB9561636846F00C488D5 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DB9541636846E00C488D5 /* ListCell.m */; };
 		F25DB9571636846F00C488D5 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25DB9551636846F00C488D5 /* ListCell.xib */; };
@@ -259,6 +263,10 @@
 		D704B7421645E5A400DBE35F /* GIF_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIF_Header.h; sourceTree = "<group>"; };
 		D704B7431645E5A400DBE35F /* GIF_Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIF_Library.h; sourceTree = "<group>"; };
 		D704B7441645E5A400DBE35F /* GIF_Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIF_Library.m; sourceTree = "<group>"; };
+		D74812CC16BE05110073AB52 /* backward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backward@2x.png"; sourceTree = "<group>"; };
+		D74812CD16BE05110073AB52 /* forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward@2x.png"; sourceTree = "<group>"; };
+		D74812CE16BE05110073AB52 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
+		D74812CF16BE05110073AB52 /* stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop@2x.png"; sourceTree = "<group>"; };
 		D75D67CC16B02E750027CA07 /* backward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backward.png; sourceTree = "<group>"; };
 		D75D67CD16B02E750027CA07 /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward.png; sourceTree = "<group>"; };
 		D75D67CE16B02E750027CA07 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
@@ -629,6 +637,10 @@
 		F286BD6516357690004395AE /* 태상 */ = {
 			isa = PBXGroup;
 			children = (
+				D74812CC16BE05110073AB52 /* backward@2x.png */,
+				D74812CD16BE05110073AB52 /* forward@2x.png */,
+				D74812CE16BE05110073AB52 /* play@2x.png */,
+				D74812CF16BE05110073AB52 /* stop@2x.png */,
 				D75D67CC16B02E750027CA07 /* backward.png */,
 				D75D67CD16B02E750027CA07 /* forward.png */,
 				D75D67CE16B02E750027CA07 /* play.png */,
@@ -819,6 +831,10 @@
 				B96D1813168B1E4500F9420C /* iOS6Share8.png in Resources */,
 				B96D1815168B1E4C00F9420C /* KTH.gif in Resources */,
 				F258917B16AA4E2E000FBBF8 /* Check-icon.png in Resources */,
+				D74812D016BE05110073AB52 /* backward@2x.png in Resources */,
+				D74812D116BE05110073AB52 /* forward@2x.png in Resources */,
+				D74812D216BE05110073AB52 /* play@2x.png in Resources */,
+				D74812D316BE05110073AB52 /* stop@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -977,8 +993,8 @@
 					"\"$(SRCROOT)/GIFViewer/Twitpic/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4AF2466C-5F4D-4A5B-8BAE-1F0FAE48B8AB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4AF2466C-5F4D-4A5B-8BAE-1F0FAE48B8AB";
+				PROVISIONING_PROFILE = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -997,8 +1013,8 @@
 					"\"$(SRCROOT)/GIFViewer/Twitpic/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4AF2466C-5F4D-4A5B-8BAE-1F0FAE48B8AB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4AF2466C-5F4D-4A5B-8BAE-1F0FAE48B8AB";
+				PROVISIONING_PROFILE = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
