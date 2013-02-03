@@ -40,19 +40,21 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     return self;
 }
 
-- (void)swipeToNextFile:(UISwipeGestureRecognizer *)gesture{
+- (void)swipeToNextFile:(UISwipeGestureRecognizer *)gesture
+{
     NSFileManager *manager = [NSFileManager defaultManager];
-    if (gesture.direction == UISwipeGestureRecognizerDirectionLeft) {//다음파일
+    
+    if (gesture.direction == UISwipeGestureRecognizerDirectionLeft)
+    {//다음파일
 //        g_gifPath =[documentsDirectory stringByAppendingPathComponent:[[manager contentsOfDirectoryAtPath:documentsDirectory error:nil]objectAtIndex:indexPath.row]];
-        if (self.currentIndex > self.count) {
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *documentsDirectory = [paths objectAtIndex:0];
-            NSString *nextFile = [[manager contentsOfDirectoryAtPath:documentsDirectory error:nil] objectAtIndex:[self.count intValue]-1];
-            
-            g_gifPath = [documentsDirectory stringByAppendingPathComponent:nextFile];
+        if ([self.currentIndex intValue] >= ([self.count intValue]-1))
+        {
             return;
-        }else{
+        } else
+        {
             //document 경로
+            g_gifPath = nil;
+            
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *documentsDirectory = [paths objectAtIndex:0];
             NSString *nextFile = [[manager contentsOfDirectoryAtPath:documentsDirectory error:nil] objectAtIndex:[self.currentIndex intValue]+1];
@@ -64,17 +66,18 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     }
 }
 
-- (void)swipeToPrivFile:(UISwipeGestureRecognizer *)gesture{
+- (void)swipeToPrivFile:(UISwipeGestureRecognizer *)gesture
+{
     NSFileManager *manager = [NSFileManager defaultManager];
+    
     if (gesture.direction == UISwipeGestureRecognizerDirectionRight){//이전파일
-        if (self.currentIndex <=0) {
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *documentsDirectory = [paths objectAtIndex:0];
-            NSString *nextFile = [[manager contentsOfDirectoryAtPath:documentsDirectory error:nil] objectAtIndex:0];
-            
-            g_gifPath = [documentsDirectory stringByAppendingPathComponent:nextFile];
+        if (self.currentIndex <=0)
+        {
             return;
-        }else{
+        } else
+        {
+            g_gifPath = nil;
+            
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *documentsDirectory = [paths objectAtIndex:0];
             NSString *nextFile = [[manager contentsOfDirectoryAtPath:documentsDirectory error:nil] objectAtIndex:[self.currentIndex intValue]-1];
@@ -177,10 +180,14 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     [self startGIF];
    
 }
-- (void)startGIF{
+- (void)startGIF
+{
     [self.spinner startAnimating];
-    if (m_gifPlayer.subviews !=nil) {
-        for (id object in m_gifPlayer.subviews) {
+    
+    if (m_gifPlayer.subviews !=nil)
+    {
+        for (id object in m_gifPlayer.subviews)
+        {
             [object removeFromSuperview];
         }
     }
