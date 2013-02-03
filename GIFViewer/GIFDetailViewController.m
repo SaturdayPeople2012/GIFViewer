@@ -40,15 +40,18 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     return self;
 }
 
-- (void)swipeToNextFile:(UISwipeGestureRecognizer *)gesture{
+- (void)swipeToNextFile:(UISwipeGestureRecognizer *)gesture
+{
     NSLog(@"next----%@",self.currentIndex);
     
     NSFileManager *manager = [NSFileManager defaultManager];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    if ([self.currentIndex intValue] >= [self.count intValue]-1) {
+    if ([self.currentIndex intValue] >= [self.count intValue]-1)
+    {
         return;
-    }else{
+    } else
+    {
         g_gifPath = nil;
         //document 경로
         self.currentIndex = @([self.currentIndex intValue]+1);
@@ -60,18 +63,24 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     }
 }
 
-- (void)swipeToPrivFile:(UISwipeGestureRecognizer *)gesture{
+- (void)swipeToPrivFile:(UISwipeGestureRecognizer *)gesture
+{
     NSLog(@"priv----%@",self.currentIndex);
+    
     NSFileManager *manager = [NSFileManager defaultManager];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    if ([self.currentIndex intValue] <=0) {
+    if ([self.currentIndex intValue] <=0)
+    {
         return;
-    }else{
+    } else
+    {
         g_gifPath = nil;
         self.currentIndex = @([self.currentIndex intValue]-1);
         NSString *nextFile = [[manager contentsOfDirectoryAtPath:documentsDirectory error:nil] objectAtIndex:[self.currentIndex intValue]];
+        
         g_gifPath = [documentsDirectory stringByAppendingPathComponent:nextFile];
+        
         [self startGIF];
     }
 }
@@ -159,7 +168,6 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     [self.spinner setCenter:center]; // I do this because I'm in landscape mode
     [self.navigationController.view addSubview:self.spinner]; // spinner is not visible until started
     
-    
     ///////////////////////////////////////////////////////////////////////////////////////
     
     self.view.backgroundColor = [UIColor blackColor];
@@ -186,8 +194,7 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
                    m_width = width, m_height = height;
                    gifView.frame = [self adjustViewSizeAndLocate:width height:height];
                    
-//                   if (self.title == nil)
-                       self.title = [g_gifPath lastPathComponent];
+                   if (self.title == nil) self.title = [g_gifPath lastPathComponent];
                    
                    [self.spinner stopAnimating];
                }];
