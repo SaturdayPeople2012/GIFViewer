@@ -49,12 +49,19 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     // Do any additional setup after loading the view from its nib.
     
     //    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithTitle:@"편집" style:UIBarButtonItemStyleBordered target:self action:@selector(goEdit:)];
+    
     UIBarButtonItem *editBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(goEdit:)];
     UIBarButtonItem *funcBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(goFunc:)];
     UIBarButtonItem *deleteBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(goDelete:)];
+#if 0
     UIBarButtonItem *slowBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(goPlaySpeed:)];
-    UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(goPausePlay:)];
+    UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(goPausePlay:)];
     UIBarButtonItem *fastBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(goPlaySpeed:)];
+#else
+    UIBarButtonItem *slowBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"backward.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goPlaySpeed:)];
+    UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"stop.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goPausePlay:)];
+    UIBarButtonItem *fastBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"forward.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goPlaySpeed:)];
+#endif
     UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
     slowBtn.tag = -1;
@@ -407,7 +414,8 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
 
         NSMutableArray* btnItems = [self.toolbarItems mutableCopy];
         
-        UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(goPausePlay:)];
+//        UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(goPausePlay:)];
+        UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"stop.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goPausePlay:)];
         [btnItems replaceObjectAtIndex:4 withObject:pauseBtn];
 
         self.toolbarItems = btnItems;
@@ -429,11 +437,13 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     
     if (m_isPlay)
     {
-        UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(goPausePlay:)];
+//        UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(goPausePlay:)];
+        UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"stop.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goPausePlay:)];
         [btnItems replaceObjectAtIndex:4 withObject:pauseBtn];
     } else
     {
-        UIBarButtonItem *playBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(goPausePlay:)];
+//        UIBarButtonItem *playBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(goPausePlay:)];
+        UIBarButtonItem *playBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"play.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goPausePlay:)];
         [btnItems replaceObjectAtIndex:4 withObject:playBtn];
     }
     
