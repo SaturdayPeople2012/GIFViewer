@@ -396,8 +396,11 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
         listCell.date.text = str;
     }
    // listCell.date.text = [dic objectForKey:NSFileModificationDate];
-
+    g_gifPath = [documentsDirectory stringByAppendingPathComponent:[self.fileLists objectAtIndex:indexPath.row]];
+    GIFDetailViewController *detailViewController = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
+    detailViewController.view.frame = CGRectMake(0, 0, 0, 0);
     //[listCell.gifImage addSubview:detailViewController.view];
+//    listCell.time.text = detailViewController.num;
     [listCell.button addTarget:self action:@selector(openGIF:) forControlEvents:UIControlEventTouchUpInside];
     listCell.button.tag = indexPath.row;
     //[detailViewController ad

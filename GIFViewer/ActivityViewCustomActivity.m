@@ -18,7 +18,7 @@
 
 - (NSString *)activityTitle
 {
-    return @"메시지 공유하기(문자창에서 복사하기 누르세요)";
+    return @"SMS Share(Use the paste from clipboard)";
 }
 
 - (BOOL)canPerformWithActivityItems:(NSArray *)activityItems

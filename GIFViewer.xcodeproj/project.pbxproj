@@ -80,10 +80,10 @@
 		B995822B163C31BB008E696C /* TiwPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B995822A163C31BB008E696C /* TiwPicViewController.m */; };
 		B9ECB9C016589366005F5FA5 /* ActivityViewCustomProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ECB9BF16589366005F5FA5 /* ActivityViewCustomProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B9ECB9C4165893BE005F5FA5 /* ActivityViewCustomActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ECB9C3165893BE005F5FA5 /* ActivityViewCustomActivity.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B9ECB9C61658A9F9005F5FA5 /* apple-touch-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B9ECB9C51658A9F9005F5FA5 /* apple-touch-icon.png */; };
 		D704B7461645E5A400DBE35F /* GIF_Library.m in Sources */ = {isa = PBXBuildFile; fileRef = D704B7441645E5A400DBE35F /* GIF_Library.m */; };
 		D768EC141658B36B00D2F362 /* Test1.gif in Resources */ = {isa = PBXBuildFile; fileRef = D768EC121658B36B00D2F362 /* Test1.gif */; };
 		D768EC151658B36B00D2F362 /* Test2.gif in Resources */ = {isa = PBXBuildFile; fileRef = D768EC131658B36B00D2F362 /* Test2.gif */; };
+		EAC02A6516BA95E200CFF94C /* apple-touch-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B9ECB9C51658A9F9005F5FA5 /* apple-touch-icon.png */; };
 		F258917B16AA4E2E000FBBF8 /* Check-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F258917A16AA4E2E000FBBF8 /* Check-icon.png */; };
 		F25DB9561636846F00C488D5 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F25DB9541636846E00C488D5 /* ListCell.m */; };
 		F25DB9571636846F00C488D5 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25DB9551636846F00C488D5 /* ListCell.xib */; };
@@ -263,8 +263,10 @@
 		D704B7421645E5A400DBE35F /* GIF_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIF_Header.h; sourceTree = "<group>"; };
 		D704B7431645E5A400DBE35F /* GIF_Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIF_Library.h; sourceTree = "<group>"; };
 		D704B7441645E5A400DBE35F /* GIF_Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIF_Library.m; sourceTree = "<group>"; };
-		D768EC121658B36B00D2F362 /* Test1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Test1.gif; sourceTree = "<group>"; };
-		D768EC131658B36B00D2F362 /* Test2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Test2.gif; sourceTree = "<group>"; };
+		D75D67CC16B02E750027CA07 /* backward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backward.png; sourceTree = "<group>"; };
+		D75D67CD16B02E750027CA07 /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward.png; sourceTree = "<group>"; };
+		D75D67CE16B02E750027CA07 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		D75D67CF16B02E750027CA07 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
 		F258917A16AA4E2E000FBBF8 /* Check-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Check-icon.png"; sourceTree = "<group>"; };
 		F25DB9531636846E00C488D5 /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
 		F25DB9541636846E00C488D5 /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
@@ -570,8 +572,6 @@
 			children = (
 				B96D1814168B1E4C00F9420C /* KTH.gif */,
 				B96D1812168B1E4500F9420C /* iOS6Share8.png */,
-				D768EC121658B36B00D2F362 /* Test1.gif */,
-				D768EC131658B36B00D2F362 /* Test2.gif */,
 				B9ECB9C51658A9F9005F5FA5 /* apple-touch-icon.png */,
 			);
 			name = TestFile;
@@ -633,6 +633,10 @@
 		F286BD6516357690004395AE /* 태상 */ = {
 			isa = PBXGroup;
 			children = (
+				D75D67CC16B02E750027CA07 /* backward.png */,
+				D75D67CD16B02E750027CA07 /* forward.png */,
+				D75D67CE16B02E750027CA07 /* play.png */,
+				D75D67CF16B02E750027CA07 /* stop.png */,
 				D704B7421645E5A400DBE35F /* GIF_Header.h */,
 				D704B7431645E5A400DBE35F /* GIF_Library.h */,
 				D704B7441645E5A400DBE35F /* GIF_Library.m */,
@@ -769,7 +773,7 @@
 		F2C2F926163390E500E93A97 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "양원석";
 			};
 			buildConfigurationList = F2C2F929163390E500E93A97 /* Build configuration list for PBXProject "GIFViewer" */;
@@ -812,8 +816,6 @@
 				7A19D9DD164606E200B414FB /* Overlay@2x.png in Resources */,
 				7A19D9DE164606E200B414FB /* ELCImagePickerDemoViewController.xib in Resources */,
 				B9ECB9C61658A9F9005F5FA5 /* apple-touch-icon.png in Resources */,
-				D768EC141658B36B00D2F362 /* Test1.gif in Resources */,
-				D768EC151658B36B00D2F362 /* Test2.gif in Resources */,
 				B9ECB9C61658A9F9005F5FA5 /* apple-touch-icon.png in Resources */,
 				B931B4461658D25C00482E22 /* jQueryInject.txt in Resources */,
 				B931B4471658D25C00482E22 /* jQueryInjectLandscape.txt in Resources */,
@@ -824,6 +826,10 @@
 				B96D1813168B1E4500F9420C /* iOS6Share8.png in Resources */,
 				B96D1815168B1E4C00F9420C /* KTH.gif in Resources */,
 				F258917B16AA4E2E000FBBF8 /* Check-icon.png in Resources */,
+				D75D67D016B02E750027CA07 /* backward.png in Resources */,
+				D75D67D116B02E750027CA07 /* forward.png in Resources */,
+				D75D67D216B02E750027CA07 /* play.png in Resources */,
+				D75D67D316B02E750027CA07 /* stop.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -971,8 +977,13 @@
 		F2C2F94E163390E500E93A97 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+<<<<<<< HEAD
 				CODE_SIGN_IDENTITY = "iPhone Developer: JinWon Kim (H244PMC3WV)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: JinWon Kim (H244PMC3WV)";
+=======
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
+>>>>>>> 681c52966a91945ac984db4dd94dacd68e4dd575
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GIFViewer/GIFViewer-Prefix.pch";
 				INFOPLIST_FILE = "GIFViewer/GIFViewer-Info.plist";
@@ -982,8 +993,13 @@
 					"\"$(SRCROOT)/GIFViewer/Twitpic/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+<<<<<<< HEAD
 				PROVISIONING_PROFILE = "4AF2466C-5F4D-4A5B-8BAE-1F0FAE48B8AB";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4AF2466C-5F4D-4A5B-8BAE-1F0FAE48B8AB";
+=======
+				PROVISIONING_PROFILE = "0354526D-5052-451F-9B48-18F0F0E0F3CD";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DF3A720B-BE0A-43EE-B77C-ECEEE3A65BC1";
+>>>>>>> 681c52966a91945ac984db4dd94dacd68e4dd575
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -991,8 +1007,13 @@
 		F2C2F94F163390E500E93A97 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+<<<<<<< HEAD
 				CODE_SIGN_IDENTITY = "iPhone Developer: JinWon Kim (H244PMC3WV)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: JinWon Kim (H244PMC3WV)";
+=======
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
+>>>>>>> 681c52966a91945ac984db4dd94dacd68e4dd575
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GIFViewer/GIFViewer-Prefix.pch";
 				INFOPLIST_FILE = "GIFViewer/GIFViewer-Info.plist";
@@ -1002,8 +1023,13 @@
 					"\"$(SRCROOT)/GIFViewer/Twitpic/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+<<<<<<< HEAD
 				PROVISIONING_PROFILE = "4AF2466C-5F4D-4A5B-8BAE-1F0FAE48B8AB";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4AF2466C-5F4D-4A5B-8BAE-1F0FAE48B8AB";
+=======
+				PROVISIONING_PROFILE = "0354526D-5052-451F-9B48-18F0F0E0F3CD";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB9F33C9-C21B-435C-8533-AA7DED5CCDC3";
+>>>>>>> 681c52966a91945ac984db4dd94dacd68e4dd575
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
