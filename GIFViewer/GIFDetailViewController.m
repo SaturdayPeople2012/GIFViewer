@@ -41,48 +41,38 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
 }
 
 - (void)swipeToNextFile:(UISwipeGestureRecognizer *)gesture{
+    NSLog(@"next----%@",self.currentIndex);
+    
     NSFileManager *manager = [NSFileManager defaultManager];
-    if (gesture.direction == UISwipeGestureRecognizerDirectionLeft) {//다음파일
-//        g_gifPath =[documentsDirectory stringByAppendingPathComponent:[[manager contentsOfDirectoryAtPath:documentsDirectory error:nil]objectAtIndex:indexPath.row]];
-        if (self.currentIndex > self.count) {
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *documentsDirectory = [paths objectAtIndex:0];
-            NSString *nextFile = [[manager contentsOfDirectoryAtPath:documentsDirectory error:nil] objectAtIndex:[self.count intValue]-1];
-            
-            g_gifPath = [documentsDirectory stringByAppendingPathComponent:nextFile];
-            return;
-        }else{
-            //document 경로
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *documentsDirectory = [paths objectAtIndex:0];
-            NSString *nextFile = [[manager contentsOfDirectoryAtPath:documentsDirectory error:nil] objectAtIndex:[self.currentIndex intValue]+1];
-            
-            g_gifPath = [documentsDirectory stringByAppendingPathComponent:nextFile];
-            
-            [self startGIF];
-        }
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    if ([self.currentIndex intValue] >= [self.count intValue]-1) {
+        return;
+    }else{
+        g_gifPath = nil;
+        //document 경로
+        self.currentIndex = @([self.currentIndex intValue]+1);
+        NSString *nextFile = [[manager contentsOfDirectoryAtPath:documentsDirectory error:nil] objectAtIndex:[self.currentIndex intValue]];
+        
+        g_gifPath = [documentsDirectory stringByAppendingPathComponent:nextFile];
+        
+        [self startGIF];
     }
 }
 
 - (void)swipeToPrivFile:(UISwipeGestureRecognizer *)gesture{
+    NSLog(@"priv----%@",self.currentIndex);
     NSFileManager *manager = [NSFileManager defaultManager];
-    if (gesture.direction == UISwipeGestureRecognizerDirectionRight){//이전파일
-        if (self.currentIndex <=0) {
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *documentsDirectory = [paths objectAtIndex:0];
-            NSString *nextFile = [[manager contentsOfDirectoryAtPath:documentsDirectory error:nil] objectAtIndex:0];
-            
-            g_gifPath = [documentsDirectory stringByAppendingPathComponent:nextFile];
-            return;
-        }else{
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *documentsDirectory = [paths objectAtIndex:0];
-            NSString *nextFile = [[manager contentsOfDirectoryAtPath:documentsDirectory error:nil] objectAtIndex:[self.currentIndex intValue]-1];
-            
-            g_gifPath = [documentsDirectory stringByAppendingPathComponent:nextFile];
-            
-            [self startGIF];
-        }
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    if ([self.currentIndex intValue] <=0) {
+        return;
+    }else{
+        g_gifPath = nil;
+        self.currentIndex = @([self.currentIndex intValue]-1);
+        NSString *nextFile = [[manager contentsOfDirectoryAtPath:documentsDirectory error:nil] objectAtIndex:[self.currentIndex intValue]];
+        g_gifPath = [documentsDirectory stringByAppendingPathComponent:nextFile];
+        [self startGIF];
     }
 }
 
@@ -143,7 +133,7 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
 #endif
     NSLog(@"document path = \"%@\"",g_gifPath);
     
-//    self.title = [g_gifPath lastPathComponent];
+    //    self.title = [g_gifPath lastPathComponent];
     
     ///////////////////////////////////////////////////////////////////////////////////////
     
@@ -173,9 +163,9 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     ///////////////////////////////////////////////////////////////////////////////////////
     
     self.view.backgroundColor = [UIColor blackColor];
-
+    
     [self startGIF];
-   
+    
 }
 - (void)startGIF{
     [self.spinner startAnimating];
@@ -192,7 +182,8 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
                    m_width = width, m_height = height;
                    gifView.frame = [self adjustViewSizeAndLocate:width height:height];
                    
-                   if (self.title == nil) self.title = [g_gifPath lastPathComponent];
+//                   if (self.title == nil)
+                       self.title = [g_gifPath lastPathComponent];
                    
                    [self.spinner stopAnimating];
                }];
@@ -265,7 +256,7 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     GIF_Library* inst = [GIF_Library giflib_sharedInstance];
     
     NSLog(@"animationDuration=%f",(inst.m_delay_total / delay_t[m_delay]) / 100);
-//    [self.num initWithFormat:@"%f",inst.m_delay_total/100];
+    //    [self.num initWithFormat:@"%f",inst.m_delay_total/100];
     return view;
 }
 
@@ -335,7 +326,7 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     //  NSLog(@"gifPath : %@",gifPath);
     NSLog(@"docDirectory : %@",docDirectory);
     NSLog(@"filePath : %@",filePath);
-
+    
     
     ActivityViewCustomProvider *customProvider = [[ActivityViewCustomProvider alloc]init];
     NSArray *items = [NSArray arrayWithObjects:customProvider,textItem,gifData,nil];
@@ -362,25 +353,25 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
 - (void)goDelete:(id)sender
 {
     // 모달뷰로 "확인" 메세지를 띄웁니다. ////////////////////////////////////
-/*
-    m_alertType = kAlertType_Delete;
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"삭제 확인" message:@"정말로 파일을 지우시겠습니까?" delegate:self cancelButtonTitle:@"취소" otherButtonTitles:@"삭제", nil];
-    [alert show];
-    
-    NSRunLoop *rl = [NSRunLoop currentRunLoop];
-    NSDate *d;
-    while ([alert isVisible])
-    {
-        d = [[NSDate alloc] init];
-        [rl runUntilDate:d];
-    }
- */
+    /*
+     m_alertType = kAlertType_Delete;
+     
+     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"삭제 확인" message:@"정말로 파일을 지우시겠습니까?" delegate:self cancelButtonTitle:@"취소" otherButtonTitles:@"삭제", nil];
+     [alert show];
+     
+     NSRunLoop *rl = [NSRunLoop currentRunLoop];
+     NSDate *d;
+     while ([alert isVisible])
+     {
+     d = [[NSDate alloc] init];
+     [rl runUntilDate:d];
+     }
+     */
     UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete File" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"OK" otherButtonTitles:nil];
     actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
     
     self.navigationController.toolbarHidden = YES;
-//    [actionSheet showFromToolbar:(UIToolbar*)self.view];
+    //    [actionSheet showFromToolbar:(UIToolbar*)self.view];
     [actionSheet showInView: self.view];
 }
 
@@ -393,7 +384,7 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
 	if (buttonIndex == 0)
 	{
 		NSLog(@"ok");
-
+        
         NSFileManager *fileMgr = [NSFileManager defaultManager];
         NSError *error;
         
@@ -407,14 +398,14 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
 - (void)timerTicked:(NSTimer*)timer
 {
     m_tickDown --;
-
+    
     m_speedGuide.alpha -= 0.2;
     
     if (m_tickDown < 0)
     {
         [m_timer invalidate];
         m_timer = nil;
-
+        
         if (m_speedGuide)
         {
             [m_speedGuide removeFromSuperview];
@@ -458,7 +449,7 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
             [m_timer invalidate];
             m_timer = nil;
         }
-
+        
         m_tickDown = 5;
         m_timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerTicked:) userInfo:nil repeats:YES];
     }
@@ -490,13 +481,13 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     if (m_isPlay == 0)
     {
         m_isPlay = 1;
-
+        
         NSMutableArray* btnItems = [self.toolbarItems mutableCopy];
         
-//        UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(goPausePlay:)];
+        //        UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(goPausePlay:)];
         UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"stop.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goPausePlay:)];
         [btnItems replaceObjectAtIndex:4 withObject:pauseBtn];
-
+        
         self.toolbarItems = btnItems;
     }
     
@@ -516,12 +507,12 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     
     if (m_isPlay)
     {
-//        UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(goPausePlay:)];
+        //        UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(goPausePlay:)];
         UIBarButtonItem *pauseBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"stop.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goPausePlay:)];
         [btnItems replaceObjectAtIndex:4 withObject:pauseBtn];
     } else
     {
-//        UIBarButtonItem *playBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(goPausePlay:)];
+        //        UIBarButtonItem *playBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(goPausePlay:)];
         UIBarButtonItem *playBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"play.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goPausePlay:)];
         [btnItems replaceObjectAtIndex:4 withObject:playBtn];
     }
@@ -538,7 +529,7 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     //    NSLog(@"willAnimateRotationToInterfaceOrientation");
-
+    
     if (m_timer)
     {
         [m_timer invalidate];
@@ -556,7 +547,7 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
 -(void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
 {
     [super touchesEnded:touches withEvent:event];
-
+    
     if (m_timer)
     {
         [m_timer invalidate];
