@@ -17,7 +17,7 @@
 
 
 @interface GIFDetailViewController ()
-
+@property (strong, nonatomic) UIActivityIndicatorView *spinner;
 @end
 
 @implementation GIFDetailViewController
@@ -41,13 +41,50 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
 }
 
 - (void)swipeToNextFile:(UISwipeGestureRecognizer *)gesture{
+    NSFileManager *manager = [NSFileManager defaultManager];
     if (gesture.direction == UISwipeGestureRecognizerDirectionLeft) {//다음파일
-        
-    }else if (gesture.direction == UISwipeGestureRecognizerDirectionRight){//이전파일
-        
+//        g_gifPath =[documentsDirectory stringByAppendingPathComponent:[[manager contentsOfDirectoryAtPath:documentsDirectory error:nil]objectAtIndex:indexPath.row]];
+        if (self.currentIndex > self.count) {
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentsDirectory = [paths objectAtIndex:0];
+            NSString *nextFile = [[manager contentsOfDirectoryAtPath:documentsDirectory error:nil] objectAtIndex:[self.count intValue]-1];
+            
+            g_gifPath = [documentsDirectory stringByAppendingPathComponent:nextFile];
+            return;
+        }else{
+            //document 경로
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentsDirectory = [paths objectAtIndex:0];
+            NSString *nextFile = [[manager contentsOfDirectoryAtPath:documentsDirectory error:nil] objectAtIndex:[self.currentIndex intValue]+1];
+            
+            g_gifPath = [documentsDirectory stringByAppendingPathComponent:nextFile];
+            
+            [self startGIF];
+        }
     }
 }
 
+- (void)swipeToPrivFile:(UISwipeGestureRecognizer *)gesture{
+    NSFileManager *manager = [NSFileManager defaultManager];
+    if (gesture.direction == UISwipeGestureRecognizerDirectionRight){//이전파일
+        if (self.currentIndex <=0) {
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentsDirectory = [paths objectAtIndex:0];
+            NSString *nextFile = [[manager contentsOfDirectoryAtPath:documentsDirectory error:nil] objectAtIndex:0];
+            
+            g_gifPath = [documentsDirectory stringByAppendingPathComponent:nextFile];
+            return;
+        }else{
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentsDirectory = [paths objectAtIndex:0];
+            NSString *nextFile = [[manager contentsOfDirectoryAtPath:documentsDirectory error:nil] objectAtIndex:[self.currentIndex intValue]-1];
+            
+            g_gifPath = [documentsDirectory stringByAppendingPathComponent:nextFile];
+            
+            [self startGIF];
+        }
+    }
+}
 
 
 - (void)viewDidLoad
@@ -55,10 +92,13 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     [super viewDidLoad];
     
     
-    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeToNextFile:)];
+    UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeToNextFile:)];
+    leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:leftSwipe];
     
-    [self.view addGestureRecognizer:swipe];
-    
+    UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeToPrivFile:)];
+    rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:rightSwipe];
     
     
     
@@ -117,7 +157,7 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     ///////////////////////////////////////////////////////////////////////////////////////
     
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    UIActivityIndicatorView* spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     CGPoint center;
     NSLog(@"self.navigationController.view.frame frame = %@",NSStringFromCGRect(self.navigationController.view.frame));
     if (orientation == UIInterfaceOrientationLandscapeRight || orientation ==  UIInterfaceOrientationLandscapeLeft)
@@ -126,31 +166,41 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
     } else {
         center = CGPointMake(self.navigationController.view.frame.size.width/2.0, self.navigationController.view.frame.size.height/2.0);
     }
-    [spinner setCenter:center]; // I do this because I'm in landscape mode
-    [self.navigationController.view addSubview:spinner]; // spinner is not visible until started
+    [self.spinner setCenter:center]; // I do this because I'm in landscape mode
+    [self.navigationController.view addSubview:self.spinner]; // spinner is not visible until started
     
-    [spinner startAnimating];
     
     ///////////////////////////////////////////////////////////////////////////////////////
     
+    self.view.backgroundColor = [UIColor blackColor];
 
+    [self startGIF];
+   
+}
+- (void)startGIF{
+    [self.spinner startAnimating];
+    if (m_gifPlayer.subviews !=nil) {
+        for (id object in m_gifPlayer.subviews) {
+            [object removeFromSuperview];
+        }
+    }
+    
     __block UIImageView *gifView;
     
     gifView = [GIF_Library giflib_get_gif_view_from_path:g_gifPath parent:self completion:^(int width,int height)
                {
                    m_width = width, m_height = height;
                    gifView.frame = [self adjustViewSizeAndLocate:width height:height];
-
+                   
                    if (self.title == nil) self.title = [g_gifPath lastPathComponent];
                    
-                   [spinner stopAnimating];
+                   [self.spinner stopAnimating];
                }];
     
     gifView.tag = 100;
     
     
     [m_gifPlayer addSubview:gifView];
-    self.view.backgroundColor = [UIColor blackColor];
 }
 
 - (CGRect)adjustViewSizeAndLocate:(int)width height:(int)height
