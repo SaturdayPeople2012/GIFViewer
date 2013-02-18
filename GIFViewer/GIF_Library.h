@@ -94,6 +94,4 @@
 
 + (UIImageView*) giflib_get_gif_view_from_path:(NSString*) filePath parent:(UIViewController*) parent completion:(void(^)(int width,int height)) completion;
 
-- (NSMutableData*) giflib_gif_copy_with_comment:(NSString*) comment;
-
 @end

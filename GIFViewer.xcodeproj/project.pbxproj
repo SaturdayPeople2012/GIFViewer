@@ -982,8 +982,8 @@
 		F2C2F94E163390E500E93A97 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: wonseok Yang (36K24A774P)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: wonseok Yang (36K24A774P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GIFViewer/GIFViewer-Prefix.pch";
 				INFOPLIST_FILE = "GIFViewer/GIFViewer-Info.plist";
@@ -993,8 +993,8 @@
 					"\"$(SRCROOT)/GIFViewer/Twitpic/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "46DA5805-EF3C-4C96-8E87-8007FF28B3D0";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "806BB7FE-1CF0-4E2D-A2BD-A190D50DE2EA";
+				PROVISIONING_PROFILE = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1002,8 +1002,8 @@
 		F2C2F94F163390E500E93A97 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: wonseok Yang (36K24A774P)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: wonseok Yang (36K24A774P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GIFViewer/GIFViewer-Prefix.pch";
 				INFOPLIST_FILE = "GIFViewer/GIFViewer-Info.plist";
@@ -1013,8 +1013,8 @@
 					"\"$(SRCROOT)/GIFViewer/Twitpic/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "46DA5805-EF3C-4C96-8E87-8007FF28B3D0";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "806BB7FE-1CF0-4E2D-A2BD-A190D50DE2EA";
+				PROVISIONING_PROFILE = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

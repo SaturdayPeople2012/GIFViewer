@@ -194,7 +194,7 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
                    m_width = width, m_height = height;
                    gifView.frame = [self adjustViewSizeAndLocate:width height:height];
                    
-                   if (self.title == nil) self.title = [g_gifPath lastPathComponent];
+                   self.title = [g_gifPath lastPathComponent];
                    
                    [self.spinner stopAnimating];
                }];
@@ -275,7 +275,7 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
 {
     m_alertType = kAlertType_Edit;
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"GIF의 제목을 입력하십시요"
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Enter new filename"
                                                         message:@""
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
@@ -297,15 +297,32 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
             NSString *name = [alertView textFieldAtIndex:0].text;
             // name contains the entered value
             
+            if ([name length] >= 4)
+            {
+                NSString* fileExt = [name substringFromIndex:[name length] - 4];
+                NSRange substr = [fileExt rangeOfString:@".gif" options:NSCaseInsensitiveSearch];
+                if (substr.location == NSNotFound)
+                {
+                    name = [name stringByAppendingString:@".gif"];
+                }
+            } else
+            {
+                name = [name stringByAppendingString:@".gif"];
+            }
+            
             self.title = name;
+
+            NSString* pathStr = [g_gifPath stringByDeletingLastPathComponent];
+            NSLog(@"pathStr = %@",pathStr);
+            NSString* newName = [pathStr stringByAppendingPathComponent:name];
+            NSLog(@"newName = %@",newName);
             
-            GIF_Library* inst = [GIF_Library giflib_sharedInstance];
+            NSFileManager *manager = [NSFileManager defaultManager];
             
-            NSMutableData* gif_new = [inst giflib_gif_copy_with_comment:name];
-            
-            NSLog(@"gif_new length = %d",[gif_new length]);
-            
-            [gif_new writeToFile:g_gifPath atomically:YES];
+            NSError* err = NULL;
+            BOOL result = [manager moveItemAtPath:g_gifPath toPath:newName error:&err];
+            if (result == 0) NSLog(@"Error:%@", err);
+            else             g_gifPath = newName;
         }
     }
 }
@@ -395,11 +412,15 @@ float delay_t[] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0 };
 	if (buttonIndex == 0)
 	{
 		NSLog(@"ok");
-        
+
         NSFileManager *fileMgr = [NSFileManager defaultManager];
         NSError *error;
         
         if ([fileMgr removeItemAtPath:g_gifPath error:&error] != YES) NSLog(@"Unable to delete file: %@", [error localizedDescription]);
+        else
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
 	} else
 	{
 		NSLog(@"cancel");
