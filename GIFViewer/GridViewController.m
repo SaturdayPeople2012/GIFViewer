@@ -95,7 +95,8 @@ static NSString *CellIdentifier = @"Cell";
     self.title = @"GridView";
     [self.gridView registerClass:[GridCell class] forCellWithReuseIdentifier:CellIdentifier];
     
-    self.editBtn = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(goEdit:)];
+    self.editBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(goEdit:)];
+
     self.editMode = NO;
     self.navigationItem.rightBarButtonItem = _editBtn;
     self.toolbarItems = [NSArray arrayWithObjects:flexible, segBtn,flexible, loadBtn, nil];
