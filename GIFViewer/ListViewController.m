@@ -51,7 +51,9 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     self.navigationItem.rightBarButtonItem = editButton;
     self.navigationItem.hidesBackButton = YES;
     
-    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:@[@"Grid",@"List"]];
+    UIImage *gridImage = [UIImage imageNamed:@"grid.png"];
+    UIImage *listImage = [UIImage imageNamed:@"list.png"];
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:@[gridImage,listImage]];
     segmentedControl.frame = CGRectMake(0, 0, 130, 30);
     [segmentedControl addTarget:self action:@selector(selectedMode:) forControlEvents:UIControlEventValueChanged];
     
@@ -61,11 +63,13 @@ static NSString *kDeletePartialTitle = @"Delete (%d)";
     
     flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 
-    loadButton.style = UIBarButtonSystemItemAdd;
-    loadButton.target = self;
-    loadButton.action = @selector(goLoad:);
-    
-    loadButton.tintColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0f];
+
+    loadButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(goLoad:)];
+//    loadButton.style = UIBarButtonSystemItemAdd;
+//    loadButton.target = self;
+//    loadButton.action = @selector(goLoad:);
+//    
+//    loadButton.tintColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:1.0f];
     self.toolbarItems = [NSArray arrayWithObjects:flexible, segBtn,flexible, loadButton, nil];
     
     

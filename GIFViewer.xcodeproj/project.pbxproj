@@ -105,6 +105,9 @@
 		F2C2F946163390E500E93A97 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F2C2F945163390E500E93A97 /* Default.png */; };
 		F2C2F948163390E500E93A97 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2C2F947163390E500E93A97 /* Default@2x.png */; };
 		F2C2F94A163390E500E93A97 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2C2F949163390E500E93A97 /* Default-568h@2x.png */; };
+		F2CF330116D7923F00DE6FBB /* Check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2CF32FE16D7923F00DE6FBB /* Check@2x.png */; };
+		F2CF330216D7923F00DE6FBB /* grid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2CF32FF16D7923F00DE6FBB /* grid@2x.png */; };
+		F2CF330316D7923F00DE6FBB /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2CF330016D7923F00DE6FBB /* list@2x.png */; };
 		F2D1540716969FAE00C0EAF4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D1540616969FAE00C0EAF4 /* QuartzCore.framework */; };
 		F2EB33441639739300293A7B /* GridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EB33431639739300293A7B /* GridCell.m */; };
 /* End PBXBuildFile section */
@@ -300,6 +303,9 @@
 		F2C2F945163390E500E93A97 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F2C2F947163390E500E93A97 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F2C2F949163390E500E93A97 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F2CF32FE16D7923F00DE6FBB /* Check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Check@2x.png"; sourceTree = "<group>"; };
+		F2CF32FF16D7923F00DE6FBB /* grid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grid@2x.png"; sourceTree = "<group>"; };
+		F2CF330016D7923F00DE6FBB /* list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@2x.png"; sourceTree = "<group>"; };
 		F2D1540616969FAE00C0EAF4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F2EB33421639739300293A7B /* GridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridCell.h; sourceTree = "<group>"; };
 		F2EB33431639739300293A7B /* GridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridCell.m; sourceTree = "<group>"; };
@@ -658,6 +664,9 @@
 		F286BD661635769D004395AE /* 원석 */ = {
 			isa = PBXGroup;
 			children = (
+				F2CF32FE16D7923F00DE6FBB /* Check@2x.png */,
+				F2CF32FF16D7923F00DE6FBB /* grid@2x.png */,
+				F2CF330016D7923F00DE6FBB /* list@2x.png */,
 				F258917A16AA4E2E000FBBF8 /* Check-icon.png */,
 				F286BD57163570D1004395AE /* GridViewController.h */,
 				F286BD58163570D2004395AE /* GridViewController.m */,
@@ -835,6 +844,9 @@
 				D74812D116BE05110073AB52 /* forward@2x.png in Resources */,
 				D74812D216BE05110073AB52 /* play@2x.png in Resources */,
 				D74812D316BE05110073AB52 /* stop@2x.png in Resources */,
+				F2CF330116D7923F00DE6FBB /* Check@2x.png in Resources */,
+				F2CF330216D7923F00DE6FBB /* grid@2x.png in Resources */,
+				F2CF330316D7923F00DE6FBB /* list@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -926,8 +938,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: wonseok Yang (36K24A774P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: wonseok Yang (36K24A774P)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -942,8 +954,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "53456D5A-4793-457A-838C-0968840EF1B1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "53456D5A-4793-457A-838C-0968840EF1B1";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				VALID_ARCHS = armv7;
@@ -959,8 +971,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: wonseok Yang (36K24A774P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: wonseok Yang (36K24A774P)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = s;
@@ -970,8 +982,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB9F33C9-C21B-435C-8533-AA7DED5CCDC3";
+				PROVISIONING_PROFILE = "53456D5A-4793-457A-838C-0968840EF1B1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "53456D5A-4793-457A-838C-0968840EF1B1";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				VALIDATE_PRODUCT = YES;
@@ -982,8 +994,8 @@
 		F2C2F94E163390E500E93A97 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: wonseok Yang (36K24A774P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: wonseok Yang (36K24A774P)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GIFViewer/GIFViewer-Prefix.pch";
 				INFOPLIST_FILE = "GIFViewer/GIFViewer-Info.plist";
@@ -993,8 +1005,8 @@
 					"\"$(SRCROOT)/GIFViewer/Twitpic/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
+				PROVISIONING_PROFILE = "53456D5A-4793-457A-838C-0968840EF1B1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "53456D5A-4793-457A-838C-0968840EF1B1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1002,7 +1014,7 @@
 		F2C2F94F163390E500E93A97 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: wonseok Yang (36K24A774P)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GIFViewer/GIFViewer-Prefix.pch";
@@ -1013,7 +1025,7 @@
 					"\"$(SRCROOT)/GIFViewer/Twitpic/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
+				PROVISIONING_PROFILE = "53456D5A-4793-457A-838C-0968840EF1B1";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B868A6F7-2D4A-416C-ADF4-7E4ABECB223F";
 				WRAPPER_EXTENSION = app;
 			};

@@ -14,8 +14,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor redColor];
-        UIView *bgView = [[UIView alloc] initWithFrame:self.backgroundView.frame];
+
+//        UIView *bgView = [[UIView alloc] initWithFrame:self.backgroundView.frame];
+        UIImageView *bgView = [[UIImageView alloc]initWithFrame:self.backgroundView.frame];
         bgView.backgroundColor = [UIColor blueColor];
         self.selectedBackgroundView = bgView;
 
@@ -25,12 +26,17 @@
         _gifImgView.center = self.center;
 //        self.backgroundView = _gifImgView;
 //        self.contentView.frame = CGRectMake(3, 3, 59, 59);
-        self.gifImgView.frame = CGRectMake(3, 3, 59, 59);
+        self.gifImgView.frame = CGRectMake(2, 2, 71, 71);
         [self addSubview:_gifImgView];
 //        [self.contentView addSubview:_gifImgView];
 
         self.backgroundColor = [UIColor clearColor];
 
+        self.selectedView = [[UIImageView alloc]initWithFrame:self.bounds];
+        self.selectedView.image = [UIImage imageNamed:@"Check.png"];
+        self.selectedView.hidden = YES;
+        [self addSubview:self.selectedView];
+        [self bringSubviewToFront:self.selectedView];
 //        self.selectedView.hidden = YES;
 //        [self addSubview:_selectedView];
         

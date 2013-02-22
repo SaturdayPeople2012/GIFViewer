@@ -80,8 +80,10 @@ static NSString *CellIdentifier = @"Cell";
                                                          //     target:self action:@selector(goLoad:)];
     UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
                                  UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    
-    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:@[@"Grid",@"List"]];
+
+    UIImage *gridImage = [UIImage imageNamed:@"grid.png"];
+    UIImage *listImage = [UIImage imageNamed:@"list.png"];
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:@[gridImage,listImage]];
     segmentedControl.frame = CGRectMake(0, 0, 130, 30);
     [segmentedControl addTarget:self action:@selector(selectedMode:) forControlEvents:UIControlEventValueChanged];
     
@@ -136,6 +138,7 @@ static NSString *CellIdentifier = @"Cell";
         self.navigationItem.leftBarButtonItem = nil;
     }
     [self.gridView reloadData];
+//    [self.gridView reloadData];
 }
 
 - (void)deleteItems:(id)sender{
@@ -170,7 +173,7 @@ static NSString *CellIdentifier = @"Cell";
     
     UIImage *thumnails = [self getImageFromDocFolderAtIndex:indexPath.row];
     cell.gifImgView.image = thumnails;
-
+    cell.selectedView.hidden = YES;
     return cell;
 }
 
@@ -178,7 +181,7 @@ static NSString *CellIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(!self.editMode)
+        if(!self.editMode)
     {
         GIFDetailViewController *detailViewController = [[GIFDetailViewController alloc]initWithNibName:@"GIFDetailViewController" bundle:nil];
         NSFileManager *manager = [NSFileManager defaultManager];
@@ -196,7 +199,9 @@ static NSString *CellIdentifier = @"Cell";
     else
     {
         [self.navigationItem.leftBarButtonItem setEnabled:YES];
-        
+        GridCell *cell = (GridCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        cell.selectedView.hidden = NO;
+
         NSFileManager *manager = [NSFileManager defaultManager];
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -215,6 +220,8 @@ static NSString *CellIdentifier = @"Cell";
 {
     if(self.editMode)
     {
+        GridCell *cell = (GridCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        cell.selectedView.hidden = YES;
         NSFileManager *manager = [NSFileManager defaultManager];
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -223,7 +230,7 @@ static NSString *CellIdentifier = @"Cell";
         }else{
             [self.removeFileLists addObject:[[manager contentsOfDirectoryAtPath:documentsDirectory error:nil]objectAtIndex:indexPath.row]];
         }    }
-    NSLog(@"--------------------------------");
+
 }
 
 #pragma mark - UIActionSheet Delegate
@@ -240,7 +247,9 @@ static NSString *CellIdentifier = @"Cell";
                 [manager removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:path] error:nil];
             }
             self.navigationItem.leftBarButtonItem.enabled = NO;
+
             [self.gridView reloadData];
+
             self.navigationController.toolbarHidden = NO;
             break;
         case 1:
@@ -254,21 +263,20 @@ static NSString *CellIdentifier = @"Cell";
 
 
 
-
 #pragma mark - ELC Delegate
 
 - (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info {
 	
 	[self dismissModalViewControllerAnimated:YES];
-    for(NSDictionary *dict in info) {
-        
-        UIImage *gifImage = [dict objectForKey:UIImagePickerControllerOriginalImage];
-        //document 경로
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        
-        NSString *fileName = [documentsDirectory stringByAppendingPathComponent:@"123.gif"];
-	}
+//    for(NSDictionary *dict in info) {
+//        
+//        UIImage *gifImage = [dict objectForKey:UIImagePickerControllerOriginalImage];
+//        //document 경로
+//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//        NSString *documentsDirectory = [paths objectAtIndex:0];
+//        
+//        NSString *fileName = [documentsDirectory stringByAppendingPathComponent:@"123.gif"];
+//	}
     
     
     //기명처리
