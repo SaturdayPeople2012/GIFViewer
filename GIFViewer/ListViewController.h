@@ -28,6 +28,7 @@
 
 @property (strong,nonatomic) NSMutableArray *listData;
 @property (nonatomic, strong) UIBarButtonItem *editButton;
+@property (nonatomic, strong) UIBarButtonItem *loadButton;
 @property (nonatomic, strong) UIBarButtonItem *cancelButton;
 @property (nonatomic, strong) UIBarButtonItem *deleteButton;
 

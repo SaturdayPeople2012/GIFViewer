@@ -131,11 +131,30 @@ static NSString *CellIdentifier = @"Cell";
         self.gridView.allowsMultipleSelection = YES;    
         self.navigationItem.leftBarButtonItem = self.deleteBtn;
         self.navigationItem.leftBarButtonItem.enabled = NO;
+        self.toolbarItems = [NSArray arrayWithObjects:nil];
     }else{
         self.gridView.allowsMultipleSelection = NO;
         self.title = @"Grid VIew";
         self.editBtn.title = @"Edit";
         self.navigationItem.leftBarButtonItem = nil;
+        UIBarButtonItem *loadBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(goLoad:)];
+        
+        UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
+                                     UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIImage *gridImage = [UIImage imageNamed:@"grid.png"];
+        UIImage *listImage = [UIImage imageNamed:@"list.png"];
+        
+        UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:@[gridImage,listImage]];
+        segmentedControl.frame = CGRectMake(0, 0, 130, 30);
+        [segmentedControl addTarget:self action:@selector(selectedMode:) forControlEvents:UIControlEventValueChanged];
+        
+        segmentedControl.selectedSegmentIndex=1;
+        
+        UIBarButtonItem *segBtn = [[UIBarButtonItem alloc]initWithCustomView:segmentedControl];
+        segBtn = [[UIBarButtonItem alloc]initWithCustomView:segmentedControl];
+        
+        
+        self.toolbarItems = [NSArray arrayWithObjects:flexible, segBtn,flexible, loadBtn, nil];
     }
     [self.gridView reloadData];
 //    [self.gridView reloadData];
@@ -229,7 +248,8 @@ static NSString *CellIdentifier = @"Cell";
             [self.removeFileLists removeObject:[[manager contentsOfDirectoryAtPath:documentsDirectory error:nil]objectAtIndex:indexPath.row]];
         }else{
             [self.removeFileLists addObject:[[manager contentsOfDirectoryAtPath:documentsDirectory error:nil]objectAtIndex:indexPath.row]];
-        }    }
+        }
+    }
 
 }
 
