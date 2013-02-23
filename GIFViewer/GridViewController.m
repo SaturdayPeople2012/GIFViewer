@@ -97,7 +97,9 @@ static NSString *CellIdentifier = @"Cell";
     self.title = @"GridView";
     [self.gridView registerClass:[GridCell class] forCellWithReuseIdentifier:CellIdentifier];
     
-    self.editBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(goEdit:)];
+    self.editBtn = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(goEdit:)];
+                    
+                    // initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(goEdit:)];
 
     self.editMode = NO;
     self.navigationItem.rightBarButtonItem = _editBtn;
@@ -125,7 +127,7 @@ static NSString *CellIdentifier = @"Cell";
 - (void)goEdit:(id)sender{
 
     _editMode  =!_editMode;
-    if (_editMode) {
+    if (_editMode==YES) {
         self.title = @"Edit Mode";
         self.editBtn.title = @"Cancel";
         self.gridView.allowsMultipleSelection = YES;    
@@ -138,7 +140,7 @@ static NSString *CellIdentifier = @"Cell";
         self.editBtn.title = @"Edit";
         self.navigationItem.leftBarButtonItem = nil;
         UIBarButtonItem *loadBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(goLoad:)];
-        
+
         UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
                                      UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         UIImage *gridImage = [UIImage imageNamed:@"grid.png"];
