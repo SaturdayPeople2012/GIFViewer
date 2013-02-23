@@ -16,7 +16,9 @@
 
 #define kGridMode 0
 #define kListMode 1
-@interface GridViewController ()
+@interface GridViewController (){
+    NSInteger selectedCount;
+}
 @property (strong, nonatomic)NSArray *fileLists;
 @property (strong, nonatomic) NSMutableArray *removeFileLists;//지울 리스트
 @property (strong, nonatomic) UIBarButtonItem *deleteBtn;
@@ -239,18 +241,39 @@ static NSString *CellIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+
     if(self.editMode)
     {
-        GridCell *cell = (GridCell *)[collectionView cellForItemAtIndexPath:indexPath];
-        cell.selectedView.hidden = YES;
+
         NSFileManager *manager = [NSFileManager defaultManager];
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSArray *list = [manager contentsOfDirectoryAtPath:documentsDirectory error:nil];
+        selectedCount = -1;
+        for (NSInteger i=0; i< [list count]; i++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+            GridCell *cell = (GridCell *)[collectionView cellForItemAtIndexPath:indexPath];
+            if (cell.selectedView.hidden ==NO) {
+                NSLog(@"%d",selectedCount);
+                selectedCount++;
+            }
+        }
+        NSLog(@"%d",selectedCount);
+        if (selectedCount==0) {
+            self.deleteBtn.enabled = NO;
+        }
+        
+        GridCell *cell = (GridCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        cell.selectedView.hidden = YES;
+//        NSFileManager *manager = [NSFileManager defaultManager];
+//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//        NSString *documentsDirectory = [paths objectAtIndex:0];
         if ([self.removeFileLists containsObject:[[manager contentsOfDirectoryAtPath:documentsDirectory error:nil]objectAtIndex:indexPath.row]]) {
             [self.removeFileLists removeObject:[[manager contentsOfDirectoryAtPath:documentsDirectory error:nil]objectAtIndex:indexPath.row]];
         }else{
             [self.removeFileLists addObject:[[manager contentsOfDirectoryAtPath:documentsDirectory error:nil]objectAtIndex:indexPath.row]];
         }
+
     }
 
 }
@@ -290,15 +313,15 @@ static NSString *CellIdentifier = @"Cell";
 - (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info {
 	
 	[self dismissModalViewControllerAnimated:YES];
-//    for(NSDictionary *dict in info) {
-//        
-//        UIImage *gifImage = [dict objectForKey:UIImagePickerControllerOriginalImage];
-//        //document 경로
-//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//        NSString *documentsDirectory = [paths objectAtIndex:0];
-//        
-//        NSString *fileName = [documentsDirectory stringByAppendingPathComponent:@"123.gif"];
-//	}
+    //    for(NSDictionary *dict in info) {
+    //
+    //        UIImage *gifImage = [dict objectForKey:UIImagePickerControllerOriginalImage];
+    //        //document 경로
+    //        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    //        NSString *documentsDirectory = [paths objectAtIndex:0];
+    //
+    //        NSString *fileName = [documentsDirectory stringByAppendingPathComponent:@"123.gif"];
+    //	}
     
     
     //기명처리
@@ -330,7 +353,5 @@ static NSString *CellIdentifier = @"Cell";
     
 	[self dismissModalViewControllerAnimated:YES];
 }
-
-
 
 @end
