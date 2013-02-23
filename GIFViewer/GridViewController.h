@@ -20,5 +20,6 @@
 @property (assign, nonatomic) BOOL editMode;
 
 @property (strong, nonatomic) UIBarButtonItem *editBtn;
+@property (strong, nonatomic) UIBarButtonItem *loadBtn;
 
 @end

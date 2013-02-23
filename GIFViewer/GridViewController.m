@@ -75,7 +75,7 @@ static NSString *CellIdentifier = @"Cell";
 
     self.deleteBtn = [[UIBarButtonItem alloc]initWithTitle:@"Delete" style:UIBarButtonItemStylePlain target:self action:@selector(deleteItems:)];
 
-    UIBarButtonItem *loadBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(goLoad:)];
+    self.loadBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(goLoad:)];
                                 //initWithTitle:@"Load" style:UIBarButtonItemStyleBordered
                                                          //     target:self action:@selector(goLoad:)];
     UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
@@ -90,7 +90,7 @@ static NSString *CellIdentifier = @"Cell";
     segmentedControl.selectedSegmentIndex=0;
     UIBarButtonItem *segBtn = [[UIBarButtonItem alloc]initWithCustomView:segmentedControl];
     
-    self.toolbarItems = [NSArray arrayWithObjects:flexible, segBtn,flexible, loadBtn, nil];
+    self.toolbarItems = [NSArray arrayWithObjects:flexible, segBtn,flexible, self.loadBtn, nil];
     self.navigationItem.hidesBackButton = YES;
     
     
@@ -101,7 +101,6 @@ static NSString *CellIdentifier = @"Cell";
 
     self.editMode = NO;
     self.navigationItem.rightBarButtonItem = _editBtn;
-    self.toolbarItems = [NSArray arrayWithObjects:flexible, segBtn,flexible, loadBtn, nil];
     
     self.gifDataArray = [NSMutableArray array];
     self.removeFileLists = [@[] mutableCopy];
@@ -124,6 +123,7 @@ static NSString *CellIdentifier = @"Cell";
 }
 #pragma mark - UIBarButton 관련 매서드
 - (void)goEdit:(id)sender{
+
     _editMode  =!_editMode;
     if (_editMode) {
         self.title = @"Edit Mode";
