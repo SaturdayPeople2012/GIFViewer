@@ -13,7 +13,7 @@
 @synthesize rowAssets;
 
 -(id)initWithAssets:(NSArray*)_assets reuseIdentifier:(NSString*)_identifier {
-    NSLog(@"1_assets: %@", _assets);
+    //NSLog(@"1_assets: %@", _assets);
 	if(self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_identifier]) {
         
 		self.rowAssets = _assets;
@@ -23,7 +23,7 @@
 }
 
 -(void)setAssets:(NSArray*)_assets {
-	NSLog(@"2_assets: %@", _assets);
+	//NSLog(@"2_assets: %@", _assets);
 	for(UIView *view in [self subviews]) 
     {		
 		[view removeFromSuperview];

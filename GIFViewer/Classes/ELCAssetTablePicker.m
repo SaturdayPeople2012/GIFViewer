@@ -49,12 +49,12 @@
              return;
          }
          //lkm - get data info
-         NSLog(@"prepare result:%@", result);
-         NSString* originalFileName = [[result defaultRepresentation] filename];
+         //NSLog(@"prepare result:%@", result);
+         //NSString* originalFileName = [[result defaultRepresentation] filename];
          NSURL *url = [[result defaultRepresentation] url];
          NSString * surl = [url absoluteString];
          NSString * ext = [surl substringFromIndex:[surl rangeOfString:@"ext="].location + 4];
-         NSLog(@"org:%@, url:%@, surl:%@ ext:%@", originalFileName, url, surl, ext);
+         //NSLog(@"org:%@, url:%@, surl:%@ ext:%@", originalFileName, url, surl, ext);
          
          //lkm - extract gif
          if ([[ext uppercaseString] isEqualToString:@"GIF"]) {

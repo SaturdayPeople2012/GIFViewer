@@ -994,8 +994,7 @@
 		F2C2F94E163390E500E93A97 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: wonseok Yang (36K24A774P)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: wonseok Yang (36K24A774P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ki Myoung Lee (J3984MMU49)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GIFViewer/GIFViewer-Prefix.pch";
 				INFOPLIST_FILE = "GIFViewer/GIFViewer-Info.plist";
@@ -1005,8 +1004,12 @@
 					"\"$(SRCROOT)/GIFViewer/Twitpic/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+<<<<<<< HEAD
 				PROVISIONING_PROFILE = "22CFE65F-93EE-4C61-9909-85607F6DFA37";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "22CFE65F-93EE-4C61-9909-85607F6DFA37";
+=======
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0354526D-5052-451F-9B48-18F0F0E0F3CD";
+>>>>>>> bc44719e9f6a958cc82c8497529faefb93f145c3
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1014,8 +1017,13 @@
 		F2C2F94F163390E500E93A97 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+<<<<<<< HEAD
 				CODE_SIGN_IDENTITY = "iPhone Developer: wonseok Yang (36K24A774P)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: wonseok Yang (36K24A774P)";
+=======
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: JinWon Kim (H244PMC3WV)";
+>>>>>>> bc44719e9f6a958cc82c8497529faefb93f145c3
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GIFViewer/GIFViewer-Prefix.pch";
 				INFOPLIST_FILE = "GIFViewer/GIFViewer-Info.plist";
@@ -1025,8 +1033,11 @@
 					"\"$(SRCROOT)/GIFViewer/Twitpic/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+<<<<<<< HEAD
 				PROVISIONING_PROFILE = "22CFE65F-93EE-4C61-9909-85607F6DFA37";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "22CFE65F-93EE-4C61-9909-85607F6DFA37";
+=======
+>>>>>>> bc44719e9f6a958cc82c8497529faefb93f145c3
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
