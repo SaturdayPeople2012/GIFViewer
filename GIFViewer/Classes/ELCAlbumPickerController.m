@@ -43,8 +43,27 @@
             {
                 return;
             }
+#if 0//lkm test 20130316
+            [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop)
+             {
             
+                //lkm - get data info
+                NSLog(@"prepare result:%@", result);
+                NSString* originalFileName = [[result defaultRepresentation] filename];
+                NSURL *url = [[result defaultRepresentation] url];
+                NSString * surl = [url absoluteString];
+                NSString * ext = [surl substringFromIndex:[surl rangeOfString:@"ext="].location + 4];
+                NSLog(@"org:%@, url:%@, surl:%@ ext:%@", originalFileName, url, surl, ext);
+                
+                //lkm - extract gif
+                if ([[ext uppercaseString] isEqualToString:@"GIF"]) {
+                    groupImageCount++;
+                    //             cell.textLabel.text = [NSString stringWithFormat:@"%@ (%d)",[g valueForProperty:ALAssetsGroupPropertyName], gCount];
+                }
+            }];
+#else
             [self.assetGroups addObject:group];
+#endif
 
             // Reload albums
             [self performSelectorOnMainThread:@selector(reloadTableView) withObject:nil waitUntilDone:YES];
@@ -112,9 +131,17 @@
     NSInteger gCount = [g numberOfAssets];
 #endif
     
+#if 0// test 20130316
+    NSInteger gCount = [g numberOfAssets];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%d)",[g valueForProperty:ALAssetsGroupPropertyName], gCount/*groupImageCount*/];
+    [cell.imageView setImage:[UIImage imageWithCGImage:[(ALAssetsGroup*)[assetGroups objectAtIndex:indexPath.row] posterImage]]];
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    return cell;
+#endif
+    
     //TTT lkm- 이곳에서 그룹 카운트와 그룹이름을 표시한다.{
     NSString *imgGroupName = [g valueForProperty:ALAssetsGroupPropertyName];
-    NSLog(@"imgGroupName: %@", imgGroupName);
+//    NSLog(@"imgGroupName: %@", imgGroupName);
     
     [g enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop)
      {
@@ -125,15 +152,20 @@
              //             UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"알림" message:@"사진첩에 로드할 GIF가 없습니다." delegate:self cancelButtonTitle:@"닫기" otherButtonTitles:nil, nil] autorelease];
 //             alert.tag = kAlertTagEmptyGifFile;
 //             [alert show];
+             if (groupImageCount == 0)
+             {
+                 cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)",[g valueForProperty:ALAssetsGroupPropertyName], @"0"];
+                 cell.userInteractionEnabled = NO;
+             }
              return;
          }
          //lkm - get data info
-         NSLog(@"prepare result:%@", result);
+//         NSLog(@"prepare result:%@", result);
          NSString* originalFileName = [[result defaultRepresentation] filename];
          NSURL *url = [[result defaultRepresentation] url];
          NSString * surl = [url absoluteString];
          NSString * ext = [surl substringFromIndex:[surl rangeOfString:@"ext="].location + 4];
-         NSLog(@"org:%@, url:%@, surl:%@ ext:%@", originalFileName, url, surl, ext);
+//         NSLog(@"org:%@, url:%@, surl:%@ ext:%@", originalFileName, url, surl, ext);
          
          //lkm - extract gif
          if ([[ext uppercaseString] isEqualToString:@"GIF"]) {
@@ -142,6 +174,12 @@
              cell.textLabel.text = [NSString stringWithFormat:@"%@ (%d)",[g valueForProperty:ALAssetsGroupPropertyName], groupImageCount];
              [cell.imageView setImage:[UIImage imageWithCGImage:[(ALAssetsGroup*)[assetGroups objectAtIndex:indexPath.row] posterImage]]];
              [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+             cell.userInteractionEnabled = YES;
+         }
+         else if (groupImageCount == 0)
+         {
+             cell.textLabel.text = [NSString stringWithFormat:@"%@ (%d)",[g valueForProperty:ALAssetsGroupPropertyName], groupImageCount];
+             cell.userInteractionEnabled = NO;
          }
      }];
     groupImageCount = 0;
