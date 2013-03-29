@@ -376,6 +376,8 @@ static NSString *kDeleteAllTitle = @"Delete";
 	[elcPicker setDelegate:self];
     
     [self presentViewController:elcPicker animated:YES completion:nil];
+    [self.tableView reloadData];
+    
 }
 
 
