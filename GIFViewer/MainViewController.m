@@ -39,7 +39,7 @@
     [self.navigationController pushViewController:gVC animated:NO];
     
 }
-
+/*
 - (void)goLoad:(id)sender{
     //기명
 }
@@ -100,7 +100,7 @@
     };
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
+    {*/
         /*  self.presentViewController = [[UIPopoverController alloc] initWithContentViewController:activityVC];
          
          CGRect rect = [[UIScreen mainScreen] bounds];
@@ -110,6 +110,7 @@
          permittedArrowDirections:0
          animated:YES];
          */
+/*
     }
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]){
@@ -145,5 +146,5 @@
         NSLog(@"UnAvailable");
     }
 }
-
+*/
 @end
