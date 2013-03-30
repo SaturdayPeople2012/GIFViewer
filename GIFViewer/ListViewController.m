@@ -28,8 +28,13 @@ static NSString *kDeleteAllTitle = @"Delete";
     
     NSFileManager *manager = [NSFileManager defaultManager];
     self.fileLists = [manager contentsOfDirectoryAtPath:documentsDirectory error:nil];
-    for (NSString *string in _fileLists) {
-        [self.gifDataArray addObject:[string stringByDeletingPathExtension]];
+    
+    if ([self.fileLists count] >0) {
+            for (NSString *string in _fileLists) {
+            [self.gifDataArray addObject:[string stringByDeletingPathExtension]];
+        }
+    }else{
+        self.gifDataArray = [@[] mutableCopy];
     }
 }//self.gifDataArray는 파일명만 갖고 있도록 했는데... 왜했는지는 까묵음..
 - (UIImage *) getImageFromDocFolderAtIndex:(NSInteger)index{
@@ -302,41 +307,29 @@ static NSString *kDeleteAllTitle = @"Delete";
             {
                 [deletionArray addObject:[self.gifDataArray objectAtIndex:selectionIndex.row]];
             }
-            [self.gifDataArray removeObjectsInArray:deletionArray];
+//            [self.gifDataArray removeObjectsInArray:deletionArray];
             
             
-            
-            
-            if ([manager fileExistsAtPath:documentsDirectory]) {
-                for (int i=0; i<[deletionArray count]; i++) {
-                    [manager removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:[arr objectAtIndex:i]] error:nil];
-                }
+            for (NSString *fileName in deletionArray) {
+                NSString *name = [fileName stringByAppendingPathExtension:@"gif"];
+                [manager removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:name] error:nil];
             }
             
-        }else{
-            if ([manager fileExistsAtPath:documentsDirectory]) {
-                for (int i=0; i<[gifDataArray count]; i++) {
-                    [manager removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:[arr objectAtIndex:i]] error:nil];
-                }
-            }
-            [self.gifDataArray removeAllObjects];
-            [self.tableView deleteRowsAtIndexPaths:gifDataArray withRowAnimation:UITableViewRowAnimationAutomatic];
-            //[self.tableView endUpdates];
-            // since we are deleting all the rows, just reload the current table section
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
         }
-        [self.tableView deleteRowsAtIndexPaths:selectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
+//        [self.tableView deleteRowsAtIndexPaths:selectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
         
         [self.tableView endUpdates];
         // then delete the only the rows in our table that were selected
+        [self getDataFromDocumentFolder];
+        [self resetUI]; // reset our UI
+        [self.tableView setEditing:NO animated:YES];
+        
     }
-
-    
-    [self resetUI]; // reset our UI
-    [self.tableView setEditing:NO animated:YES];
-    
     self.editButton.enabled = (self.gifDataArray.count > 0) ? YES : NO;
+
     [self.tableView reloadData];
+    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -376,7 +369,6 @@ static NSString *kDeleteAllTitle = @"Delete";
 	[elcPicker setDelegate:self];
     
     [self presentViewController:elcPicker animated:YES completion:nil];
-    [self.tableView reloadData];
     
 }
 
@@ -391,7 +383,7 @@ static NSString *kDeleteAllTitle = @"Delete";
     NSDictionary *dic = [[NSDictionary alloc] init];
     dic =[manager attributesOfItemAtPath:[documentsDirectory stringByAppendingPathComponent:[self.fileLists objectAtIndex:indexPath.row]] error:nil];
     ;
-    NSLog(@"arr: %@ \n\n\n\n dic: %@",arr,dic);
+    //NSLog(@"arr: %@ \n\n\n\n dic: %@",arr,dic);
     static NSString *CellIdentifier = @"BaseCell";
     ListCell *listCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (listCell == nil)
@@ -466,16 +458,10 @@ static NSString *kDeleteAllTitle = @"Delete";
 
 - (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info {
 	
-	[self dismissModalViewControllerAnimated:YES];
-    for(NSDictionary *dict in info) {
-        
-        UIImage *gifImage = [dict objectForKey:UIImagePickerControllerOriginalImage];
-        //document 경로
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        
-        NSString *fileName = [documentsDirectory stringByAppendingPathComponent:@"123.gif"];
-	}
+	[self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self getDataFromDocumentFolder];
+    [self.tableView reloadData];
     
     
     //기명처리
@@ -505,7 +491,7 @@ static NSString *kDeleteAllTitle = @"Delete";
 
 - (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker {
     
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -140,6 +140,7 @@
 #endif
     
     //TTT lkm- 이곳에서 그룹 카운트와 그룹이름을 표시한다.{
+
     NSString *imgGroupName = [g valueForProperty:ALAssetsGroupPropertyName];
 //    NSLog(@"imgGroupName: %@", imgGroupName);
     
@@ -147,11 +148,6 @@
      {
          if(result == nil)
          {
-#warning Need work localized strings.
-//lkm bug.
-             //             UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"알림" message:@"사진첩에 로드할 GIF가 없습니다." delegate:self cancelButtonTitle:@"닫기" otherButtonTitles:nil, nil] autorelease];
-//             alert.tag = kAlertTagEmptyGifFile;
-//             [alert show];
              if (groupImageCount == 0)
              {
                  cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)",[g valueForProperty:ALAssetsGroupPropertyName], @"0"];

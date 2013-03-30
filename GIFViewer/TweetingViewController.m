@@ -61,7 +61,7 @@
         }
         
         [self performSelectorOnMainThread:@selector(displayText:) withObject:output waitUntilDone:NO];
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
     
   

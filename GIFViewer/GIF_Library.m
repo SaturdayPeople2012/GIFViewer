@@ -336,7 +336,7 @@ static GIF_Library* instance;
     {
         NSMutableData* comment_t = [self giflib_get_n_bytes:u8];
         NSString* comment = [[NSString alloc] initWithData:comment_t encoding:NSUTF8StringEncoding];
-        
+        NSLog(@"comment: %@", comment);
 //      self.m_parentVC.title = comment;
 
 #ifdef __PRINT_NSLOG__

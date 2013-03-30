@@ -135,6 +135,7 @@ static NSString *CellIdentifier = @"Cell";
         self.gridView.allowsMultipleSelection = YES;    
         self.navigationItem.leftBarButtonItem = self.deleteBtn;
         self.navigationItem.leftBarButtonItem.enabled = NO;
+        
         self.toolbarItems = [NSArray arrayWithObjects:nil];
     }else{
         self.gridView.allowsMultipleSelection = NO;
@@ -152,7 +153,7 @@ static NSString *CellIdentifier = @"Cell";
         segmentedControl.frame = CGRectMake(0, 0, 130, 30);
         [segmentedControl addTarget:self action:@selector(selectedMode:) forControlEvents:UIControlEventValueChanged];
         
-        segmentedControl.selectedSegmentIndex=1;
+        segmentedControl.selectedSegmentIndex=0;
         
         UIBarButtonItem *segBtn = [[UIBarButtonItem alloc]initWithCustomView:segmentedControl];
         segBtn = [[UIBarButtonItem alloc]initWithCustomView:segmentedControl];
@@ -166,7 +167,7 @@ static NSString *CellIdentifier = @"Cell";
 
 - (void)deleteItems:(id)sender{
     self.navigationController.toolbarHidden = YES;
-    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"진짜 지울텨?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"YES", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Delete Files" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"YES", nil];
     actionSheet.delegate = self;
     
     [actionSheet showInView:self.view];
@@ -312,7 +313,7 @@ static NSString *CellIdentifier = @"Cell";
 
 - (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info {
 	
-	[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     //    for(NSDictionary *dict in info) {
     //
     //        UIImage *gifImage = [dict objectForKey:UIImagePickerControllerOriginalImage];
@@ -351,7 +352,7 @@ static NSString *CellIdentifier = @"Cell";
 
 - (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker {
     
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
